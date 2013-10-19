@@ -9,7 +9,9 @@ public class SearchAlgorithm {
 
 	ArrayList<SearchTreeNode> nodes;
 
-	public SearchTreeNode search(SearchProblem problem, int strategy) {
+	
+	// Generic search method that uses all the staregies.
+	public SearchTreeNode search(SearchProblem problem, int strategy, boolean visualize) {
 		nodes = new ArrayList<SearchTreeNode>();
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
 				0));
@@ -46,30 +48,31 @@ public class SearchAlgorithm {
 		return null;
 	}
 
+	// BFS
 	public void BFS(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// DFS
 	public void DFS(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// IDS
 	public void IDS(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// GRS0 - with the first heuristic
 	public void GRS0(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// GRS1 - with the second heuristic
 	public void GRS1(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// AS0 - with the first heuristic
 	public void AS0(SearchTreeNode node, SearchProblem problem) {
 
 	}
-
+	// AS1 - with the second heuristic
 	public void AS1(SearchTreeNode node, SearchProblem problem) {
 
 	}
