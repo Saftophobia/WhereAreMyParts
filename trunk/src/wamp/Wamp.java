@@ -5,8 +5,6 @@ import java.util.Arrays;
 
 import algorithm.SearchAlgorithm;
 
-import wamp.GenGrid.GridType;
-
 public class Wamp extends SearchAlgorithm {
 	private int length;
 	private int width;
@@ -57,6 +55,16 @@ public class Wamp extends SearchAlgorithm {
 				Grid[partsX][partsY] = GridType.Obstacle;
 			}
 		}
+	}
+	
+	public String [] search(GridType[][] grid, String strategy, boolean visualize) {
+		// 	do some stuff
+		//	search(problem, strategy, visualize);
+		return null;
+	}
+	
+	public static void main(String[] args){
+		
 	}
 
 }
