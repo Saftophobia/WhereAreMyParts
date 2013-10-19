@@ -18,11 +18,14 @@ public class GenGrid {
 	public GenGrid() {
 		this.length = (int) Math.random() * 500;
 		this.width = (int) Math.random() * 500;
+		
+		//Grid fills
 		Grid = new GridType[length][width];
 		for (GridType[] row : Grid) {
 			Arrays.fill(row, GridType.Free);
 		}
 
+		//Parts randomization 
 		this.Parts = new ArrayList<String>();
 		for (int i = 0; i < (int) Math.random() * 50; i++) {
 
@@ -35,6 +38,8 @@ public class GenGrid {
 			}
 		}
 
+		//Obstacles randomization 
+		this.Obstacles = new ArrayList<String>();
 		for (int i = 0; i < (int) Math.random() * 50; i++) {
 			int partsX = (int) Math.random() * length;
 			int partsY = (int) Math.random() * width;
