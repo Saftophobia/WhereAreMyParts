@@ -2,37 +2,35 @@ package util;
 
 import java.util.ArrayList;
 
-public class SearchProblem {
+public abstract class SearchProblem {
 	//operators strings for now
-	private String[] operators;
+	private Operator[] operators;
 	//state space list
 	private ArrayList<State> stateSpace;
 	//initial State
 	private State initialState;
-	//goal State
-	private State goalState;
+
 	
 	
 
 	// Constructor
-	public SearchProblem(String[] operators, ArrayList<State> stateSpace,
-			State initialState, State goalState) {
+	public SearchProblem(Operator[] operators, ArrayList<State> stateSpace,
+			State initialState) {
 		super();
 		this.operators = operators;
 		this.stateSpace = stateSpace;
 		this.initialState = initialState;
-		this.goalState = goalState;
 	}
 	
 	
 
-	public String[] getOperators() {
+	public Operator[] getOperators() {
 		return operators;
 	}
 
 
 
-	public void setOperators(String[] operators) {
+	public void setOperators(Operator[] operators) {
 		this.operators = operators;
 	}
 
@@ -60,27 +58,14 @@ public class SearchProblem {
 		this.initialState = initialState;
 	}
 
-
-
-	public State getGoalState() {
-		return goalState;
-	}
-
-
-
-	public void setGoalState(State goalState) {
-		this.goalState = goalState;
-	}
-
+	
 	// test if goal reached
-	public boolean goalTest(State state){
-		return state == goalState;
-	}
+	public abstract boolean goalTest(State state);
 	
 	// get path cost
-	public double pathCost(String... actions) {
-		return 0.0;
-	}
+	public abstract double pathCost(Operator... operators);
+	
+	public abstract State transferFunction(State input,Operator operator);
 
 
 
