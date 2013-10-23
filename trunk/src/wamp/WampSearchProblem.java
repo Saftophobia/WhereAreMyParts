@@ -314,8 +314,8 @@ public class WampSearchProblem extends SearchProblem {
 								if (currentGrid.getParts()
 										.get(currentOperator.getPartIndex())
 										.getUp() == null) {
-									WampState state = new WampState(AdjacentParts,
-											currentState.getGrid().fix2(
+									WampState state = new WampState(
+											currentState.getGrid().fix2(AdjacentParts,
 													currentOperator,
 													 i,
 													0),
@@ -383,7 +383,7 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y + i + 1] == GridType.Obstacle) {
 							// Apply changes on stop
-							return new WampState(currentState.getGrid().fix2(AdjacentParts
+							return new WampState(currentState.getGrid().fix2(AdjacentParts,
 									currentOperator, p.getLocation().x,
 									p.getLocation().y + i),
 									currentState.getNumberOfConnectedParts(), 0);
@@ -397,7 +397,7 @@ public class WampSearchProblem extends SearchProblem {
 										.get(currentOperator.getPartIndex())
 										.getUp() == null) {
 									WampState state = new WampState(
-											currentState.getGrid().fix2(AdjacentParts
+											currentState.getGrid().fix2(AdjacentParts,
 													currentOperator,
 													0,
 													i),
