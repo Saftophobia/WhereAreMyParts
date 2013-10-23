@@ -63,5 +63,15 @@ public class Part {
 	public void setRight(Part right) {
 		this.right = right;
 	}
+	
+	public boolean CompareParts(Part P)
+	{
+		if(this.location.getX() == P.location.getX() && this.location.getY() == P.location.getX())
+		{
+			return true;
+		}
+		return false;
+		
+	}
 
 }
