@@ -66,7 +66,7 @@ public class Part {
 	
 	public boolean CompareParts(Part P)
 	{
-		if(this.location.getX() == P.location.getX() && this.location.getY() == P.location.getX())
+		if(this.location.x == P.location.x && this.location.y == P.location.y)
 		{
 			return true;
 		}
