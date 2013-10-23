@@ -20,7 +20,7 @@ public class WampSearchProblem extends SearchProblem {
 	public boolean goalTest(State state) {
 		System.out.println(((WampState) state).getNumberOfConnectedParts());
 		return ((WampState) state).getNumberOfConnectedParts() == ((WampState) state)
-				.getGrid().getParts().size() - 1;
+				.getGrid().getParts().size()-1;
 	}
 
 	@Override
@@ -36,6 +36,7 @@ public class WampSearchProblem extends SearchProblem {
 		WampState currentState = (WampState) input;
 		WampOperator currentOperator = (WampOperator) operator;
 		Grid currentGrid = currentState.getGrid();
+		System.out.println(currentState);
 		int partX = currentGrid.getParts().get(currentOperator.getPartIndex())
 				.getLocation().x;
 		int partY = currentGrid.getParts().get(currentOperator.getPartIndex())
