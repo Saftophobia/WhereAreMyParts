@@ -13,14 +13,14 @@ public class Grid {
 	}
 
 	private GridType[][] gridCells;
-	private ArrayList<Point> Parts;
+	private ArrayList<Part> Parts;
 	private ArrayList<Point> Obstacles;
 	private int length;
 	private int width;
 
 	public Grid(boolean generate) {
-		if (false) {
-			if (generate) {
+		if (generate) {
+			if (false) {
 				do {
 					length = (int) (Math.random() * 20);
 					width = (int) (Math.random() * 20);
@@ -32,7 +32,7 @@ public class Grid {
 				}
 
 				// Parts randomization
-				Parts = new ArrayList<Point>();
+				Parts = new ArrayList<Part>();
 				int bound1;
 				do {
 					bound1 = (int) (Math.random() * 5);
@@ -45,7 +45,7 @@ public class Grid {
 						partsY = (int) (Math.random() * width);
 					} while (!gridCells[partsX][partsY].equals(GridType.Free));
 					if (gridCells[partsX][partsY].equals(GridType.Free)) {
-						Parts.add(new Point(partsX, partsY));
+						Parts.add(new Part(new Point(partsX, partsY)));
 						gridCells[partsX][partsY] = GridType.RobotPart;
 					}
 				}
@@ -69,20 +69,23 @@ public class Grid {
 						gridCells[obsX][obsY] = GridType.Obstacle;
 					}
 				}
+			} else {
+				gridCells = new GridType[5][5];
+				for (GridType[] row : gridCells) {
+					Arrays.fill(row, GridType.Free);
+				}
+				length = 5;
+				width = 5;
+				Parts = new ArrayList<Part>();
+				Parts.add(new Part(new Point(1, 1)));
+				gridCells[1][1] = GridType.RobotPart;
+				Parts.add(new Part(new Point(1, 4)));
+				gridCells[1][4] = GridType.RobotPart;
+				Parts.add(new Part(new Point(4, 4)));
+				gridCells[4][4] = GridType.RobotPart;
+				Obstacles = new ArrayList<Point>();
+
 			}
-		}else{
-			gridCells = new GridType[5][5];
-			for (GridType[] row : gridCells) {
-				Arrays.fill(row, GridType.Free);
-			}
-			Parts = new ArrayList<Point>();
-			Parts.add(new Point(1, 1));
-			gridCells[1][1] = GridType.RobotPart;
-			Parts.add(new Point(1, 4));
-			gridCells[1][4] = GridType.RobotPart;
-			Parts.add(new Point(4, 4));
-			gridCells[4][4] = GridType.RobotPart;
-			
 		}
 	}
 
@@ -94,11 +97,11 @@ public class Grid {
 		this.gridCells = gridCells;
 	}
 
-	public ArrayList<Point> getParts() {
+	public ArrayList<Part> getParts() {
 		return Parts;
 	}
 
-	public void setParts(ArrayList<Point> parts) {
+	public void setParts(ArrayList<Part> parts) {
 		Parts = parts;
 	}
 
@@ -129,19 +132,24 @@ public class Grid {
 	@SuppressWarnings("unchecked")
 	public Grid fix(WampOperator Operator, int partX, int partY) {
 		Grid fixed = new Grid(false);
-		// Cloning the obstacles not needed
+		// Cloning the obstacles not needed -- reference may cause issue take
+		// care !!
 		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
 		// Fixing the new part point
-		ArrayList<Point> newParts = (ArrayList<Point>) Parts.clone();
-		newParts.get(Operator.getPartIndex()).x = partX;
-		newParts.get(Operator.getPartIndex()).y = partY;
+		ArrayList<Part> newParts = cloneParts();
+		newParts.get(Operator.getPartIndex()).getLocation().x = partX;
+		newParts.get(Operator.getPartIndex()).getLocation().y = partY;
 		// Fixing the grid cells
 		GridType[][] newGridCells = new GridType[length][width];
 		for (int i = 0; i < length; i++) {
 			for (int j = 0; j < width; j++) {
-				if (i == Parts.get(Operator.getPartIndex()).x
-						&& j == Parts.get(Operator.getPartIndex()).y) {
+				if (i == Parts.get(Operator.getPartIndex()).getLocation().x
+						&& j == Parts.get(Operator.getPartIndex())
+								.getLocation().y) {
 					newGridCells[i][j] = GridType.Free;
+					if (i == partX && j == partY) {
+						newGridCells[i][j] = GridType.RobotPart;
+					}
 				} else {
 					if (i == partX && j == partY) {
 						newGridCells[i][j] = GridType.RobotPart;
@@ -153,12 +161,63 @@ public class Grid {
 			}
 
 		}
+		switch (Operator.getPartDirection()) {
+
+		case UP: {
+			for (Part p : newParts) {
+				if (p.getLocation().x == partX - 1
+						&& p.getLocation().y == partY) {
+					newParts.get(Operator.getPartIndex()).setUp(p);
+					p.setDown(newParts.get(Operator.getPartIndex()));
+				}
+			}
+		}
+			break;
+		case DOWN:
+			for (Part p : newParts) {
+				if (p.getLocation().x == partX + 1
+						&& p.getLocation().y == partY) {
+					newParts.get(Operator.getPartIndex()).setDown(p);
+					p.setUp(newParts.get(Operator.getPartIndex()));
+				}
+			}
+			break;
+		case LEFT:
+			for (Part p : newParts) {
+				if (p.getLocation().x == partX
+						&& p.getLocation().y == partY - 1) {
+					newParts.get(Operator.getPartIndex()).setLeft(p);
+					p.setRight(newParts.get(Operator.getPartIndex()));
+				}
+			}
+			break;
+		case RIGHT:
+			for (Part p : newParts) {
+				if (p.getLocation().x == partX
+						&& p.getLocation().y == partY - 1) {
+					newParts.get(Operator.getPartIndex()).setRight(p);
+					p.setLeft(newParts.get(Operator.getPartIndex()));
+				}
+			}
+			break;
+		}
+
 		fixed.Parts = newParts;
 		fixed.gridCells = newGridCells;
 		fixed.Obstacles = newObstacles;
 		fixed.length = length;
 		fixed.width = width;
 		return fixed;
+	}
+
+	public ArrayList<Part> cloneParts() {
+		ArrayList<Part> newParts = new ArrayList<Part>();
+		for (Part p : Parts) {
+			newParts.add(new Part(new Point(p.getLocation().x,
+					p.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
+					.getRight()));
+		}
+		return newParts;
 	}
 
 	public String toString() {
