@@ -219,7 +219,7 @@ public class Grid {
 		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
-		
+
 		for (Part np : newParts) {
 			for (Part ap : AdjacentParts) {
 
@@ -238,7 +238,7 @@ public class Grid {
 		// Fixing the grid Types
 		GridType[][] newGridCells = new GridType[length][width];
 
-		for (GridType[] row : gridCells) {
+		for (GridType[] row : newGridCells) {
 			Arrays.fill(row, GridType.Free);
 		}
 
@@ -251,8 +251,8 @@ public class Grid {
 					.getLocation().getY()] = GridType.RobotPart;
 		}
 
-		for (Part AP : AdjacentParts) { //<-------------
-			switch (Operator.getPartDirection()) { //5abat fe meen 
+		for (Part AP : AdjacentParts) { // <-------------
+			switch (Operator.getPartDirection()) { // 5abat fe meen
 
 			case UP: {
 				for (Part p : newParts) {
@@ -271,8 +271,7 @@ public class Grid {
 							&& p.getLocation().y == AP.getLocation().getY()) {
 						AP.setDown(p);
 						p.setUp(AP);
-						
-	
+
 					}
 				}
 				break;
@@ -334,41 +333,54 @@ public class Grid {
 	{
 		result.add(p);
 		if (p.getUp() != null) {
-
+			boolean Found = false;
 			for (Part AvailableTestPart : result) {
 				if (!p.getUp().CompareParts(AvailableTestPart)) {
-
-					return GetBulksRec(p.getUp(), result);
+					Found = true;
 
 				}
 			}
-
+			if (!Found) {
+				return GetBulksRec(p.getUp(), result); // mara wa7da bas
+			}
 		}
 		if (p.getDown() != null) {
+			boolean Found = false;
 			for (Part AvailableTestPart : result) {
 				if (!p.getDown().CompareParts(AvailableTestPart)) {
-
-					return GetBulksRec(p.getDown(), result);
+					Found = true;
 
 				}
+
+			}
+			if (!Found) {
+				return GetBulksRec(p.getDown(), result);
 			}
 		}
 		if (p.getLeft() != null) {
+			boolean Found = false;
 			for (Part AvailableTestPart : result) {
 				if (!p.getLeft().CompareParts(AvailableTestPart)) {
-
-					return GetBulksRec(p.getLeft(), result);
+					Found = true;
 
 				}
+
+			}
+			if (!Found) {
+				return GetBulksRec(p.getLeft(), result);
 			}
 		}
 		if (p.getRight() != null) {
+			boolean Found = false;
 			for (Part AvailableTestPart : result) {
 				if (!p.getRight().CompareParts(AvailableTestPart)) {
 
-					return GetBulksRec(p.getRight(), result);
+					Found = true;
 
 				}
+			}
+			if (!Found) {
+				return GetBulksRec(p.getRight(), result);
 			}
 		}
 
