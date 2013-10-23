@@ -245,11 +245,11 @@ public class WampSearchProblem extends SearchProblem {
 	}
 
 	public State transferFunction2(State input, Operator operator) {
+		System.out.println("------------------------------------------");
 		WampState currentState = (WampState) input;
 		WampOperator currentOperator = (WampOperator) operator;
 		Grid currentGrid = currentState.getGrid();
 		ArrayList<Part> AdjacentParts = new ArrayList<Part>();
-		
 		currentGrid.GetBulksRec(
 				currentGrid.getParts().get(currentOperator.getPartIndex()),
 				AdjacentParts);
@@ -283,6 +283,7 @@ public class WampSearchProblem extends SearchProblem {
 													.getNumberOfConnectedParts() + 1,
 											0);
 									System.out.println(state.getGrid());
+									
 									return state;
 								}
 							} else {
