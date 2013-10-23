@@ -194,7 +194,7 @@ public class Grid {
 		case RIGHT:
 			for (Part p : newParts) {
 				if (p.getLocation().x == partX
-						&& p.getLocation().y == partY - 1) {
+						&& p.getLocation().y == partY + 1) {
 					newParts.get(Operator.getPartIndex()).setRight(p);
 					p.setLeft(newParts.get(Operator.getPartIndex()));
 				}

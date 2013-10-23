@@ -117,6 +117,7 @@ public class Wamp extends SearchAlgorithm {
 			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction(state, operator);
 			if(output !=null){
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node, operator, node.getDepth()+1, 0);
+				System.out.println(">>>"+output.getNumberOfConnectedParts());
 				nodes.add(newNode);
 			}
 		}
