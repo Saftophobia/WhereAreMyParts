@@ -104,7 +104,8 @@ public class Wamp extends SearchAlgorithm {
 	public static void main(String[] args) {
 		Wamp wamp = new Wamp();
 		Grid grid = wamp.genGrid();
-		wamp.search(grid, "", true);
+		System.out.println(grid);
+		//wamp.search(grid, "", true);
 	}
 
 	@Override
