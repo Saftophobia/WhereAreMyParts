@@ -219,16 +219,24 @@ public class Grid {
 		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
+		ArrayList<Part> newAdjacent = cloneParts(AdjacentParts);
 
 		for (Part np : newParts) {
-			for (Part ap : AdjacentParts) {
-
+			for (Part ap : newAdjacent) {
+				
+			//	System.out.println(ap.getLocation().x);
 				if (np.CompareParts(ap)) {
 					np.getLocation().x += partX;
 					ap.getLocation().x += partX;
 					ap.getLocation().y += partY;
 					np.getLocation().y += partY;
+					
+					System.out.println(newParts.get(0).getLocation().getX());
+					
+					
 				}
+			//	System.out.println(ap.getLocation().x);
+				
 			}
 		}
 
@@ -251,9 +259,9 @@ public class Grid {
 					.getLocation().getY()] = GridType.RobotPart;
 		}
 
-		for (Part AP : AdjacentParts) { // <-------------
+		for (Part AP : newAdjacent) { // <-------------
 			switch (Operator.getPartDirection()) { // 5abat fe meen
-
+			
 			case UP: {
 				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX() - 1
@@ -305,6 +313,16 @@ public class Grid {
 	}
 
 	public ArrayList<Part> cloneParts() {
+		ArrayList<Part> newParts = new ArrayList<Part>();
+		for (Part p : Parts) {
+			newParts.add(new Part(new Point(p.getLocation().x,
+					p.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
+					.getRight()));
+		}
+		return newParts;
+	}
+	
+	public ArrayList<Part> cloneParts(ArrayList<Part> Parts) {
 		ArrayList<Part> newParts = new ArrayList<Part>();
 		for (Part p : Parts) {
 			newParts.add(new Part(new Point(p.getLocation().x,
