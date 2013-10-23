@@ -9,14 +9,22 @@ public class SearchTreeNode {
 	private State state; // The state of the state space that this node
 							// corresponds to
 	private SearchTreeNode parentNode;
-	private String operator; // The operator applied to generate this node, syntax "part_direction"
+	private Operator operator; // The operator applied to generate this node, syntax "part_direction"
 	private int depth; // The depth of the node in the tree
 	private int pathCost; // The path cost from the root
 
 	public SearchTreeNode(State state, SearchTreeNode parentNode,
-			String operator, int depth, int pathCost) {
+			Operator operator, int depth, int pathCost) {
 		super();
 		this.state = state;
+		this.parentNode = parentNode;
+		this.operator = operator;
+		this.depth = depth;
+		this.pathCost = pathCost;
+	}
+
+	public SearchTreeNode(SearchTreeNode parentNode, Operator operator,
+			int depth, int pathCost) {
 		this.parentNode = parentNode;
 		this.operator = operator;
 		this.depth = depth;
@@ -39,11 +47,11 @@ public class SearchTreeNode {
 		this.parentNode = parentNode;
 	}
 
-	public String getOperator() {
+	public Operator getOperator() {
 		return operator;
 	}
 
-	public void setOperator(String operator) {
+	public void setOperator(Operator operator) {
 		this.operator = operator;
 	}
 
