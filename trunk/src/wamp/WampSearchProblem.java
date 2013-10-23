@@ -249,6 +249,7 @@ public class WampSearchProblem extends SearchProblem {
 		WampOperator currentOperator = (WampOperator) operator;
 		Grid currentGrid = currentState.getGrid();
 		ArrayList<Part> AdjacentParts = new ArrayList<Part>();
+		
 		currentGrid.GetBulksRec(
 				currentGrid.getParts().get(currentOperator.getPartIndex()),
 				AdjacentParts);
