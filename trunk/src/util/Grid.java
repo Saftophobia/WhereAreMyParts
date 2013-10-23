@@ -19,55 +19,70 @@ public class Grid {
 	private int width;
 
 	public Grid(boolean generate) {
-		if (generate) {
-			do {
-				length = (int) (Math.random() * 20);
-				width = (int) (Math.random() * 20);
-			} while (length < 3 || width < 3);
-			// grid fills
-			gridCells = new GridType[length][width];
+		if (false) {
+			if (generate) {
+				do {
+					length = (int) (Math.random() * 20);
+					width = (int) (Math.random() * 20);
+				} while (length < 3 || width < 3);
+				// grid fills
+				gridCells = new GridType[length][width];
+				for (GridType[] row : gridCells) {
+					Arrays.fill(row, GridType.Free);
+				}
+
+				// Parts randomization
+				Parts = new ArrayList<Point>();
+				int bound1;
+				do {
+					bound1 = (int) (Math.random() * 5);
+				} while (bound1 < 1);
+				for (int i = 0; i < bound1; i++) {
+					int partsX;
+					int partsY;
+					do {
+						partsX = (int) (Math.random() * length);
+						partsY = (int) (Math.random() * width);
+					} while (!gridCells[partsX][partsY].equals(GridType.Free));
+					if (gridCells[partsX][partsY].equals(GridType.Free)) {
+						Parts.add(new Point(partsX, partsY));
+						gridCells[partsX][partsY] = GridType.RobotPart;
+					}
+				}
+
+				// Obstacles randomization
+				Obstacles = new ArrayList<Point>();
+				int bound2;
+				do {
+					bound2 = (int) (Math.random() * 5);
+				} while (bound2 < 1);
+				for (int i = 0; i < bound2; i++) {
+					int obsX;
+					int obsY;
+					do {
+						obsX = (int) (Math.random() * length);
+						obsY = (int) (Math.random() * width);
+					} while (!gridCells[obsX][obsY].equals(GridType.Free));
+
+					if (gridCells[obsX][obsY].equals(GridType.Free)) {
+						Obstacles.add(new Point(obsX, obsY));
+						gridCells[obsX][obsY] = GridType.Obstacle;
+					}
+				}
+			}
+		}else{
+			gridCells = new GridType[5][5];
 			for (GridType[] row : gridCells) {
 				Arrays.fill(row, GridType.Free);
 			}
-
-			// Parts randomization
 			Parts = new ArrayList<Point>();
-			int bound1;
-			do {
-				bound1 = (int) (Math.random() * 5);
-			} while (bound1 < 1);
-			for (int i = 0; i < bound1; i++) {
-				int partsX;
-				int partsY;
-				do {
-					partsX = (int) (Math.random() * length);
-					partsY = (int) (Math.random() * width);
-				} while (!gridCells[partsX][partsY].equals(GridType.Free));
-				if (gridCells[partsX][partsY].equals(GridType.Free)) {
-					Parts.add(new Point(partsX, partsY));
-					gridCells[partsX][partsY] = GridType.RobotPart;
-				}
-			}
-
-			// Obstacles randomization
-			Obstacles = new ArrayList<Point>();
-			int bound2;
-			do {
-				bound2 = (int) (Math.random() * 5);
-			} while (bound2 < 1);
-			for (int i = 0; i < bound2; i++) {
-				int obsX;
-				int obsY;
-				do {
-					obsX = (int) (Math.random() * length);
-					obsY = (int) (Math.random() * width);
-				} while (!gridCells[obsX][obsY].equals(GridType.Free));
-
-				if (gridCells[obsX][obsY].equals(GridType.Free)) {
-					Obstacles.add(new Point(obsX, obsY));
-					gridCells[obsX][obsY] = GridType.Obstacle;
-				}
-			}
+			Parts.add(new Point(1, 1));
+			gridCells[1][1] = GridType.RobotPart;
+			Parts.add(new Point(1, 4));
+			gridCells[1][4] = GridType.RobotPart;
+			Parts.add(new Point(4, 4));
+			gridCells[4][4] = GridType.RobotPart;
+			
 		}
 	}
 
