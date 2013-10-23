@@ -219,19 +219,16 @@ public class Grid {
 		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
-		ArrayList<Part> newAdjacent = cloneParts(AdjacentParts);
-
+		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
+		//System.out.println(newAdjacent.toString());
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
-				
-				System.out.println(np.getLocation()+" "+ap.getLocation());
-				System.out.println(partX+" "+partY+" "+np.CompareParts(ap));
+
 				if (np.CompareParts(ap)) {
 					np.getLocation().x += partX;
-					np.getLocation().y += partY;	
+					np.getLocation().y += partY;
 				}
-				System.out.println(np.getLocation()+" "+ap.getLocation());
-				
+
 			}
 		}
 
@@ -256,11 +253,12 @@ public class Grid {
 
 		for (Part AP : newAdjacent) { // <-------------
 			switch (Operator.getPartDirection()) { // 5abat fe meen
-			
+
 			case UP: {
 				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX() - 1
 							&& p.getLocation().y == AP.getLocation().getY()) {
+						//System.out.println(">>>>here");
 						AP.setUp(p);
 						p.setDown(AP);
 
@@ -272,6 +270,7 @@ public class Grid {
 				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX() + 1
 							&& p.getLocation().y == AP.getLocation().getY()) {
+						//System.out.println(">>>>here");
 						AP.setDown(p);
 						p.setUp(AP);
 
@@ -282,6 +281,7 @@ public class Grid {
 				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX()
 							&& p.getLocation().y == AP.getLocation().getY() - 1) {
+						//System.out.println(">>>>here");
 						AP.setLeft(p);
 						p.setRight(AP);
 					}
@@ -289,8 +289,10 @@ public class Grid {
 				break;
 			case RIGHT:
 				for (Part p : newParts) {
-					if (p.getLocation().x == AP.getLocation().getX()
-							&& p.getLocation().y == AP.getLocation().getY() + 1) {
+
+					if (p.getLocation().x == AP.getLocation().x
+							&& p.getLocation().y == AP.getLocation().y + 1) {
+						//System.out.println(">>>>here");
 						AP.setRight(p);
 						p.setLeft(AP);
 					}
@@ -310,21 +312,27 @@ public class Grid {
 	public ArrayList<Part> cloneParts() {
 		ArrayList<Part> newParts = new ArrayList<Part>();
 		for (Part p : Parts) {
-			newParts.add(new Part(new Point(p.getLocation().x,
+			//System.out.println(">"+p.getRight());
+			Part newP;
+			newParts.add(newP= new Part(new Point(p.getLocation().x,
 					p.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
 					.getRight()));
+			//System.out.println(">"+newP.getRight());
 		}
 		return newParts;
 	}
-	
-	public ArrayList<Part> cloneParts(ArrayList<Part> Parts) {
-		ArrayList<Part> newParts = new ArrayList<Part>();
-		for (Part p : Parts) {
-			newParts.add(new Part(new Point(p.getLocation().x,
-					p.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
-					.getRight()));
+
+	public ArrayList<Part> cloneParts(ArrayList<Part> newParts,
+			ArrayList<Part> adjParts) {
+		ArrayList<Part> out = new ArrayList<Part>();
+		for (Part np : newParts) {
+			for (Part ap : adjParts) {
+				if (np.CompareParts(ap)) {
+					out.add(np);
+				}
+			}
 		}
-		return newParts;
+		return out;
 	}
 
 	public String toString() {
@@ -339,60 +347,61 @@ public class Grid {
 		return s;
 	}
 
-	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) // remember
-																		// to
-																		// initialize
-																		// it
-	{
+	// remember to initialize it
+	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
+		System.out.println("{}{}{}"+p.getRight());
 		if (p.getUp() != null) {
-			boolean Found = false;
+			boolean Found = true;
 			for (Part AvailableTestPart : result) {
-				if (!p.getUp().CompareParts(AvailableTestPart)) {
-					Found = true;
-
+				if (p.getUp().CompareParts(AvailableTestPart)) {
+					Found = false;
 				}
+				break;
 			}
-			if (!Found) {
+			if (Found) {
 				return GetBulksRec(p.getUp(), result); // mara wa7da bas
 			}
 		}
 		if (p.getDown() != null) {
-			boolean Found = false;
+			boolean Found = true;
 			for (Part AvailableTestPart : result) {
-				if (!p.getDown().CompareParts(AvailableTestPart)) {
-					Found = true;
-
+				if (p.getDown().CompareParts(AvailableTestPart)) {
+					Found = false;
+					break;
 				}
 
 			}
-			if (!Found) {
+			if (Found) {
 				return GetBulksRec(p.getDown(), result);
 			}
 		}
 		if (p.getLeft() != null) {
-			boolean Found = false;
+			boolean Found = true;
 			for (Part AvailableTestPart : result) {
-				if (!p.getLeft().CompareParts(AvailableTestPart)) {
-					Found = true;
-
+				if (p.getLeft().CompareParts(AvailableTestPart)) {
+					Found = false;
+					break;
 				}
 
 			}
-			if (!Found) {
+			if (Found) {
 				return GetBulksRec(p.getLeft(), result);
 			}
 		}
-		if (p.getRight() != null) {
-			boolean Found = false;
-			for (Part AvailableTestPart : result) {
-				if (!p.getRight().CompareParts(AvailableTestPart)) {
 
-					Found = true;
+		if (p.getRight() != null) {
+			System.out.println("{2}{2}{2}");
+			boolean Found = true;
+			for (Part AvailableTestPart : result) {
+				if (p.getRight().CompareParts(AvailableTestPart)) {
+					System.out.println("{2}{2}{2}");
+					Found = false;
+					break;
 
 				}
 			}
-			if (!Found) {
+			if (Found) {
 				return GetBulksRec(p.getRight(), result);
 			}
 		}
