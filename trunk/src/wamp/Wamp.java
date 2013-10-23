@@ -21,10 +21,10 @@ public class Wamp extends SearchAlgorithm {
 		WampState initialState = new WampState(grid, 0, 0);
 		Operator[] operators = new Operator[grid.getParts().size() * 4];
 		for (int i = 0; i < grid.getParts().size(); i++) {
-			operators[i] = new WampOperator(i, Direction.UP);
-			operators[i] = new WampOperator(i, Direction.DOWN);
-			operators[i] = new WampOperator(i, Direction.LEFT);
-			operators[i] = new WampOperator(i, Direction.RIGHT);
+			operators[i*4] = new WampOperator(i, Direction.UP);
+			operators[i*4+1] = new WampOperator(i, Direction.DOWN);
+			operators[i*4+2] = new WampOperator(i, Direction.LEFT);
+			operators[i*4+3] = new WampOperator(i, Direction.RIGHT);
 		}
 		WampSearchProblem problem = new WampSearchProblem(operators, null,
 				initialState);
@@ -69,8 +69,10 @@ public class Wamp extends SearchAlgorithm {
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
 				0));
 		while (!nodes.isEmpty()) {
-			SearchTreeNode node = nodes.get(0);
+			SearchTreeNode node = nodes.remove(0);
+			System.out.println("--------------------------------------------------");
 			if (problem.goalTest(node.getState())) {
+				System.out.println(((WampState)node.getState()).getGrid());
 				return node;
 			} else {
 				switch (strategy) {
@@ -114,7 +116,7 @@ public class Wamp extends SearchAlgorithm {
 		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
 			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction(state, operator);
 			if(output !=null){
-				SearchTreeNode newNode = new WampSearchTreeNode(state, node, operator, node.getDepth()+1, 0);
+				SearchTreeNode newNode = new WampSearchTreeNode(output, node, operator, node.getDepth()+1, 0);
 				nodes.add(newNode);
 			}
 		}
