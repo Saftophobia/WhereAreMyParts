@@ -224,18 +224,13 @@ public class Grid {
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 				
-			//	System.out.println(ap.getLocation().x);
+				System.out.println(np.getLocation()+" "+ap.getLocation());
+				System.out.println(partX+" "+partY+" "+np.CompareParts(ap));
 				if (np.CompareParts(ap)) {
 					np.getLocation().x += partX;
-					ap.getLocation().x += partX;
-					ap.getLocation().y += partY;
-					np.getLocation().y += partY;
-					
-					System.out.println(newParts.get(0).getLocation().getX());
-					
-					
+					np.getLocation().y += partY;	
 				}
-			//	System.out.println(ap.getLocation().x);
+				System.out.println(np.getLocation()+" "+ap.getLocation());
 				
 			}
 		}
