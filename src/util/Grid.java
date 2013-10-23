@@ -211,6 +211,100 @@ public class Grid {
 		return fixed;
 	}
 
+	public Grid fix2(ArrayList<Part> AdjacentParts, WampOperator Operator,
+			int partX, int partY) {
+		Grid fixed = new Grid(false);
+		// Cloning the obstacles not needed -- reference may cause issue take
+		// care !!
+		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
+		// Fixing the new part point
+		ArrayList<Part> newParts = cloneParts();
+		
+		for (Part np : newParts) {
+			for (Part ap : AdjacentParts) {
+
+				if (np.CompareParts(ap)) {
+					np.getLocation().x += partX;
+					ap.getLocation().x += partX;
+					ap.getLocation().y += partY;
+					np.getLocation().y += partY;
+				}
+			}
+		}
+
+		// newParts.get(Operator.getPartIndex()).getLocation().x = partX;
+		// newParts.get(Operator.getPartIndex()).getLocation().y = partY;
+
+		// Fixing the grid Types
+		GridType[][] newGridCells = new GridType[length][width];
+
+		for (GridType[] row : gridCells) {
+			Arrays.fill(row, GridType.Free);
+		}
+
+		for (Point obst : Obstacles) {
+			newGridCells[(int) obst.getX()][(int) obst.getY()] = GridType.Obstacle;
+		}
+
+		for (Part particular : newParts) {
+			newGridCells[(int) particular.getLocation().getX()][(int) particular
+					.getLocation().getY()] = GridType.RobotPart;
+		}
+
+		for (Part AP : AdjacentParts) { //<-------------
+			switch (Operator.getPartDirection()) { //5abat fe meen 
+
+			case UP: {
+				for (Part p : newParts) {
+					if (p.getLocation().x == AP.getLocation().getX() - 1
+							&& p.getLocation().y == AP.getLocation().getY()) {
+						AP.setUp(p);
+						p.setDown(AP);
+
+					}
+				}
+			}
+				break;
+			case DOWN:
+				for (Part p : newParts) {
+					if (p.getLocation().x == AP.getLocation().getX() + 1
+							&& p.getLocation().y == AP.getLocation().getY()) {
+						AP.setDown(p);
+						p.setUp(AP);
+						
+	
+					}
+				}
+				break;
+			case LEFT:
+				for (Part p : newParts) {
+					if (p.getLocation().x == AP.getLocation().getX()
+							&& p.getLocation().y == AP.getLocation().getY() - 1) {
+						AP.setLeft(p);
+						p.setRight(AP);
+					}
+				}
+				break;
+			case RIGHT:
+				for (Part p : newParts) {
+					if (p.getLocation().x == AP.getLocation().getX()
+							&& p.getLocation().y == AP.getLocation().getY() + 1) {
+						AP.setRight(p);
+						p.setLeft(AP);
+					}
+				}
+				break;
+			}
+		}
+
+		fixed.Parts = newParts;
+		fixed.gridCells = newGridCells;
+		fixed.Obstacles = newObstacles;
+		fixed.length = length;
+		fixed.width = width;
+		return fixed;
+	}
+
 	public ArrayList<Part> cloneParts() {
 		ArrayList<Part> newParts = new ArrayList<Part>();
 		for (Part p : Parts) {
