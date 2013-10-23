@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import util.SearchProblem;
 import util.SearchTreeNode;
 
-public class SearchAlgorithm {
+public abstract class SearchAlgorithm {
 
-	ArrayList<SearchTreeNode> nodes;
+	protected ArrayList<SearchTreeNode> nodes;
 
 	
 	// Generic search method that uses all the staregies.
@@ -49,32 +49,18 @@ public class SearchAlgorithm {
 	}
 
 	// BFS
-	public void BFS(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void BFS(SearchTreeNode node, SearchProblem problem);
 	// DFS
-	public void DFS(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void DFS(SearchTreeNode node, SearchProblem problem);
 	// IDS
-	public void IDS(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void IDS(SearchTreeNode node, SearchProblem problem);
 	// GRS0 - with the first heuristic
-	public void GRS0(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void GRS0(SearchTreeNode node, SearchProblem problem);
 	// GRS1 - with the second heuristic
-	public void GRS1(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void GRS1(SearchTreeNode node, SearchProblem problem);
 	// AS0 - with the first heuristic
-	public void AS0(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void AS0(SearchTreeNode node, SearchProblem problem);
 	// AS1 - with the second heuristic
-	public void AS1(SearchTreeNode node, SearchProblem problem) {
-
-	}
+	public abstract void AS1(SearchTreeNode node, SearchProblem problem);
 
 }
