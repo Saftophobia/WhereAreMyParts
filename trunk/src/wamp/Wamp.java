@@ -105,12 +105,19 @@ public class Wamp extends SearchAlgorithm {
 		Wamp wamp = new Wamp();
 		Grid grid = wamp.genGrid();
 		System.out.println(grid);
-		//wamp.search(grid, "", true);
+		wamp.search(grid, "BF", true);
 	}
 
 	@Override
 	public void BFS(SearchTreeNode node, SearchProblem problem) {
-		// TODO Auto-generated method stub
+		WampState state = (WampState) node.getState();
+		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
+			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction(state, operator);
+			if(output !=null){
+				SearchTreeNode newNode = new WampSearchTreeNode(state, node, operator, node.getDepth()+1, 0);
+				nodes.add(newNode);
+			}
+		}
 		
 	}
 
