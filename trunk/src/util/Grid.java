@@ -169,6 +169,7 @@ public class Grid {
 						&& p.getLocation().y == partY) {
 					newParts.get(Operator.getPartIndex()).setUp(p);
 					p.setDown(newParts.get(Operator.getPartIndex()));
+
 				}
 			}
 		}
@@ -230,6 +231,54 @@ public class Grid {
 			s += "\n";
 		}
 		return s;
+	}
+
+	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) // remember
+																		// to
+																		// initialize
+																		// it
+	{
+		result.add(p);
+		if (p.getUp() != null) {
+
+			for (Part AvailableTestPart : result) {
+				if (!p.getUp().CompareParts(AvailableTestPart)) {
+
+					return GetBulksRec(p.getUp(), result);
+
+				}
+			}
+
+		}
+		if (p.getDown() != null) {
+			for (Part AvailableTestPart : result) {
+				if (!p.getDown().CompareParts(AvailableTestPart)) {
+
+					return GetBulksRec(p.getDown(), result);
+
+				}
+			}
+		}
+		if (p.getLeft() != null) {
+			for (Part AvailableTestPart : result) {
+				if (!p.getLeft().CompareParts(AvailableTestPart)) {
+
+					return GetBulksRec(p.getLeft(), result);
+
+				}
+			}
+		}
+		if (p.getRight() != null) {
+			for (Part AvailableTestPart : result) {
+				if (!p.getRight().CompareParts(AvailableTestPart)) {
+
+					return GetBulksRec(p.getRight(), result);
+
+				}
+			}
+		}
+
+		return result;
 	}
 
 }
