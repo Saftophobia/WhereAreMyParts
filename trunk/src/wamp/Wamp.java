@@ -68,9 +68,11 @@ public class Wamp extends SearchAlgorithm {
 		nodes = new ArrayList<SearchTreeNode>();
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
 				0));
+		int count = 0;
 		while (!nodes.isEmpty()) {
 			SearchTreeNode node = nodes.remove(0);
 			System.out.println("--------------------------------------------------");
+		
 			if (problem.goalTest(node.getState())) {
 				System.out.println(((WampState)node.getState()).getGrid());
 				return node;
@@ -99,6 +101,9 @@ public class Wamp extends SearchAlgorithm {
 					break;
 				}
 			}
+			if(count++>10){
+				System.exit(0);
+				}
 		}
 		return null;
 	}
@@ -107,7 +112,7 @@ public class Wamp extends SearchAlgorithm {
 		Wamp wamp = new Wamp();
 		Grid grid = wamp.genGrid();
 		System.out.println(grid);
-		wamp.search(grid, "BF", true);
+		wamp.search(grid, "DF", true);
 	}
 
 	@Override
@@ -126,6 +131,7 @@ public class Wamp extends SearchAlgorithm {
 
 	@Override
 	public void DFS(SearchTreeNode node, SearchProblem problem) {
+
 		WampState state = (WampState) node.getState();
 		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
 			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction2(state, operator);
@@ -134,6 +140,7 @@ public class Wamp extends SearchAlgorithm {
 				System.out.println(">>>"+output.getNumberOfConnectedParts());
 				nodes.add(0,newNode);
 			}
+			
 		}
 		
 	}
