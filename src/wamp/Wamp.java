@@ -126,7 +126,15 @@ public class Wamp extends SearchAlgorithm {
 
 	@Override
 	public void DFS(SearchTreeNode node, SearchProblem problem) {
-		// TODO Auto-generated method stub
+		WampState state = (WampState) node.getState();
+		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
+			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction2(state, operator);
+			if(output !=null){
+				SearchTreeNode newNode = new WampSearchTreeNode(output, node, operator, node.getDepth()+1, 0);
+				System.out.println(">>>"+output.getNumberOfConnectedParts());
+				nodes.add(0,newNode);
+			}
+		}
 		
 	}
 
