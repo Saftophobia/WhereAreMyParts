@@ -81,10 +81,13 @@ public class Grid {
 				gridCells[1][1] = GridType.RobotPart;
 				Parts.add(new Part(new Point(1, 4)));
 				gridCells[1][4] = GridType.RobotPart;
-				Parts.add(new Part(new Point(4, 4)));
-				gridCells[4][4] = GridType.RobotPart;
+				Parts.add(new Part(new Point(3, 4)));
+				gridCells[3][4] = GridType.RobotPart;
 				Obstacles = new ArrayList<Point>();
-
+				Obstacles.add(new Point (1,2));
+				gridCells[1][2] = GridType.Obstacle;
+				Obstacles.add(new Point (4,1));
+				gridCells[4][1] = GridType.Obstacle;
 			}
 		}
 	}
@@ -340,7 +343,7 @@ public class Grid {
 		for (int i = 0; i < gridCells.length; i++) {
 			s += (gridCells[i][0]);
 			for (int j = 1; j < gridCells[i].length; j++) {
-				s += "\t" + (gridCells[i][j].toString());
+				s += "\t" + (gridCells[i][j].toString().substring(0,4));
 			}
 			s += "\n";
 		}
@@ -350,7 +353,6 @@ public class Grid {
 	// remember to initialize it
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
-		System.out.println("{}{}{}"+p.getRight());
 		if (p.getUp() != null) {
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
@@ -391,11 +393,9 @@ public class Grid {
 		}
 
 		if (p.getRight() != null) {
-			System.out.println("{2}{2}{2}");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getRight().CompareParts(AvailableTestPart)) {
-					System.out.println("{2}{2}{2}");
 					Found = false;
 					break;
 
