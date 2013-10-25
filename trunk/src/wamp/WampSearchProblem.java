@@ -263,6 +263,7 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x - i
 								- 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
+							System.out.println("************************");
 							System.out.println(currentOperator.getPartIndex()
 									+ "UP");
 							WampState state = new WampState(currentState
@@ -271,6 +272,7 @@ public class WampSearchProblem extends SearchProblem {
 									currentState.getNumberOfConnectedParts(), 0);
 							System.out.println(state.getGrid());
 							System.out.println(state);
+							System.out.println("************************");
 							return state;
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x
@@ -311,6 +313,7 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x + i
 								+ 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
+							System.out.println("************************");
 							System.out.println(currentOperator.getPartIndex()
 									+ "DOWN");
 							WampState state = new WampState(currentState
@@ -319,6 +322,7 @@ public class WampSearchProblem extends SearchProblem {
 									currentState.getNumberOfConnectedParts(), 0);
 							System.out.println(state.getGrid());
 							System.out.println(state);
+							System.out.println("************************");
 							return state;
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x
@@ -360,6 +364,7 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y - i - 1] == GridType.Obstacle) {
 							// Apply changes on stop
+							System.out.println("************************");
 							System.out.println(currentOperator.getPartIndex()
 									+ "LEFT");
 							WampState state = new WampState(currentState
@@ -368,6 +373,7 @@ public class WampSearchProblem extends SearchProblem {
 									currentState.getNumberOfConnectedParts(), 0);
 							System.out.println(state.getGrid());
 							System.out.println(state);
+							System.out.println("************************");
 							return state;
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x][p
@@ -408,6 +414,7 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y + i + 1] == GridType.Obstacle) {
 							// Apply changes on stop
+							System.out.println("************************");
 							System.out.println(currentOperator.getPartIndex()
 									+ "RIGHT");
 							WampState state = new WampState(currentState
@@ -416,6 +423,7 @@ public class WampSearchProblem extends SearchProblem {
 									currentState.getNumberOfConnectedParts(), 0);
 							System.out.println(state.getGrid());
 							System.out.println(state);
+							System.out.println("************************");
 							return state;
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x][p
