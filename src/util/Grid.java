@@ -84,9 +84,9 @@ public class Grid {
 				Parts.add(new Part(new Point(3, 4)));
 				gridCells[3][4] = GridType.RobotPart;
 				Obstacles = new ArrayList<Point>();
-				Obstacles.add(new Point (1,2));
+				Obstacles.add(new Point(1, 2));
 				gridCells[1][2] = GridType.Obstacle;
-				Obstacles.add(new Point (4,1));
+				Obstacles.add(new Point(4, 1));
 				gridCells[4][1] = GridType.Obstacle;
 			}
 		}
@@ -230,6 +230,7 @@ public class Grid {
 				if (np.CompareParts(ap)) {
 					np.getLocation().x += partX;
 					np.getLocation().y += partY;
+					
 				}
 
 			}
@@ -254,54 +255,36 @@ public class Grid {
 					.getLocation().getY()] = GridType.RobotPart;
 		}
 
-		for (Part AP : newAdjacent) { // <-------------
-			switch (Operator.getPartDirection()) { // 5abat fe meen
-
-			case UP: {
+		for (Part AP : newParts) { // <-------------
+			
 				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX() - 1
 							&& p.getLocation().y == AP.getLocation().getY()) {
 						//System.out.println(">>>>here");
 						AP.setUp(p);
 						p.setDown(AP);
-
 					}
-				}
-			}
-				break;
-			case DOWN:
-				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX() + 1
-							&& p.getLocation().y == AP.getLocation().getY()) {
-						//System.out.println(">>>>here");
-						AP.setDown(p);
-						p.setUp(AP);
-
+								&& p.getLocation().y == AP.getLocation().getY()) {
+							//System.out.println(">>>>here");
+							AP.setDown(p);
+							p.setUp(AP);
 					}
-				}
-				break;
-			case LEFT:
-				for (Part p : newParts) {
 					if (p.getLocation().x == AP.getLocation().getX()
-							&& p.getLocation().y == AP.getLocation().getY() - 1) {
-						//System.out.println(">>>>here");
-						AP.setLeft(p);
-						p.setRight(AP);
+									&& p.getLocation().y == AP.getLocation().getY() - 1) {
+								//System.out.println(">>>>here");
+								AP.setLeft(p);
+								p.setRight(AP);
 					}
-				}
-				break;
-			case RIGHT:
-				for (Part p : newParts) {
+						if (p.getLocation().x == AP.getLocation().x
+										&& p.getLocation().y == AP.getLocation().y + 1) {
+									//System.out.println(">>>>here");
+									AP.setRight(p);
+									p.setLeft(AP);
+								}
 
-					if (p.getLocation().x == AP.getLocation().x
-							&& p.getLocation().y == AP.getLocation().y + 1) {
-						//System.out.println(">>>>here");
-						AP.setRight(p);
-						p.setLeft(AP);
-					}
-				}
-				break;
 			}
+
 		}
 
 		fixed.Parts = newParts;
@@ -315,12 +298,12 @@ public class Grid {
 	public ArrayList<Part> cloneParts() {
 		ArrayList<Part> newParts = new ArrayList<Part>();
 		for (Part p : Parts) {
-			//System.out.println(">"+p.getRight());
+			// System.out.println(">"+p.getRight());
 			Part newP;
-			newParts.add(newP= new Part(new Point(p.getLocation().x,
-					p.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
+			newParts.add(newP = new Part(new Point(p.getLocation().x, p
+					.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
 					.getRight()));
-			//System.out.println(">"+newP.getRight());
+			// System.out.println(">"+newP.getRight());
 		}
 		return newParts;
 	}
@@ -343,7 +326,7 @@ public class Grid {
 		for (int i = 0; i < gridCells.length; i++) {
 			s += (gridCells[i][0]);
 			for (int j = 1; j < gridCells[i].length; j++) {
-				s += "\t" + (gridCells[i][j].toString().substring(0,4));
+				s += "\t" + (gridCells[i][j].toString().substring(0, 4));
 			}
 			s += "\n";
 		}
@@ -354,18 +337,21 @@ public class Grid {
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {
+		//	System.out.println("U");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getUp().CompareParts(AvailableTestPart)) {
 					Found = false;
+					break;
 				}
-				break;
+
 			}
 			if (Found) {
 				return GetBulksRec(p.getUp(), result); // mara wa7da bas
 			}
 		}
 		if (p.getDown() != null) {
+			//System.out.println("D");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getDown().CompareParts(AvailableTestPart)) {
@@ -379,6 +365,7 @@ public class Grid {
 			}
 		}
 		if (p.getLeft() != null) {
+			//System.out.println("L");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getLeft().CompareParts(AvailableTestPart)) {
@@ -393,6 +380,7 @@ public class Grid {
 		}
 
 		if (p.getRight() != null) {
+			//System.out.println("R");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getRight().CompareParts(AvailableTestPart)) {

@@ -12,7 +12,8 @@ public class SearchTreeNode {
 	private Operator operator; // The operator applied to generate this node, syntax "part_direction"
 	private int depth; // The depth of the node in the tree
 	private int pathCost; // The path cost from the root
-
+	private boolean removable;
+	
 	public SearchTreeNode(State state, SearchTreeNode parentNode,
 			Operator operator, int depth, int pathCost) {
 		super();
@@ -70,5 +71,14 @@ public class SearchTreeNode {
 	public void setPathCost(int pathCost) {
 		this.pathCost = pathCost;
 	}
+	
+	public boolean isRemovable() {
+		return removable;
+	}
+
+	public void setRemovable(boolean removable) {
+		this.removable = removable;
+	}
+
 
 }
