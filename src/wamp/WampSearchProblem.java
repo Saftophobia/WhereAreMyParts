@@ -277,6 +277,7 @@ public class WampSearchProblem extends SearchProblem {
 									- i - 1][p.getLocation().y] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getUp() == null) {
+									System.out.println("************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "UP");
 									WampState state = new WampState(
@@ -288,6 +289,7 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
+									System.out.println("************************");
 									return state;
 								}
 							} else {
@@ -323,6 +325,7 @@ public class WampSearchProblem extends SearchProblem {
 									+ i + 1][p.getLocation().y] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getDown() == null) {
+									System.out.println("************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "DOWN");
 									WampState state = new WampState(
@@ -334,6 +337,7 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
+									System.out.println("************************");
 									return state;
 								}
 							} else {
@@ -418,6 +422,7 @@ public class WampSearchProblem extends SearchProblem {
 									.getLocation().y + i + 1] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getRight() == null) {
+									System.out.println("************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "RIGHT");
 									WampState state = new WampState(
@@ -429,6 +434,7 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
+									System.out.println("************************");
 									return state;
 								}
 							} else {
