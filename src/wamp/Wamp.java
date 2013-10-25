@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import util.Grid;
 import util.Operator;
+import util.Part;
 import util.SearchProblem;
 import util.SearchTreeNode;
 import wamp.WampOperator.Direction;
@@ -21,10 +22,10 @@ public class Wamp extends SearchAlgorithm {
 		WampState initialState = new WampState(grid, 0, 0);
 		Operator[] operators = new Operator[grid.getParts().size() * 4];
 		for (int i = 0; i < grid.getParts().size(); i++) {
-			operators[i*4] = new WampOperator(i, Direction.UP);
-			operators[i*4+1] = new WampOperator(i, Direction.DOWN);
-			operators[i*4+2] = new WampOperator(i, Direction.LEFT);
-			operators[i*4+3] = new WampOperator(i, Direction.RIGHT);
+			operators[i * 4] = new WampOperator(i, Direction.UP);
+			operators[i * 4 + 1] = new WampOperator(i, Direction.DOWN);
+			operators[i * 4 + 2] = new WampOperator(i, Direction.LEFT);
+			operators[i * 4 + 3] = new WampOperator(i, Direction.RIGHT);
 		}
 		WampSearchProblem problem = new WampSearchProblem(operators, null,
 				initialState);
@@ -59,7 +60,17 @@ public class Wamp extends SearchAlgorithm {
 			}
 		}
 
-		search(problem, strategyNumber, visualize);
+		SearchTreeNode node = search(problem, strategyNumber, visualize);
+		if (visualize) {
+			SearchTreeNode pointer = node;
+			if (pointer != null) {
+				while (pointer != null) {
+					System.out.println(((WampState) pointer.getState())
+							.getGrid());
+					pointer = pointer.getParentNode();
+				}
+			}
+		}
 		return null;
 	}
 
@@ -68,13 +79,13 @@ public class Wamp extends SearchAlgorithm {
 		nodes = new ArrayList<SearchTreeNode>();
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
 				0));
-		int count = 0;
 		while (!nodes.isEmpty()) {
 			SearchTreeNode node = nodes.remove(0);
-			System.out.println("--------------------------------------------------");
-		
+			System.out
+					.println("--------------------------------------------------");
+
 			if (problem.goalTest(node.getState())) {
-				System.out.println(((WampState)node.getState()).getGrid());
+				System.out.println(((WampState) node.getState()).getGrid());
 				return node;
 			} else {
 				switch (strategy) {
@@ -101,9 +112,7 @@ public class Wamp extends SearchAlgorithm {
 					break;
 				}
 			}
-			if(count++>10){
-				System.exit(0);
-				}
+
 		}
 		return null;
 	}
@@ -112,67 +121,151 @@ public class Wamp extends SearchAlgorithm {
 		Wamp wamp = new Wamp();
 		Grid grid = wamp.genGrid();
 		System.out.println(grid);
-		wamp.search(grid, "DF", true);
+		wamp.search(grid, "ID", true);
 	}
 
 	@Override
 	public void BFS(SearchTreeNode node, SearchProblem problem) {
 		WampState state = (WampState) node.getState();
-		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
-			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction2(state, operator);
-			if(output !=null){
-				SearchTreeNode newNode = new WampSearchTreeNode(output, node, operator, node.getDepth()+1, 0);
-				System.out.println(">>>"+output.getNumberOfConnectedParts());
-				nodes.add(newNode);
+		ArrayList<SearchTreeNode> children = new ArrayList<SearchTreeNode>();
+		for (Operator operator : ((WampSearchProblem) problem).getOperators()) {
+			WampState output = (WampState) ((WampSearchProblem) problem)
+					.transferFunction2(state, operator);
+			if (output != null) {
+				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
+						operator, node.getDepth() + 1, 0);
+				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				children.add(newNode);
 			}
 		}
-		
+		for (int i = 0; i < children.size(); i++) {
+			SearchTreeNode child1 = children.get(i);
+			for (int j = 0; j < children.size(); j++) {
+				SearchTreeNode child2 = children.get(j);
+				if (child1 != child2) {
+					boolean all = true;
+					for (Part p1 : ((WampState) child1.getState()).getGrid()
+							.getParts()) {
+						for (Part p2 : ((WampState) child2.getState())
+								.getGrid().getParts()) {
+							if (!p1.CompareParts(p2)) {
+								all = false;
+								break;
+							}
+						}
+						if (!all) {
+							break;
+						}
+					}
+					if (all) {
+						child2.setRemovable(true);
+					}
+				}
+			}
+		}
+		for (SearchTreeNode child : children) {
+			if (!child.isRemovable())
+				nodes.add(child);
+		}
+
 	}
 
 	@Override
 	public void DFS(SearchTreeNode node, SearchProblem problem) {
 
 		WampState state = (WampState) node.getState();
-		for(Operator operator : ((WampSearchProblem)problem).getOperators()){
-			WampState output = (WampState) ((WampSearchProblem)problem).transferFunction2(state, operator);
-			if(output !=null){
-				SearchTreeNode newNode = new WampSearchTreeNode(output, node, operator, node.getDepth()+1, 0);
-				System.out.println(">>>"+output.getNumberOfConnectedParts());
-				nodes.add(0,newNode);
+		ArrayList<SearchTreeNode> children = new ArrayList<SearchTreeNode>();
+		for (Operator operator : ((WampSearchProblem) problem).getOperators()) {
+			WampState output = (WampState) ((WampSearchProblem) problem)
+					.transferFunction2(state, operator);
+			if (output != null) {
+				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
+						operator, node.getDepth() + 1, 0);
+				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				children.add(0, newNode);
 			}
-			
+
 		}
-		
+		for (int i = 0; i < children.size(); i++) {
+			SearchTreeNode child1 = children.get(i);
+			for (int j = 0; j < children.size(); j++) {
+				SearchTreeNode child2 = children.get(j);
+				if (child1 != child2) {
+					boolean all = true;
+					for (Part p1 : ((WampState) child1.getState()).getGrid()
+							.getParts()) {
+						for (Part p2 : ((WampState) child2.getState())
+								.getGrid().getParts()) {
+							if (!p1.CompareParts(p2)) {
+								all = false;
+								break;
+							}
+						}
+						if (!all) {
+							break;
+						}
+					}
+					if (all) {
+						child2.setRemovable(true);
+					}
+				}
+			}
+		}
+		for (SearchTreeNode child : children) {
+			if (!child.isRemovable())
+				nodes.add(0, child);
+		}
+
 	}
 
 	@Override
 	public void IDS(SearchTreeNode node, SearchProblem problem) {
-		// TODO Auto-generated method stub
-		
+		SearchTreeNode initialNode = node;
+		nodes.add(node);
+		int limit = 0;
+		while (true) {
+			SearchTreeNode extract = nodes.remove(0);
+			System.out.println("--------------------------------------------------");
+			if (problem.goalTest(extract.getState())) {
+				nodes.clear();
+				nodes.add(extract);
+				return;
+			} else {
+				if (extract.getDepth() <= limit) {
+					DFS(extract, problem);
+				} else {
+					if (nodes.isEmpty()) {
+						limit++;
+						nodes.add(initialNode);
+						System.out.println("$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%");
+					}
+				}
+			}
+		}
 	}
 
 	@Override
 	public void GRS0(SearchTreeNode node, SearchProblem problem) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void GRS1(SearchTreeNode node, SearchProblem problem) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void AS0(SearchTreeNode node, SearchProblem problem) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void AS1(SearchTreeNode node, SearchProblem problem) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
