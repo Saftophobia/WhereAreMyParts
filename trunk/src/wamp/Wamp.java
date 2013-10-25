@@ -243,7 +243,7 @@ public class Wamp extends SearchAlgorithm {
 			}
 		}
 	}
-
+ 
 	@Override
 	public void GRS0(SearchTreeNode node, SearchProblem problem) {
 		// TODO Auto-generated method stub
