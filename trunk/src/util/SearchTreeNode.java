@@ -11,9 +11,18 @@ public class SearchTreeNode {
 	private SearchTreeNode parentNode;
 	private Operator operator; // The operator applied to generate this node, syntax "part_direction"
 	private int depth; // The depth of the node in the tree
-	private int pathCost; // The path cost from the root
+	private double pathCost; // The path cost from the root
 	private boolean removable;
+	private double heuristic;
 	
+	public double getHeuristic() {
+		return heuristic;
+	}
+
+	public void setHeuristic(double heuristic) {
+		this.heuristic = heuristic;
+	}
+
 	public SearchTreeNode(State state, SearchTreeNode parentNode,
 			Operator operator, int depth, int pathCost) {
 		super();
@@ -64,11 +73,11 @@ public class SearchTreeNode {
 		this.depth = depth;
 	}
 
-	public int getPathCost() {
+	public double getPathCost() {
 		return pathCost;
 	}
 
-	public void setPathCost(int pathCost) {
+	public void setPathCost(double pathCost) {
 		this.pathCost = pathCost;
 	}
 	
