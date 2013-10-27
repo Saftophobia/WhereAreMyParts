@@ -3,6 +3,7 @@ package wamp;
 import java.util.ArrayList;
 
 import util.Grid;
+import util.Heuristic;
 import util.Operator;
 import util.Part;
 import util.SearchProblem;
@@ -67,6 +68,8 @@ public class Wamp extends SearchAlgorithm {
 				while (pointer != null) {
 					System.out.println(((WampState) pointer.getState())
 							.getGrid());
+					System.out.println(Heuristic.returnHeuristic(((WampState) pointer.getState())
+							.getGrid().getParts()));
 					pointer = pointer.getParentNode();
 				}
 			}
@@ -121,7 +124,9 @@ public class Wamp extends SearchAlgorithm {
 		Wamp wamp = new Wamp();
 		Grid grid = wamp.genGrid();
 		System.out.println(grid);
-		wamp.search(grid, "ID", true);
+		
+		//System.out.println(Heuristic.returnHeuristic(grid.getParts()));
+		wamp.search(grid, "DF", true);
 	}
 
 	@Override
@@ -135,7 +140,7 @@ public class Wamp extends SearchAlgorithm {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
 				System.out.println(">>>" + output.getNumberOfConnectedParts());
-				children.add(newNode);
+				children.add(newNode);				
 			}
 		}
 		for (int i = 0; i < children.size(); i++) {
