@@ -89,5 +89,10 @@ public class SearchTreeNode {
 		this.removable = removable;
 	}
 
+	public String toString()
+	{
+		return (this.getPathCost()+this.getHeuristic()) + "";
+		
+	}
 
 }
