@@ -127,7 +127,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "AS1", true);
+		wamp.search(grid, "GR1", true);
 	}
 
 	@Override
@@ -301,7 +301,7 @@ public class Wamp extends SearchAlgorithm {
 					
 				} else {
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() > nodes.get(y).getHeuristic()) {
+						if (child.getHeuristic() < nodes.get(y).getHeuristic()) {
 							nodes.add(y, child);
 							break;
 						}
@@ -361,21 +361,21 @@ public class Wamp extends SearchAlgorithm {
 		}
 
 		for (SearchTreeNode child : children) {
-			System.out.println(child.getPathCost());
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
 					nodes.add(child);
 					
 				} else {
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() + child.getPathCost() > nodes.get(y).getHeuristic() + nodes.get(y).getPathCost()) {
+						if (child.getHeuristic() + child.getPathCost() < nodes.get(y).getHeuristic() + nodes.get(y).getPathCost()) {
 							nodes.add(y, child);
 							break;
 						}
 					}
 				}
 		}
-
+		
+		System.out.println(nodes.toString());
 
 	}
 
