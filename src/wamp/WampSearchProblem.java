@@ -20,8 +20,18 @@ public class WampSearchProblem extends SearchProblem {
 	@Override
 	public boolean goalTest(State state) {
 		System.out.println(((WampState) state).getNumberOfConnectedParts());
-		return ((WampState) state).getNumberOfConnectedParts() == ((WampState) state)
-				.getGrid().getParts().size() - 1;
+		ArrayList<Part> Bulky = new ArrayList<Part>();
+
+		boolean goal = (((WampState) state)
+				.getGrid()
+				.GetBulksRec(((WampState) state).getGrid().getParts().get(0),
+						Bulky).size() == ((WampState) state).getGrid()
+				.getParts().size());
+		System.out.println("###################################");
+		System.out.println(Bulky);
+		System.out.println(((WampState) state).getGrid().getParts());
+		System.out.println("###################################");
+		return goal;
 	}
 
 	@Override
@@ -42,7 +52,7 @@ public class WampSearchProblem extends SearchProblem {
 				.getLocation().x;
 		int partY = currentGrid.getParts().get(currentOperator.getPartIndex())
 				.getLocation().y;
-		
+
 		switch (currentOperator.getPartDirection()) {
 		case UP: {
 			if (partX == 0) {
@@ -253,7 +263,10 @@ public class WampSearchProblem extends SearchProblem {
 				currentGrid.getParts().get(currentOperator.getPartIndex()),
 				AdjacentParts);
 		System.out.println(AdjacentParts.toString());
+		System.out.println(">>>>>>" + currentGrid.getParts().get(0).getLeft());
+
 		switch (currentOperator.getPartDirection()) {
+		
 		case UP: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
@@ -261,24 +274,27 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x - i
 								- 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
-							System.out.println("************************");
-							System.out.println(currentOperator.getPartIndex()
-									+ "UP");
-							WampState state = new WampState(currentState
-									.getGrid().fix2(AdjacentParts,
-											currentOperator, -i, 0),
-									currentState.getNumberOfConnectedParts(), 0);
-							System.out.println(state.getGrid());
-							System.out.println(state);
-							System.out.println("************************");
-							return state;
+							if (p.getUp() == null) {
+								System.out.println("************************");
+								System.out.println(currentOperator
+										.getPartIndex() + "UP");
+								WampState state = new WampState(currentState
+										.getGrid().fix2(AdjacentParts,
+												currentOperator, -i, 0),
+										currentState
+												.getNumberOfConnectedParts(), 0);
+								System.out.println(state.getGrid());
+								System.out.println(state);
+								System.out.println("************************");
+								return state;
+							}
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x
 									- i - 1][p.getLocation().y] == GridType.RobotPart) {
-								System.exit(0);
 								// Apply changes on stop
 								if (p.getUp() == null) {
-									System.out.println("************************");
+									System.out
+											.println("ROBOT************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "UP");
 									WampState state = new WampState(
@@ -290,7 +306,8 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									return state;
 								}
 							} else {
@@ -306,27 +323,31 @@ public class WampSearchProblem extends SearchProblem {
 		case DOWN: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().x + i +1 < currentGrid.getLength()) {
+					if (p.getLocation().x + i + 1 < currentGrid.getLength()) {
 						if (currentGrid.getGridCells()[p.getLocation().x + i
 								+ 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
-							System.out.println("************************");
-							System.out.println(currentOperator.getPartIndex()
-									+ "DOWN");
-							WampState state = new WampState(currentState
-									.getGrid().fix2(AdjacentParts,
-											currentOperator, i, 0),
-									currentState.getNumberOfConnectedParts(), 0);
-							System.out.println(state.getGrid());
-							System.out.println(state);
-							System.out.println("************************");
-							return state;
+							if (p.getDown() == null) {
+								System.out.println("************************");
+								System.out.println(currentOperator
+										.getPartIndex() + "DOWN");
+								WampState state = new WampState(currentState
+										.getGrid().fix2(AdjacentParts,
+												currentOperator, i, 0),
+										currentState
+												.getNumberOfConnectedParts(), 0);
+								System.out.println(state.getGrid());
+								System.out.println(state);
+								System.out.println("************************");
+								return state;
+							}
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x
 									+ i + 1][p.getLocation().y] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getDown() == null) {
-									System.out.println("************************");
+									System.out
+											.println("ROBOT************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "DOWN");
 									WampState state = new WampState(
@@ -338,7 +359,8 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									return state;
 								}
 							} else {
@@ -359,23 +381,27 @@ public class WampSearchProblem extends SearchProblem {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y - i - 1] == GridType.Obstacle) {
 							// Apply changes on stop
-							System.out.println("************************");
-							System.out.println(currentOperator.getPartIndex()
-									+ "LEFT");
-							WampState state = new WampState(currentState
-									.getGrid().fix2(AdjacentParts,
-											currentOperator, 0, -i),
-									currentState.getNumberOfConnectedParts(), 0);
-							System.out.println(state.getGrid());
-							System.out.println(state);
-							System.out.println("************************");
-							return state;
+							if (p.getLeft() == null) {
+								System.out.println("************************");
+								System.out.println(currentOperator
+										.getPartIndex() + "LEFT");
+								WampState state = new WampState(currentState
+										.getGrid().fix2(AdjacentParts,
+												currentOperator, 0, -i),
+										currentState
+												.getNumberOfConnectedParts(), 0);
+								System.out.println(state.getGrid());
+								System.out.println(state);
+								System.out.println("************************");
+								return state;
+							}
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x][p
 									.getLocation().y - i - 1] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getLeft() == null) {
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "LEFT");
 									WampState state = new WampState(
@@ -387,7 +413,8 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									return state;
 								}
 							} else {
@@ -403,27 +430,31 @@ public class WampSearchProblem extends SearchProblem {
 		case RIGHT: {
 			for (int i = 0; i < currentGrid.getWidth(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().y + i +1 < currentGrid.getWidth()) {
+					if (p.getLocation().y + i + 1 < currentGrid.getWidth()) {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y + i + 1] == GridType.Obstacle) {
 							// Apply changes on stop
-							System.out.println("************************");
-							System.out.println(currentOperator.getPartIndex()
-									+ "RIGHT");
-							WampState state = new WampState(currentState
-									.getGrid().fix2(AdjacentParts,
-											currentOperator, 0, i),
-									currentState.getNumberOfConnectedParts(), 0);
-							System.out.println(state.getGrid());
-							System.out.println(state);
-							System.out.println("************************");
-							return state;
+							if (p.getRight() == null) {
+								System.out.println("************************");
+								System.out.println(currentOperator
+										.getPartIndex() + "RIGHT");
+								WampState state = new WampState(currentState
+										.getGrid().fix2(AdjacentParts,
+												currentOperator, 0, i),
+										currentState
+												.getNumberOfConnectedParts(), 0);
+								System.out.println(state.getGrid());
+								System.out.println(state);
+								System.out.println("************************");
+								return state;
+							}
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x][p
 									.getLocation().y + i + 1] == GridType.RobotPart) {
 								// Apply changes on stop
 								if (p.getRight() == null) {
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									System.out.println(currentOperator
 											.getPartIndex() + "RIGHT");
 									WampState state = new WampState(
@@ -435,7 +466,8 @@ public class WampSearchProblem extends SearchProblem {
 											0);
 									System.out.println(state.getGrid());
 									System.out.println(state);
-									System.out.println("************************");
+									System.out
+											.println("************************");
 									return state;
 								}
 							} else {
@@ -450,6 +482,7 @@ public class WampSearchProblem extends SearchProblem {
 		}
 
 		}
+
 		return null;
 	}
 }
