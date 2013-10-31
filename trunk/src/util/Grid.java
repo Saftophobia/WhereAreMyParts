@@ -73,22 +73,32 @@ public class Grid {
 				}
 				
 			} else {
-				gridCells = new GridType[3][3];
+				gridCells = new GridType[6][5];
 				for (GridType[] row : gridCells) {
 					Arrays.fill(row, GridType.Free);
 				}
-				length = 3;
-				width = 3;
+				length = 6;
+				width = 5;
 				Parts = new ArrayList<Part>();
-				Parts.add(new Part(new Point(1, 1)));
-				gridCells[1][1] = GridType.RobotPart;
-				Parts.add(new Part(new Point(2, 2)));
-				gridCells[2][2] = GridType.RobotPart;
+				Parts.add(new Part(new Point(0, 0)));
+				gridCells[0][0] = GridType.RobotPart;
+				Parts.add(new Part(new Point(2, 1)));
+				gridCells[2][1] = GridType.RobotPart;
+				Parts.add(new Part(new Point(2, 3)));
+				gridCells[2][3] = GridType.RobotPart;
+				Parts.add(new Part(new Point(3, 4)));
+				gridCells[3][4] = GridType.RobotPart;
 				Obstacles = new ArrayList<Point>();
-				Obstacles.add(new Point(0, 1));
-				gridCells[0][1] = GridType.Obstacle;
-				Obstacles.add(new Point(2, 0));
-				gridCells[2][0] = GridType.Obstacle;
+				Obstacles.add(new Point(0, 2));
+				gridCells[0][2] = GridType.Obstacle;
+				Obstacles.add(new Point(1, 4));
+				gridCells[1][4] = GridType.Obstacle;
+				Obstacles.add(new Point(3, 2));
+				gridCells[3][2] = GridType.Obstacle;
+				Obstacles.add(new Point(4, 1));
+				gridCells[4][1] = GridType.Obstacle;
+				Obstacles.add(new Point(4, 3));
+				gridCells[4][3] = GridType.Obstacle;
 			}
 		}
 	}
@@ -360,7 +370,7 @@ public class Grid {
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {
-			// System.out.println("U");
+			System.out.println("U");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getUp().CompareParts(AvailableTestPart)) {
@@ -370,11 +380,11 @@ public class Grid {
 
 			}
 			if (Found) {
-				return GetBulksRec(p.getUp(), result); // mara wa7da bas
+				GetBulksRec(p.getUp(), result); // mara wa7da bas
 			}
 		}
 		if (p.getDown() != null) {
-			// System.out.println("D");
+			System.out.println("D");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getDown().CompareParts(AvailableTestPart)) {
@@ -384,11 +394,11 @@ public class Grid {
 
 			}
 			if (Found) {
-				return GetBulksRec(p.getDown(), result);
+				GetBulksRec(p.getDown(), result);
 			}
 		}
 		if (p.getLeft() != null) {
-			// System.out.println("L");
+			System.out.println("L");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getLeft().CompareParts(AvailableTestPart)) {
@@ -398,12 +408,12 @@ public class Grid {
 
 			}
 			if (Found) {
-				return GetBulksRec(p.getLeft(), result);
+				GetBulksRec(p.getLeft(), result);
 			}
 		}
 
 		if (p.getRight() != null) {
-			// System.out.println("R");
+			System.out.println("R");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getRight().CompareParts(AvailableTestPart)) {
@@ -413,7 +423,7 @@ public class Grid {
 				}
 			}
 			if (Found) {
-				return GetBulksRec(p.getRight(), result);
+				GetBulksRec(p.getRight(), result);
 			}
 		}
 
