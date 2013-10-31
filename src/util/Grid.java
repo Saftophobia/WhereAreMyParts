@@ -22,8 +22,8 @@ public class Grid {
 		if (generate) {
 			if (true) {
 				do {
-					length = (int) (Math.random() * 20);
-					width = (int) (Math.random() * 20);
+					length = (int) (Math.random() * 8);
+					width = (int) (Math.random() * 8);
 				} while (length < 3 || width < 3);
 				// grid fills
 				gridCells = new GridType[length][width];
@@ -35,7 +35,7 @@ public class Grid {
 				Parts = new ArrayList<Part>();
 				int bound1;
 				do {
-					bound1 = (int) (Math.random() * length*width*0.25);
+					bound1 = (int) (Math.random() * length * width * 0.25);
 				} while (bound1 < 1);
 				for (int i = 0; i < bound1; i++) {
 					int partsX;
@@ -43,18 +43,18 @@ public class Grid {
 					do {
 						partsX = (int) (Math.random() * length);
 						partsY = (int) (Math.random() * width);
-					} while (!gridCells[partsX][partsY].equals(GridType.Free));
-//					if (gridCells[partsX][partsY].equals(GridType.Free)) {
-						Parts.add(new Part(new Point(partsX, partsY)));
-						gridCells[partsX][partsY] = GridType.RobotPart;
-					//}
+					} while (!gridCells[partsX][partsY].equals(GridType.Free) && checkAroundFor(partsX, partsY, GridType.RobotPart) && checkAroundFor(partsX, partsY, GridType.Obstacle));
+					// if (gridCells[partsX][partsY].equals(GridType.Free)) {
+					Parts.add(new Part(new Point(partsX, partsY)));
+					gridCells[partsX][partsY] = GridType.RobotPart;
+					// }
 				}
 
 				// Obstacles randomization
 				Obstacles = new ArrayList<Point>();
 				int bound2;
 				do {
-					bound2 = (int) (Math.random() * length*width*0.25);
+					bound2 = (int) (Math.random() * length * width * 0.25);
 				} while (bound2 < 1);
 				for (int i = 0; i < bound2; i++) {
 					int obsX;
@@ -64,10 +64,10 @@ public class Grid {
 						obsY = (int) (Math.random() * width);
 					} while (!gridCells[obsX][obsY].equals(GridType.Free));
 
-					//if (gridCells[obsX][obsY].equals(GridType.Free)) {
-						Obstacles.add(new Point(obsX, obsY));
-						gridCells[obsX][obsY] = GridType.Obstacle;
-					//}
+					// if (gridCells[obsX][obsY].equals(GridType.Free)) {
+					Obstacles.add(new Point(obsX, obsY));
+					gridCells[obsX][obsY] = GridType.Obstacle;
+					// }
 				}
 			} else {
 				gridCells = new GridType[5][5];
@@ -90,6 +90,27 @@ public class Grid {
 				gridCells[4][1] = GridType.Obstacle;
 			}
 		}
+	}
+
+	public boolean checkAroundFor(int i, int j, GridType type) {
+
+		if (i - 1 > 0) {
+			if (gridCells[i - 1][j].equals(type))
+				return true;
+		}
+		if (i + 1 < length) {
+			if (gridCells[i + 1][j].equals(type))
+				return true;
+		}
+		if (j - 1 > 0) {
+			if (gridCells[i][j-1].equals(type))
+				return true;
+		}
+		if (j + 1 < width) {
+			if (gridCells[i][j+1].equals(type))
+				return true;
+		}
+		return false;
 	}
 
 	public GridType[][] getGridCells() {
