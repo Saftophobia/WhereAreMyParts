@@ -252,12 +252,12 @@ public class WampSearchProblem extends SearchProblem {
 		currentGrid.GetBulksRec(
 				currentGrid.getParts().get(currentOperator.getPartIndex()),
 				AdjacentParts);
-		System.out.println(currentState);
+		System.out.println(AdjacentParts.toString());
 		switch (currentOperator.getPartDirection()) {
 		case UP: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().x - i - 1 >= 1) {
+					if (p.getLocation().x - i - 1 >= 0) {
 						if (currentGrid.getGridCells()[p.getLocation().x - i
 								- 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -275,6 +275,7 @@ public class WampSearchProblem extends SearchProblem {
 						} else {
 							if (currentGrid.getGridCells()[p.getLocation().x
 									- i - 1][p.getLocation().y] == GridType.RobotPart) {
+								System.exit(0);
 								// Apply changes on stop
 								if (p.getUp() == null) {
 									System.out.println("************************");
@@ -305,7 +306,7 @@ public class WampSearchProblem extends SearchProblem {
 		case DOWN: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().x + i < currentGrid.getLength() - 1) {
+					if (p.getLocation().x + i +1 < currentGrid.getLength()) {
 						if (currentGrid.getGridCells()[p.getLocation().x + i
 								+ 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -354,7 +355,7 @@ public class WampSearchProblem extends SearchProblem {
 
 			for (int i = 0; i < currentGrid.getWidth(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().y - i - 1 >= 1) {
+					if (p.getLocation().y - i - 1 >= 0) {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y - i - 1] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -402,7 +403,7 @@ public class WampSearchProblem extends SearchProblem {
 		case RIGHT: {
 			for (int i = 0; i < currentGrid.getWidth(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().y + i < currentGrid.getWidth() - 1) {
+					if (p.getLocation().y + i +1 < currentGrid.getWidth()) {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y + i + 1] == GridType.Obstacle) {
 							// Apply changes on stop

@@ -20,7 +20,7 @@ public class Grid {
 
 	public Grid(boolean generate) {
 		if (generate) {
-			if (true) {
+			if (false) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
@@ -73,24 +73,22 @@ public class Grid {
 				}
 				
 			} else {
-				gridCells = new GridType[5][5];
+				gridCells = new GridType[3][3];
 				for (GridType[] row : gridCells) {
 					Arrays.fill(row, GridType.Free);
 				}
-				length = 5;
-				width = 5;
+				length = 3;
+				width = 3;
 				Parts = new ArrayList<Part>();
 				Parts.add(new Part(new Point(1, 1)));
 				gridCells[1][1] = GridType.RobotPart;
-				Parts.add(new Part(new Point(1, 4)));
-				gridCells[1][4] = GridType.RobotPart;
-				Parts.add(new Part(new Point(3, 4)));
-				gridCells[3][4] = GridType.RobotPart;
+				Parts.add(new Part(new Point(2, 2)));
+				gridCells[2][2] = GridType.RobotPart;
 				Obstacles = new ArrayList<Point>();
-				Obstacles.add(new Point(1, 2));
-				gridCells[1][2] = GridType.Obstacle;
-				Obstacles.add(new Point(4, 1));
-				gridCells[4][1] = GridType.Obstacle;
+				Obstacles.add(new Point(0, 1));
+				gridCells[0][1] = GridType.Obstacle;
+				Obstacles.add(new Point(2, 0));
+				gridCells[2][0] = GridType.Obstacle;
 			}
 		}
 	}
@@ -247,7 +245,8 @@ public class Grid {
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
-		// System.out.println(newAdjacent.toString());
+		
+		System.out.println("!@#$ "+partX+" "+partY);
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 
