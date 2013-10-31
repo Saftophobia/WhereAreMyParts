@@ -31,24 +31,7 @@ public class Grid {
 					Arrays.fill(row, GridType.Free);
 				}
 
-				// Parts randomization
-				Parts = new ArrayList<Part>();
-				int bound1;
-				do {
-					bound1 = (int) (Math.random() * length * width * 0.25);
-				} while (bound1 < 1);
-				for (int i = 0; i < bound1; i++) {
-					int partsX;
-					int partsY;
-					do {
-						partsX = (int) (Math.random() * length);
-						partsY = (int) (Math.random() * width);
-					} while (!gridCells[partsX][partsY].equals(GridType.Free) && checkAroundFor(partsX, partsY, GridType.RobotPart) && checkAroundFor(partsX, partsY, GridType.Obstacle));
-					// if (gridCells[partsX][partsY].equals(GridType.Free)) {
-					Parts.add(new Part(new Point(partsX, partsY)));
-					gridCells[partsX][partsY] = GridType.RobotPart;
-					// }
-				}
+
 
 				// Obstacles randomization
 				Obstacles = new ArrayList<Point>();
@@ -69,6 +52,26 @@ public class Grid {
 					gridCells[obsX][obsY] = GridType.Obstacle;
 					// }
 				}
+				
+				// Parts randomization
+				Parts = new ArrayList<Part>();
+				int bound1;
+				do {
+					bound1 = (int) (Math.random() * length * width * 0.25);
+				} while (bound1 < 1);
+				for (int i = 0; i < bound1; i++) {
+					int partsX;
+					int partsY;
+					do {
+						partsX = (int) (Math.random() * length);
+						partsY = (int) (Math.random() * width);
+					} while (!gridCells[partsX][partsY].equals(GridType.Free) || checkAroundFor(partsX, partsY, GridType.RobotPart) || checkAroundFor(partsX, partsY, GridType.Obstacle));
+					// if (gridCells[partsX][partsY].equals(GridType.Free)) {
+					Parts.add(new Part(new Point(partsX, partsY)));
+					gridCells[partsX][partsY] = GridType.RobotPart;
+					// }
+				}
+				
 			} else {
 				gridCells = new GridType[5][5];
 				for (GridType[] row : gridCells) {
