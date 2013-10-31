@@ -68,8 +68,6 @@ public class Wamp extends SearchAlgorithm {
 				while (pointer != null) {
 					System.out.println(((WampState) pointer.getState())
 							.getGrid());
-					System.out.println(Heuristic
-							.returnHeuristic(pointer));
 					pointer = pointer.getParentNode();
 				}
 			}
