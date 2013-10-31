@@ -54,4 +54,10 @@ public class Heuristic {
 
 		}
 	}
+
+	public static double returnHeuristic2(SearchTreeNode node){
+
+		
+		return ((WampState)node.getState()).getGrid().getParts().size() - 1 - ((WampState)node.getState()).getNumberOfConnectedParts();
+	}
 }
