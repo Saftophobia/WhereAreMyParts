@@ -263,7 +263,8 @@ public class WampSearchProblem extends SearchProblem {
 				currentGrid.getParts().get(currentOperator.getPartIndex()),
 				AdjacentParts);
 		System.out.println(AdjacentParts.toString());
-		System.out.println(">>>>>>" + currentGrid.getParts().get(0).getLeft());
+		System.out.println(currentState);
+		System.out.println(">>>>>>" + currentGrid.getParts().get(0).getDown());
 
 		switch (currentOperator.getPartDirection()) {
 		

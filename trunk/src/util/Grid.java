@@ -20,7 +20,7 @@ public class Grid {
 
 	public Grid(boolean generate) {
 		if (generate) {
-			if (false) {
+			if (true) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
@@ -86,19 +86,15 @@ public class Grid {
 				gridCells[2][1] = GridType.RobotPart;
 				Parts.add(new Part(new Point(2, 3)));
 				gridCells[2][3] = GridType.RobotPart;
-				Parts.add(new Part(new Point(3, 4)));
-				gridCells[3][4] = GridType.RobotPart;
+
+			
 				Obstacles = new ArrayList<Point>();
 				Obstacles.add(new Point(0, 2));
 				gridCells[0][2] = GridType.Obstacle;
-				Obstacles.add(new Point(1, 4));
-				gridCells[1][4] = GridType.Obstacle;
-				Obstacles.add(new Point(3, 2));
-				gridCells[3][2] = GridType.Obstacle;
+	
 				Obstacles.add(new Point(4, 1));
 				gridCells[4][1] = GridType.Obstacle;
-				Obstacles.add(new Point(4, 3));
-				gridCells[4][3] = GridType.Obstacle;
+	;
 			}
 		}
 	}
@@ -257,13 +253,13 @@ public class Grid {
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
 		
 		System.out.println("!@#$ "+partX+" "+partY);
+		
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
-
-				if (np.CompareParts(ap)) {
+				if (np == ap) {
 					np.getLocation().x += partX;
 					np.getLocation().y += partY;
-
+					System.out.println(np.getLocation());
 				}
 
 			}
@@ -282,8 +278,9 @@ public class Grid {
 		for (Point obst : Obstacles) {
 			newGridCells[(int) obst.getX()][(int) obst.getY()] = GridType.Obstacle;
 		}
-
+		System.out.println("%$%$%$%$%$%$@#@#@#@#$%#$%$%"+newParts.size());
 		for (Part particular : newParts) {
+			System.out.println("%$%$%$%$%$%$@#@#@#@#$%#$%$%"+particular.getLocation());
 			newGridCells[(int) particular.getLocation().getX()][(int) particular
 					.getLocation().getY()] = GridType.RobotPart;
 		}
