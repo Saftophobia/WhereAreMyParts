@@ -257,9 +257,7 @@ public class WampSearchProblem extends SearchProblem {
 		case UP: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().x - i - 1 >= 1
-							&& currentGrid.getGridCells()[p.getLocation().x - 1][p
-									.getLocation().y] != GridType.Obstacle) {
+					if (p.getLocation().x - i - 1 >= 1) {
 						if (currentGrid.getGridCells()[p.getLocation().x - i
 								- 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -307,9 +305,7 @@ public class WampSearchProblem extends SearchProblem {
 		case DOWN: {
 			for (int i = 0; i < currentGrid.getLength(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().x + i < currentGrid.getLength() - 1
-							&& currentGrid.getGridCells()[p.getLocation().x + 1][p
-									.getLocation().y] != GridType.Obstacle) {
+					if (p.getLocation().x + i < currentGrid.getLength() - 1) {
 						if (currentGrid.getGridCells()[p.getLocation().x + i
 								+ 1][p.getLocation().y] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -358,9 +354,7 @@ public class WampSearchProblem extends SearchProblem {
 
 			for (int i = 0; i < currentGrid.getWidth(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().y - i - 1 >= 1
-							&& currentGrid.getGridCells()[p.getLocation().x][p
-									.getLocation().y - 1] != GridType.Obstacle) {
+					if (p.getLocation().y - i - 1 >= 1) {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y - i - 1] == GridType.Obstacle) {
 							// Apply changes on stop
@@ -408,9 +402,7 @@ public class WampSearchProblem extends SearchProblem {
 		case RIGHT: {
 			for (int i = 0; i < currentGrid.getWidth(); i++) {
 				for (Part p : AdjacentParts) {
-					if (p.getLocation().y + i < currentGrid.getWidth() - 1
-							&& currentGrid.getGridCells()[p.getLocation().x][p
-									.getLocation().y+1] != GridType.Obstacle) {
+					if (p.getLocation().y + i < currentGrid.getWidth() - 1) {
 						if (currentGrid.getGridCells()[p.getLocation().x][p
 								.getLocation().y + i + 1] == GridType.Obstacle) {
 							// Apply changes on stop
