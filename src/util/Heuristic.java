@@ -2,6 +2,8 @@ package util;
 
 import java.util.ArrayList;
 
+import wamp.WampState;
+
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
@@ -11,23 +13,30 @@ import com.vividsolutions.jts.operation.distance.DistanceOp;
 
 public class Heuristic {
 
-	public static double returnHeuristic(ArrayList<Part> Parts) {
-		if (Parts.size() == 2) {
+	public static double returnHeuristic(SearchTreeNode node) {
+		
+		if(((WampState)node.getState()).getNumberOfConnectedParts() == ((WampState)node.getState()).getGrid().getParts().size() - 1)
+		{
+			return 0.0;
+		}
+		
+		
+		if (((WampState)node.getState()).getGrid().getParts().size() == 2) {
 			PrecisionModel f1 = new PrecisionModel();
 			return DistanceOp.distance(new Point(
-					new Coordinate(Parts.get(0).getLocation().getX(),
-							Parts.get(0).getLocation().getY()), f1, 0), new Point(
-								new Coordinate(Parts.get(1).getLocation().getX(),
-										Parts.get(1).getLocation().getY()), f1, 0))/2;
+					new Coordinate(((WampState)node.getState()).getGrid().getParts().get(0).getLocation().getX(),
+							((WampState)node.getState()).getGrid().getParts().get(0).getLocation().getY()), f1, 0), new Point(
+								new Coordinate(((WampState)node.getState()).getGrid().getParts().get(1).getLocation().getX(),
+										((WampState)node.getState()).getGrid().getParts().get(1).getLocation().getY()), f1, 0))/2;
 		} else {
 			ArrayList<Coordinate> Coordinates = new ArrayList<Coordinate>();
-			for (Part p : Parts) {
+			for (Part p : ((WampState)node.getState()).getGrid().getParts()) {
 				Coordinate coordinate = new Coordinate(p.getLocation().getX(),
 						p.getLocation().getY());
 				Coordinates.add(coordinate);
 			}
-			Coordinates.add(new Coordinate(Parts.get(0).getLocation().getX(),
-					Parts.get(0).getLocation().getY()));
+			Coordinates.add(new Coordinate(((WampState)node.getState()).getGrid().getParts().get(0).getLocation().getX(),
+					((WampState)node.getState()).getGrid().getParts().get(0).getLocation().getY()));
 
 			PrecisionModel f1 = new PrecisionModel();
 			Coordinate[] temp = new Coordinate[Coordinates.size()];
