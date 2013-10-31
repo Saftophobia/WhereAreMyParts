@@ -20,7 +20,7 @@ public class Grid {
 
 	public Grid(boolean generate) {
 		if (generate) {
-			if (false) {
+			if (true) {
 				do {
 					length = (int) (Math.random() * 20);
 					width = (int) (Math.random() * 20);
@@ -35,7 +35,7 @@ public class Grid {
 				Parts = new ArrayList<Part>();
 				int bound1;
 				do {
-					bound1 = (int) (Math.random() * 5);
+					bound1 = (int) (Math.random() * length*width*0.25);
 				} while (bound1 < 1);
 				for (int i = 0; i < bound1; i++) {
 					int partsX;
@@ -44,17 +44,17 @@ public class Grid {
 						partsX = (int) (Math.random() * length);
 						partsY = (int) (Math.random() * width);
 					} while (!gridCells[partsX][partsY].equals(GridType.Free));
-					if (gridCells[partsX][partsY].equals(GridType.Free)) {
+//					if (gridCells[partsX][partsY].equals(GridType.Free)) {
 						Parts.add(new Part(new Point(partsX, partsY)));
 						gridCells[partsX][partsY] = GridType.RobotPart;
-					}
+					//}
 				}
 
 				// Obstacles randomization
 				Obstacles = new ArrayList<Point>();
 				int bound2;
 				do {
-					bound2 = (int) (Math.random() * 5);
+					bound2 = (int) (Math.random() * length*width*0.25);
 				} while (bound2 < 1);
 				for (int i = 0; i < bound2; i++) {
 					int obsX;
@@ -64,10 +64,10 @@ public class Grid {
 						obsY = (int) (Math.random() * width);
 					} while (!gridCells[obsX][obsY].equals(GridType.Free));
 
-					if (gridCells[obsX][obsY].equals(GridType.Free)) {
+					//if (gridCells[obsX][obsY].equals(GridType.Free)) {
 						Obstacles.add(new Point(obsX, obsY));
 						gridCells[obsX][obsY] = GridType.Obstacle;
-					}
+					//}
 				}
 			} else {
 				gridCells = new GridType[5][5];
@@ -223,14 +223,14 @@ public class Grid {
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
-		//System.out.println(newAdjacent.toString());
+		// System.out.println(newAdjacent.toString());
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 
 				if (np.CompareParts(ap)) {
 					np.getLocation().x += partX;
 					np.getLocation().y += partY;
-					
+
 				}
 
 			}
@@ -256,32 +256,32 @@ public class Grid {
 		}
 
 		for (Part AP : newParts) { // <-------------
-			
-				for (Part p : newParts) {
-					if (p.getLocation().x == AP.getLocation().getX() - 1
-							&& p.getLocation().y == AP.getLocation().getY()) {
-						//System.out.println(">>>>here");
-						AP.setUp(p);
-						p.setDown(AP);
-					}
-					if (p.getLocation().x == AP.getLocation().getX() + 1
-								&& p.getLocation().y == AP.getLocation().getY()) {
-							//System.out.println(">>>>here");
-							AP.setDown(p);
-							p.setUp(AP);
-					}
-					if (p.getLocation().x == AP.getLocation().getX()
-									&& p.getLocation().y == AP.getLocation().getY() - 1) {
-								//System.out.println(">>>>here");
-								AP.setLeft(p);
-								p.setRight(AP);
-					}
-						if (p.getLocation().x == AP.getLocation().x
-										&& p.getLocation().y == AP.getLocation().y + 1) {
-									//System.out.println(">>>>here");
-									AP.setRight(p);
-									p.setLeft(AP);
-								}
+
+			for (Part p : newParts) {
+				if (p.getLocation().x == AP.getLocation().getX() - 1
+						&& p.getLocation().y == AP.getLocation().getY()) {
+					// System.out.println(">>>>here");
+					AP.setUp(p);
+					p.setDown(AP);
+				}
+				if (p.getLocation().x == AP.getLocation().getX() + 1
+						&& p.getLocation().y == AP.getLocation().getY()) {
+					// System.out.println(">>>>here");
+					AP.setDown(p);
+					p.setUp(AP);
+				}
+				if (p.getLocation().x == AP.getLocation().getX()
+						&& p.getLocation().y == AP.getLocation().getY() - 1) {
+					// System.out.println(">>>>here");
+					AP.setLeft(p);
+					p.setRight(AP);
+				}
+				if (p.getLocation().x == AP.getLocation().x
+						&& p.getLocation().y == AP.getLocation().y + 1) {
+					// System.out.println(">>>>here");
+					AP.setRight(p);
+					p.setLeft(AP);
+				}
 
 			}
 
@@ -324,7 +324,7 @@ public class Grid {
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < gridCells.length; i++) {
-			s += (gridCells[i][0]);
+			s += (gridCells[i][0]).toString().substring(0, 4);
 			for (int j = 1; j < gridCells[i].length; j++) {
 				s += "\t" + (gridCells[i][j].toString().substring(0, 4));
 			}
@@ -337,7 +337,7 @@ public class Grid {
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {
-		//	System.out.println("U");
+			// System.out.println("U");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getUp().CompareParts(AvailableTestPart)) {
@@ -351,7 +351,7 @@ public class Grid {
 			}
 		}
 		if (p.getDown() != null) {
-			//System.out.println("D");
+			// System.out.println("D");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getDown().CompareParts(AvailableTestPart)) {
@@ -365,7 +365,7 @@ public class Grid {
 			}
 		}
 		if (p.getLeft() != null) {
-			//System.out.println("L");
+			// System.out.println("L");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getLeft().CompareParts(AvailableTestPart)) {
@@ -380,7 +380,7 @@ public class Grid {
 		}
 
 		if (p.getRight() != null) {
-			//System.out.println("R");
+			// System.out.println("R");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getRight().CompareParts(AvailableTestPart)) {
