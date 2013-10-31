@@ -1,5 +1,7 @@
 package util;
 
+import wamp.WampState;
+
 
 /**
  * @author Saftophobia

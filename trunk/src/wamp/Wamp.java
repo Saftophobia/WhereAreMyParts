@@ -69,8 +69,7 @@ public class Wamp extends SearchAlgorithm {
 					System.out.println(((WampState) pointer.getState())
 							.getGrid());
 					System.out.println(Heuristic
-							.returnHeuristic(((WampState) pointer.getState())
-									.getGrid().getParts()));
+							.returnHeuristic(pointer));
 					pointer = pointer.getParentNode();
 				}
 			}
@@ -268,8 +267,7 @@ public class Wamp extends SearchAlgorithm {
 		}
 		for (int i = 0; i < children.size(); i++) {
 			SearchTreeNode child1 = children.get(i);
-			child1.setHeuristic(Heuristic.returnHeuristic(((WampState) child1
-					.getState()).getGrid().getParts()));
+			child1.setHeuristic(Heuristic.returnHeuristic(child1));
 			for (int j = 0; j < children.size(); j++) {
 				SearchTreeNode child2 = children.get(j);
 				if (child1 != child2) {
@@ -333,8 +331,7 @@ public class Wamp extends SearchAlgorithm {
 		}
 		for (int i = 0; i < children.size(); i++) {
 			SearchTreeNode child1 = children.get(i);
-			child1.setHeuristic(Heuristic.returnHeuristic(((WampState) child1
-					.getState()).getGrid().getParts()));
+			child1.setHeuristic(Heuristic.returnHeuristic(child1));
 			child1.setPathCost(0.1*child1.getDepth());
 			for (int j = 0; j < children.size(); j++) {
 				SearchTreeNode child2 = children.get(j);
