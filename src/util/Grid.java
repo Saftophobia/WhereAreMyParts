@@ -32,7 +32,6 @@ public class Grid {
 				}
 
 
-
 				// Obstacles randomization
 				Obstacles = new ArrayList<Point>();
 				int bound2;
@@ -252,14 +251,13 @@ public class Grid {
 		ArrayList<Part> newParts = cloneParts();
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
 		
-		System.out.println("!@#$ "+partX+" "+partY);
+		//System.out.println("!@#$ "+partX+" "+partY);
 		
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 				if (np == ap) {
 					np.getLocation().x += partX;
 					np.getLocation().y += partY;
-					System.out.println(np.getLocation());
 				}
 
 			}
@@ -278,9 +276,9 @@ public class Grid {
 		for (Point obst : Obstacles) {
 			newGridCells[(int) obst.getX()][(int) obst.getY()] = GridType.Obstacle;
 		}
-		System.out.println("%$%$%$%$%$%$@#@#@#@#$%#$%$%"+newParts.size());
+		
 		for (Part particular : newParts) {
-			System.out.println("%$%$%$%$%$%$@#@#@#@#$%#$%$%"+particular.getLocation());
+			
 			newGridCells[(int) particular.getLocation().getX()][(int) particular
 					.getLocation().getY()] = GridType.RobotPart;
 		}
@@ -367,7 +365,6 @@ public class Grid {
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {
-			System.out.println("U");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getUp().CompareParts(AvailableTestPart)) {
@@ -381,7 +378,6 @@ public class Grid {
 			}
 		}
 		if (p.getDown() != null) {
-			System.out.println("D");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getDown().CompareParts(AvailableTestPart)) {
@@ -395,7 +391,6 @@ public class Grid {
 			}
 		}
 		if (p.getLeft() != null) {
-			System.out.println("L");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getLeft().CompareParts(AvailableTestPart)) {
@@ -410,7 +405,6 @@ public class Grid {
 		}
 
 		if (p.getRight() != null) {
-			System.out.println("R");
 			boolean Found = true;
 			for (Part AvailableTestPart : result) {
 				if (p.getRight().CompareParts(AvailableTestPart)) {
