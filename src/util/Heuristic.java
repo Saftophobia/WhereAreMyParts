@@ -45,12 +45,12 @@ public class Heuristic {
 			Polygon poly = new Polygon(lr, f1, 0);
 			Point result = poly.getCentroid();
 			Double resultSoFar = 0.0;
-			for (int i = 0; i < Coordinates.size() - 1; i++) {
+			for (int i = 0; i < Coordinates.size(); i++) {
 				resultSoFar += DistanceOp.distance(result, new Point(
 						Coordinates.get(i), f1, 0));
 			}
 
-			return resultSoFar / (Coordinates.size() - 1);
+			return resultSoFar / (Coordinates.size());
 
 		}
 	}

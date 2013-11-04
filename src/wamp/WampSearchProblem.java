@@ -35,9 +35,8 @@ public class WampSearchProblem extends SearchProblem {
 	}
 
 	@Override
-	public double pathCost(Operator... actions) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double pathCost(Object... actions) {
+		return actions.length;
 	}
 
 	// This is the function that generate the next state from the current state
@@ -80,7 +79,7 @@ public class WampSearchProblem extends SearchProblem {
 											partX, partY),
 									currentState.getNumberOfConnectedParts() + 1,
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+						//	System.out.println(state.getGrid());
 							return state;
 						} else {
 							WampState state = new WampState(currentState
@@ -138,7 +137,7 @@ public class WampSearchProblem extends SearchProblem {
 											partY),
 									currentState.getNumberOfConnectedParts(),
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+							//System.out.println(state.getGrid());
 							return state;
 						}
 					} else {
@@ -177,7 +176,7 @@ public class WampSearchProblem extends SearchProblem {
 											partX, partY),
 									currentState.getNumberOfConnectedParts() + 1,
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+							//System.out.println(state.getGrid());
 							return state;
 						} else {
 							WampState state = new WampState(currentState
@@ -185,7 +184,7 @@ public class WampSearchProblem extends SearchProblem {
 											partY),
 									currentState.getNumberOfConnectedParts(),
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+							//System.out.println(state.getGrid());
 							return state;
 						}
 					} else {
@@ -228,7 +227,7 @@ public class WampSearchProblem extends SearchProblem {
 											partX, partY),
 									currentState.getNumberOfConnectedParts() + 1,
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+							//System.out.println(state.getGrid());
 							return state;
 						} else {
 							WampState state = new WampState(currentState
@@ -236,7 +235,7 @@ public class WampSearchProblem extends SearchProblem {
 											partY),
 									currentState.getNumberOfConnectedParts(),
 									costCalucalted + 1);
-							System.out.println(state.getGrid());
+							//System.out.println(state.getGrid());
 							return state;
 						}
 					} else {
@@ -284,7 +283,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, -i, 0),
 										currentState
 												.getNumberOfConnectedParts(), 0);
-								System.out.println(state.getGrid());
+								//System.out.println(state.getGrid());
 								//System.out.println(state);
 								//System.out.println("************************");
 								return state;
@@ -305,7 +304,7 @@ public class WampSearchProblem extends SearchProblem {
 											currentState
 													.getNumberOfConnectedParts() + 1,
 											0);
-									System.out.println(state.getGrid());
+									//System.out.println(state.getGrid());
 									//System.out.println(state);
 									//System.out
 										//	.println("************************");
@@ -337,7 +336,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, i, 0),
 										currentState
 												.getNumberOfConnectedParts(), 0);
-								System.out.println(state.getGrid());
+								//System.out.println(state.getGrid());
 								//System.out.println(state);
 								//System.out.println("************************");
 								return state;
@@ -358,7 +357,7 @@ public class WampSearchProblem extends SearchProblem {
 											currentState
 													.getNumberOfConnectedParts() + 1,
 											0);
-									System.out.println(state.getGrid());
+								//	System.out.println(state.getGrid());
 									//System.out.println(state);
 									//System.out
 									//		.println("************************");
@@ -391,7 +390,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, 0, -i),
 										currentState
 												.getNumberOfConnectedParts(), 0);
-								System.out.println(state.getGrid());
+								//System.out.println(state.getGrid());
 								//System.out.println(state);
 								//System.out.println("************************");
 								return state;
@@ -412,7 +411,7 @@ public class WampSearchProblem extends SearchProblem {
 											currentState
 													.getNumberOfConnectedParts() + 1,
 											0);
-									System.out.println(state.getGrid());
+									//System.out.println(state.getGrid());
 									//System.out.println(state);
 									//System.out
 									//		.println("************************");
@@ -444,7 +443,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, 0, i),
 										currentState
 												.getNumberOfConnectedParts(), 0);
-								System.out.println(state.getGrid());
+							//	System.out.println(state.getGrid());
 								//System.out.println(state);
 								//System.out.println("************************");
 								return state;
@@ -465,7 +464,7 @@ public class WampSearchProblem extends SearchProblem {
 											currentState
 													.getNumberOfConnectedParts() + 1,
 											0);
-									System.out.println(state.getGrid());
+								//	System.out.println(state.getGrid());
 									//System.out.println(state);
 									//System.out
 											//.println("************************");

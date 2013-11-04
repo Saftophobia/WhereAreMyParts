@@ -63,7 +63,7 @@ public abstract class SearchProblem {
 	public abstract boolean goalTest(State state);
 	
 	// get path cost
-	public abstract double pathCost(Operator... operators);
+	public abstract double pathCost(Object... operators);
 	
 	public abstract State transferFunction(State input,Operator operator);
 
