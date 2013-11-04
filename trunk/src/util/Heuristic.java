@@ -58,6 +58,24 @@ public class Heuristic {
 	public static double returnHeuristic2(SearchTreeNode node){
 
 		
-		return ((WampState)node.getState()).getGrid().getParts().size() - 1 - ((WampState)node.getState()).getNumberOfConnectedParts();
+		ArrayList<ArrayList<Part>> bulks = new ArrayList<ArrayList<Part>>();
+		ArrayList<Part> parts = ((WampState)node.getState()).getGrid().getParts();
+		boolean found = false;
+		for(Part p : parts){
+			for(int i = 0;i<bulks.size();i++){
+				ArrayList<Part> bulk = bulks.get(i); 
+				if(bulk.contains(p)){
+					found = true;
+				}
+			}
+			if(bulks.size()==0 || !found){
+				ArrayList<Part> result =new ArrayList<Part>();
+				((WampState)node.getState()).getGrid().GetBulksRec(p, result);
+				bulks.add(result);
+			}
+		}
+		
+		
+		return bulks.size() -1;
 	}
 }

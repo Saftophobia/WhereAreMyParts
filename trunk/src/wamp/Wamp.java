@@ -124,7 +124,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "BF", true);
+		wamp.search(grid, "AS2", true);
 		
 	}
 
@@ -385,7 +385,6 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
-				System.out.println(">>>" + output.getNumberOfConnectedParts());
 				children.add(newNode);
 			}
 		}
