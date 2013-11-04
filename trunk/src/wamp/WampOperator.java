@@ -32,5 +32,9 @@ public class WampOperator extends Operator {
 		this.partIndex = partIndex;
 		this.partDirection = partDirection;
 	}
+	
+	public String toString(){
+		return partIndex+" "+partDirection;
+	}
 
 }

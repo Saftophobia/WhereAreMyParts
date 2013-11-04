@@ -13,8 +13,11 @@ import wamp.WampOperator.Direction;
 import algorithm.SearchAlgorithm;
 
 public class Wamp extends SearchAlgorithm {
-
+	
+	int numberOfExpandedNodes = 0;
+	
 	public Grid genGrid() {
+		numberOfExpandedNodes = 0;
 		Grid grid = new Grid(true);
 		return grid;
 	}
@@ -65,28 +68,50 @@ public class Wamp extends SearchAlgorithm {
 		if (visualize) {
 			SearchTreeNode pointer = node;
 			if (pointer != null) {
+				System.out.println("Path Cost: " + pointer.getPathCost());
+				System.out.println("Number Expanded Nodes: " + numberOfExpandedNodes);
 				while (pointer != null) {
 					System.out.println(((WampState) pointer.getState())
 							.getGrid());
 					pointer = pointer.getParentNode();
 				}
+			}else{
+				System.out.println("No Solution");
 			}
 		}
-		return null;
+		SearchTreeNode pointer = node;
+		String pathCost = "";
+		String number = "";
+		String steps = "";
+		if (pointer != null) {
+			 pathCost = "Path Cost: " + pointer.getPathCost();
+			 number = "Number Expanded Nodes: " + numberOfExpandedNodes;
+			while (pointer != null) {
+				if (pointer.getOperator() != null) {
+					steps = pointer.getOperator().toString()+ " "+steps;
+					
+				}
+				pointer = pointer.getParentNode();
+			}
+			
+			steps = "Steps: "+ steps;
+		}
+		
+		return new String[]{steps,pathCost,number};
 	}
 
 	public SearchTreeNode search(WampSearchProblem problem, int strategy,
 			boolean visualize) {
+	
 		nodes = new ArrayList<SearchTreeNode>();
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
 				0));
 		while (!nodes.isEmpty()) {
 			SearchTreeNode node = nodes.remove(0);
-			System.out
-					.println("--------------------------------------------------");
+			numberOfExpandedNodes++;
 
 			if (problem.goalTest(node.getState())) {
-				System.out.println(((WampState) node.getState()).getGrid());
+				//System.out.println(((WampState) node.getState()).getGrid());
 				return node;
 			} else {
 				switch (strategy) {
@@ -123,9 +148,9 @@ public class Wamp extends SearchAlgorithm {
 		Grid grid = wamp.genGrid();
 		System.out.println(grid);
 
-		// System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "AS2", true);
-		
+		// //System.out.println(Heuristic.returnHeuristic(grid.getParts()));
+		wamp.search(grid, "IDS", true);
+
 	}
 
 	@Override
@@ -138,7 +163,20 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
-				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				//System.out.println(">>>" + output.getNumberOfConnectedParts());
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+				//System.out.println(setOfActions);
+				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
+						.toArray()));
 				children.add(newNode);
 			}
 		}
@@ -185,7 +223,19 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
-				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				//System.out.println(">>>" + output.getNumberOfConnectedParts());
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
+						.toArray()));
 				children.add(0, newNode);
 			}
 
@@ -229,8 +279,8 @@ public class Wamp extends SearchAlgorithm {
 		int limit = 0;
 		while (true) {
 			SearchTreeNode extract = nodes.remove(0);
-			System.out
-					.println("--------------------------------------------------");
+			numberOfExpandedNodes++;
+			
 			if (problem.goalTest(extract.getState())) {
 				nodes.clear();
 				nodes.add(extract);
@@ -242,8 +292,7 @@ public class Wamp extends SearchAlgorithm {
 					if (nodes.isEmpty()) {
 						limit++;
 						nodes.add(initialNode);
-						System.out
-								.println("$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%");
+	
 					}
 				}
 			}
@@ -260,7 +309,19 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
-				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				//System.out.println(">>>" + output.getNumberOfConnectedParts());
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
+						.toArray()));
 				children.add(newNode);
 			}
 		}
@@ -295,7 +356,7 @@ public class Wamp extends SearchAlgorithm {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
 					nodes.add(child);
-					
+
 				} else {
 					for (int y = 0; y < nodes.size(); y++) {
 						if (child.getHeuristic() < nodes.get(y).getHeuristic()) {
@@ -310,7 +371,73 @@ public class Wamp extends SearchAlgorithm {
 
 	@Override
 	public void GRS1(SearchTreeNode node, SearchProblem problem) {
-		// TODO Auto-generated method stub
+
+		WampState state = (WampState) node.getState();
+		ArrayList<SearchTreeNode> children = new ArrayList<SearchTreeNode>();
+		for (Operator operator : ((WampSearchProblem) problem).getOperators()) {
+			WampState output = (WampState) ((WampSearchProblem) problem)
+					.transferFunction2(state, operator);
+			if (output != null) {
+				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
+						operator, node.getDepth() + 1, 0);
+				//System.out.println(">>>" + output.getNumberOfConnectedParts());
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+
+				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
+						.toArray()));
+				children.add(newNode);
+			}
+		}
+		for (int i = 0; i < children.size(); i++) {
+			SearchTreeNode child1 = children.get(i);
+			child1.setHeuristic(Heuristic.returnHeuristic2(child1));
+			for (int j = 0; j < children.size(); j++) {
+				SearchTreeNode child2 = children.get(j);
+				if (child1 != child2) {
+					boolean all = true;
+					for (Part p1 : ((WampState) child1.getState()).getGrid()
+							.getParts()) {
+						for (Part p2 : ((WampState) child2.getState())
+								.getGrid().getParts()) {
+							if (!p1.CompareParts(p2)) {
+								all = false;
+								break;
+							}
+						}
+						if (!all) {
+							break;
+						}
+					}
+					if (all) {
+						child2.setRemovable(true);
+					}
+				}
+			}
+		}
+
+		for (SearchTreeNode child : children) {
+			if (!child.isRemovable())
+				if (nodes.size() == 0) {
+					nodes.add(child);
+
+				} else {
+					for (int y = 0; y < nodes.size(); y++) {
+						if (child.getHeuristic() < nodes.get(y).getHeuristic()) {
+							nodes.add(y, child);
+							break;
+						}
+					}
+				}
+		}
 
 	}
 
@@ -324,14 +451,25 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
-				System.out.println(">>>" + output.getNumberOfConnectedParts());
+				//System.out.println(">>>" + output.getNumberOfConnectedParts());
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+				newNode.setPathCost(0.1 * problem
+						.pathCost((Object[]) setOfActions.toArray()));
 				children.add(newNode);
 			}
 		}
 		for (int i = 0; i < children.size(); i++) {
 			SearchTreeNode child1 = children.get(i);
 			child1.setHeuristic(Heuristic.returnHeuristic(child1));
-			child1.setPathCost(0.1*child1.getDepth());
 			for (int j = 0; j < children.size(); j++) {
 				SearchTreeNode child2 = children.get(j);
 				if (child1 != child2) {
@@ -355,23 +493,30 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-
+		//System.out.println(">>>" + children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
 					nodes.add(child);
-					
+
 				} else {
+					boolean justPutIt = true;
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() + child.getPathCost() < nodes.get(y).getHeuristic() + nodes.get(y).getPathCost()) {
+						if (child.getHeuristic() + child.getPathCost() <= nodes
+								.get(y).getHeuristic()
+								+ nodes.get(y).getPathCost()) {
 							nodes.add(y, child);
+							justPutIt = false;
 							break;
 						}
 					}
+					if (justPutIt) {
+						nodes.add(child);
+					}
 				}
 		}
-		
-		System.out.println(nodes.toString());
+
+		//System.out.println(nodes.toString());
 
 	}
 
@@ -385,14 +530,26 @@ public class Wamp extends SearchAlgorithm {
 			if (output != null) {
 				SearchTreeNode newNode = new WampSearchTreeNode(output, node,
 						operator, node.getDepth() + 1, 0);
+				ArrayList<Operator> setOfActions = new ArrayList<Operator>();
+				SearchTreeNode pointer = newNode;
+				if (pointer != null) {
+					while (pointer != null) {
+						if (pointer.getOperator() != null) {
+							setOfActions.add(pointer.getOperator());
+						}
+						pointer = pointer.getParentNode();
+					}
+				}
+				newNode.setPathCost(0.1 * problem
+						.pathCost((Object[]) setOfActions.toArray()));
 				children.add(newNode);
 			}
 		}
 		for (int i = 0; i < children.size(); i++) {
 			SearchTreeNode child1 = children.get(i);
 			child1.setHeuristic(Heuristic.returnHeuristic2(child1));
-			System.out.println("OQJWROJASJD + " + child1.getHeuristic());
-			child1.setPathCost(0.1*child1.getDepth());
+			//System.out.println("OQJWROJASJD + " + child1.getHeuristic());
+			// getOperators
 			for (int j = 0; j < children.size(); j++) {
 				SearchTreeNode child2 = children.get(j);
 				if (child1 != child2) {
@@ -416,23 +573,29 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-
+		//System.out.println(">EEWEW>>" + children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
 					nodes.add(child);
-					
 				} else {
+					boolean justPutIt = true;
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() + child.getPathCost() < nodes.get(y).getHeuristic() + nodes.get(y).getPathCost()) {
+						if (child.getHeuristic() + child.getPathCost() <= nodes
+								.get(y).getHeuristic()
+								+ nodes.get(y).getPathCost()) {
 							nodes.add(y, child);
+							justPutIt = false;
 							break;
 						}
 					}
+					if (justPutIt) {
+						nodes.add(child);
+					}
 				}
 		}
-		
-		System.out.println(nodes.toString());
+
+		//System.out.println(nodes.toString());
 
 	}
 

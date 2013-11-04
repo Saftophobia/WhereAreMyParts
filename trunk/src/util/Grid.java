@@ -31,7 +31,6 @@ public class Grid {
 					Arrays.fill(row, GridType.Free);
 				}
 
-
 				// Obstacles randomization
 				Obstacles = new ArrayList<Point>();
 				int bound2;
@@ -51,7 +50,7 @@ public class Grid {
 					gridCells[obsX][obsY] = GridType.Obstacle;
 					// }
 				}
-				
+
 				// Parts randomization
 				Parts = new ArrayList<Part>();
 				int bound1;
@@ -61,16 +60,27 @@ public class Grid {
 				for (int i = 0; i < bound1; i++) {
 					int partsX;
 					int partsY;
+					int counter = 0;
+
 					do {
 						partsX = (int) (Math.random() * length);
 						partsY = (int) (Math.random() * width);
-					} while (!gridCells[partsX][partsY].equals(GridType.Free) || checkAroundFor(partsX, partsY, GridType.RobotPart) || checkAroundFor(partsX, partsY, GridType.Obstacle));
-					// if (gridCells[partsX][partsY].equals(GridType.Free)) {
-					Parts.add(new Part(new Point(partsX, partsY)));
-					gridCells[partsX][partsY] = GridType.RobotPart;
-					// }
+						counter++;
+
+						if (counter > Integer.MAX_VALUE - 1) {
+
+							break;
+						}
+					} while (!gridCells[partsX][partsY].equals(GridType.Free)
+							|| checkAroundFor(partsX, partsY,
+									GridType.RobotPart)
+							|| checkAroundFor(partsX, partsY, GridType.Obstacle));
+					if (gridCells[partsX][partsY].equals(GridType.Free)) {
+						Parts.add(new Part(new Point(partsX, partsY)));
+						gridCells[partsX][partsY] = GridType.RobotPart;
+					}
 				}
-				
+
 			} else {
 				gridCells = new GridType[6][5];
 				for (GridType[] row : gridCells) {
@@ -86,14 +96,13 @@ public class Grid {
 				Parts.add(new Part(new Point(2, 3)));
 				gridCells[2][3] = GridType.RobotPart;
 
-			
 				Obstacles = new ArrayList<Point>();
 				Obstacles.add(new Point(0, 2));
 				gridCells[0][2] = GridType.Obstacle;
-	
+
 				Obstacles.add(new Point(4, 1));
 				gridCells[4][1] = GridType.Obstacle;
-	;
+				;
 			}
 		}
 	}
@@ -109,11 +118,11 @@ public class Grid {
 				return true;
 		}
 		if (j - 1 > 0) {
-			if (gridCells[i][j-1].equals(type))
+			if (gridCells[i][j - 1].equals(type))
 				return true;
 		}
 		if (j + 1 < width) {
-			if (gridCells[i][j+1].equals(type))
+			if (gridCells[i][j + 1].equals(type))
 				return true;
 		}
 		return false;
@@ -250,9 +259,9 @@ public class Grid {
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
-		
-		//System.out.println("!@#$ "+partX+" "+partY);
-		
+
+		// System.out.println("!@#$ "+partX+" "+partY);
+
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 				if (np == ap) {
@@ -276,9 +285,9 @@ public class Grid {
 		for (Point obst : Obstacles) {
 			newGridCells[(int) obst.getX()][(int) obst.getY()] = GridType.Obstacle;
 		}
-		
+
 		for (Part particular : newParts) {
-			
+
 			newGridCells[(int) particular.getLocation().getX()][(int) particular
 					.getLocation().getY()] = GridType.RobotPart;
 		}
