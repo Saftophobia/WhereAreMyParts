@@ -1,16 +1,23 @@
 package wamp;
 
+import java.util.HashMap;
+
 import util.Grid;
 import util.State;
 
 public class WampState extends State {
 
+	// a Grid 
 	private Grid grid;
+	// number of connectedParts till Now
 	private int numberOfConnectedParts;
-
+	// possible state that can be reached from this state
+	private HashMap<String, WampState> nextPossibleStates;
+	
 	public WampState(Grid grid, int numberOfConnectedParts, double cost) {
 		super();
 		this.grid = grid;
+		this.nextPossibleStates = new HashMap<String, WampState>();
 		this.numberOfConnectedParts = numberOfConnectedParts;
 		this.setCost(cost);
 	}
@@ -31,4 +38,13 @@ public class WampState extends State {
 		this.numberOfConnectedParts = numberOfConnectedParts;
 	}
 
+	// add the next possible state
+	public void addNextPossibleState(WampOperator operator, WampState s){
+		nextPossibleStates.put(operator.toString(),s);
+	}
+	// get the next possible state
+	public WampState getNextPossibleState(WampOperator operator){
+		return nextPossibleStates.get(operator.toString());
+	}
+	
 }

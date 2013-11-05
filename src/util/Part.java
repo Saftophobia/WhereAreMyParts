@@ -4,12 +4,18 @@ import java.awt.Point;
 
 public class Part {
 
+	//location
 	private Point location;
+	//self-reference up part
 	private Part up;
+	//self-reference down part
 	private Part down;
+	//self-reference left part
 	private Part left;
+	//self-reference right
 	private Part right;
 
+	// the constructors
 	public Part(Point location, Part up, Part down, Part left, Part right) {
 		super();
 		this.location = location;
@@ -19,6 +25,7 @@ public class Part {
 		this.right = right;
 	}
 
+	
 	public Part(Point location) {
 		super();
 		this.location = location;
@@ -64,6 +71,7 @@ public class Part {
 		this.right = right;
 	}
 	
+	// a compare method by location
 	public boolean CompareParts(Part P)
 	{
 		if(this.location.x == P.location.x && this.location.y == P.location.y)

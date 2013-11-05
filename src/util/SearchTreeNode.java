@@ -1,29 +1,19 @@
 package util;
 
-import wamp.WampState;
-
-
 /**
  * @author Saftophobia
- *
+ * 
  */
 public class SearchTreeNode {
 	private State state; // The state of the state space that this node
 							// corresponds to
 	private SearchTreeNode parentNode;
-	private Operator operator; // The operator applied to generate this node, syntax "part_direction"
+	private Operator operator; // The operator applied to generate this node,
+								// syntax "part_direction"
 	private int depth; // The depth of the node in the tree
 	private double pathCost; // The path cost from the root
-	private boolean removable;
-	private double heuristic;
-	
-	public double getHeuristic() {
-		return heuristic;
-	}
-
-	public void setHeuristic(double heuristic) {
-		this.heuristic = heuristic;
-	}
+	private boolean removable; // if the same state
+	private double heuristic; // the H value
 
 	public SearchTreeNode(State state, SearchTreeNode parentNode,
 			Operator operator, int depth, int pathCost) {
@@ -82,7 +72,7 @@ public class SearchTreeNode {
 	public void setPathCost(double pathCost) {
 		this.pathCost = pathCost;
 	}
-	
+
 	public boolean isRemovable() {
 		return removable;
 	}
@@ -91,10 +81,18 @@ public class SearchTreeNode {
 		this.removable = removable;
 	}
 
-	public String toString()
-	{
-		return (this.getPathCost()+this.getHeuristic()) + "";
-		
+	public double getHeuristic() {
+		return heuristic;
+	}
+
+	public void setHeuristic(double heuristic) {
+		this.heuristic = heuristic;
+	}
+	
+	// toStringMethod
+	public String toString() {
+		return (this.getPathCost() + this.getHeuristic()) + "";
+
 	}
 
 }

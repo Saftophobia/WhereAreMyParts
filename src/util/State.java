@@ -2,8 +2,9 @@ package util;
 
 public abstract class State {
 
+	//Abstract class of state
+	
 	private double cost;
-
 
 	public double getCost() {
 		return cost;

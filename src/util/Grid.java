@@ -8,17 +8,22 @@ import wamp.WampOperator;
 
 public class Grid {
 
+	// Enumeration used for describing the status of a cell in the Grid
 	public enum GridType {
 		Free, Obstacle, RobotPart
 	}
-
+	// The grid of in form of 2D array
 	private GridType[][] gridCells;
+	// list of parts in the board
 	private ArrayList<Part> Parts;
+	// list of obstacles
 	private ArrayList<Point> Obstacles;
+	// the length and width of the board
 	private int length;
 	private int width;
 
 	public Grid(boolean generate) {
+		// to distinguish between cloning and creating a new grid
 		if (generate) {
 			if (true) {
 				do {
@@ -67,7 +72,7 @@ public class Grid {
 						partsY = (int) (Math.random() * width);
 						counter++;
 
-						if (counter > Integer.MAX_VALUE - 1) {
+						if (counter > width*length - 1) {
 
 							break;
 						}
@@ -82,6 +87,7 @@ public class Grid {
 				}
 
 			} else {
+				//this is a static Grid for testing
 				gridCells = new GridType[6][5];
 				for (GridType[] row : gridCells) {
 					Arrays.fill(row, GridType.Free);
@@ -109,6 +115,8 @@ public class Grid {
 		}
 	}
 
+	
+	// this method is used to verify the existence of a certain GridType around a given location
 	public boolean checkAroundFor(int i, int j, GridType type) {
 
 		if (i - 1 > 0) {
@@ -170,100 +178,104 @@ public class Grid {
 		this.width = width;
 	}
 
-	@SuppressWarnings("unchecked")
-	public Grid fix(WampOperator Operator, int partX, int partY) {
-		Grid fixed = new Grid(false);
-		// Cloning the obstacles not needed -- reference may cause issue take
-		// care !!
-		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
-		// Fixing the new part point
-		ArrayList<Part> newParts = cloneParts();
-		newParts.get(Operator.getPartIndex()).getLocation().x = partX;
-		newParts.get(Operator.getPartIndex()).getLocation().y = partY;
-		// Fixing the grid cells
-		GridType[][] newGridCells = new GridType[length][width];
-		for (int i = 0; i < length; i++) {
-			for (int j = 0; j < width; j++) {
-				if (i == Parts.get(Operator.getPartIndex()).getLocation().x
-						&& j == Parts.get(Operator.getPartIndex())
-								.getLocation().y) {
-					newGridCells[i][j] = GridType.Free;
-					if (i == partX && j == partY) {
-						newGridCells[i][j] = GridType.RobotPart;
-					}
-				} else {
-					if (i == partX && j == partY) {
-						newGridCells[i][j] = GridType.RobotPart;
-					} else {
-						newGridCells[i][j] = gridCells[i][j];
-					}
+	
+	
+//	@SuppressWarnings("unchecked")
+//	public Grid fix(WampOperator Operator, int partX, int partY) {
+//		Grid fixed = new Grid(false);
+//		// Cloning the obstacles not needed -- reference may cause issue take
+//		// care !!
+//		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
+//		// Fixing the new part point
+//		ArrayList<Part> newParts = cloneParts();
+//		newParts.get(Operator.getPartIndex()).getLocation().x = partX;
+//		newParts.get(Operator.getPartIndex()).getLocation().y = partY;
+//		// Fixing the grid cells
+//		GridType[][] newGridCells = new GridType[length][width];
+//		for (int i = 0; i < length; i++) {
+//			for (int j = 0; j < width; j++) {
+//				if (i == Parts.get(Operator.getPartIndex()).getLocation().x
+//						&& j == Parts.get(Operator.getPartIndex())
+//								.getLocation().y) {
+//					newGridCells[i][j] = GridType.Free;
+//					if (i == partX && j == partY) {
+//						newGridCells[i][j] = GridType.RobotPart;
+//					}
+//				} else {
+//					if (i == partX && j == partY) {
+//						newGridCells[i][j] = GridType.RobotPart;
+//					} else {
+//						newGridCells[i][j] = gridCells[i][j];
+//					}
+//
+//				}
+//			}
+//
+//		}
+//		switch (Operator.getPartDirection()) {
+//
+//		case UP: {
+//			for (Part p : newParts) {
+//				if (p.getLocation().x == partX - 1
+//						&& p.getLocation().y == partY) {
+//					newParts.get(Operator.getPartIndex()).setUp(p);
+//					p.setDown(newParts.get(Operator.getPartIndex()));
+//
+//				}
+//			}
+//		}
+//			break;
+//		case DOWN:
+//			for (Part p : newParts) {
+//				if (p.getLocation().x == partX + 1
+//						&& p.getLocation().y == partY) {
+//					newParts.get(Operator.getPartIndex()).setDown(p);
+//					p.setUp(newParts.get(Operator.getPartIndex()));
+//				}
+//			}
+//			break;
+//		case LEFT:
+//			for (Part p : newParts) {
+//				if (p.getLocation().x == partX
+//						&& p.getLocation().y == partY - 1) {
+//					newParts.get(Operator.getPartIndex()).setLeft(p);
+//					p.setRight(newParts.get(Operator.getPartIndex()));
+//				}
+//			}
+//			break;
+//		case RIGHT:
+//			for (Part p : newParts) {
+//				if (p.getLocation().x == partX
+//						&& p.getLocation().y == partY + 1) {
+//					newParts.get(Operator.getPartIndex()).setRight(p);
+//					p.setLeft(newParts.get(Operator.getPartIndex()));
+//				}
+//			}
+//			break;
+//		}
+//
+//		fixed.Parts = newParts;
+//		fixed.gridCells = newGridCells;
+//		fixed.Obstacles = newObstacles;
+//		fixed.length = length;
+//		fixed.width = width;
+//		return fixed;
+//	}
 
-				}
-			}
-
-		}
-		switch (Operator.getPartDirection()) {
-
-		case UP: {
-			for (Part p : newParts) {
-				if (p.getLocation().x == partX - 1
-						&& p.getLocation().y == partY) {
-					newParts.get(Operator.getPartIndex()).setUp(p);
-					p.setDown(newParts.get(Operator.getPartIndex()));
-
-				}
-			}
-		}
-			break;
-		case DOWN:
-			for (Part p : newParts) {
-				if (p.getLocation().x == partX + 1
-						&& p.getLocation().y == partY) {
-					newParts.get(Operator.getPartIndex()).setDown(p);
-					p.setUp(newParts.get(Operator.getPartIndex()));
-				}
-			}
-			break;
-		case LEFT:
-			for (Part p : newParts) {
-				if (p.getLocation().x == partX
-						&& p.getLocation().y == partY - 1) {
-					newParts.get(Operator.getPartIndex()).setLeft(p);
-					p.setRight(newParts.get(Operator.getPartIndex()));
-				}
-			}
-			break;
-		case RIGHT:
-			for (Part p : newParts) {
-				if (p.getLocation().x == partX
-						&& p.getLocation().y == partY + 1) {
-					newParts.get(Operator.getPartIndex()).setRight(p);
-					p.setLeft(newParts.get(Operator.getPartIndex()));
-				}
-			}
-			break;
-		}
-
-		fixed.Parts = newParts;
-		fixed.gridCells = newGridCells;
-		fixed.Obstacles = newObstacles;
-		fixed.length = length;
-		fixed.width = width;
-		return fixed;
-	}
-
-	public Grid fix2(ArrayList<Part> AdjacentParts, WampOperator Operator,
+	
+	// This method is used to clone and apply changes to a state.
+	public Grid applyAndClone(ArrayList<Part> AdjacentParts, WampOperator Operator,
 			int partX, int partY) {
+		// new Grid for cloning
 		Grid fixed = new Grid(false);
 		// Cloning the obstacles not needed -- reference may cause issue take
 		// care !!
+		@SuppressWarnings("unchecked")
 		ArrayList<Point> newObstacles = (ArrayList<Point>) Obstacles.clone();
 		// Fixing the new part point
 		ArrayList<Part> newParts = cloneParts();
 		ArrayList<Part> newAdjacent = cloneParts(newParts, AdjacentParts);
-
 		// System.out.println("!@#$ "+partX+" "+partY);
-
 		for (Part np : newParts) {
 			for (Part ap : newAdjacent) {
 				if (np == ap) {
@@ -273,7 +285,6 @@ public class Grid {
 
 			}
 		}
-
 		// newParts.get(Operator.getPartIndex()).getLocation().x = partX;
 		// newParts.get(Operator.getPartIndex()).getLocation().y = partY;
 
@@ -294,6 +305,7 @@ public class Grid {
 					.getLocation().getY()] = GridType.RobotPart;
 		}
 
+		//checking for part collisions
 		for (Part AP : newParts) { // <-------------
 
 			for (Part p : newParts) {
@@ -326,6 +338,7 @@ public class Grid {
 
 		}
 
+		// finish cloning
 		fixed.Parts = newParts;
 		fixed.gridCells = newGridCells;
 		fixed.Obstacles = newObstacles;
@@ -334,12 +347,12 @@ public class Grid {
 		return fixed;
 	}
 
+	// this method for cloning the parts from the parts list
 	public ArrayList<Part> cloneParts() {
 		ArrayList<Part> newParts = new ArrayList<Part>();
 		for (Part p : Parts) {
 			// System.out.println(">"+p.getRight());
-			Part newP;
-			newParts.add(newP = new Part(new Point(p.getLocation().x, p
+			newParts.add(new Part(new Point(p.getLocation().x, p
 					.getLocation().y), p.getUp(), p.getDown(), p.getLeft(), p
 					.getRight()));
 			// System.out.println(">"+newP.getRight());
@@ -347,6 +360,8 @@ public class Grid {
 		return newParts;
 	}
 
+	// this method is used to make the parts in the adjacent list are
+	//the same reference like the one in the cloned parts list
 	public ArrayList<Part> cloneParts(ArrayList<Part> newParts,
 			ArrayList<Part> adjParts) {
 		ArrayList<Part> out = new ArrayList<Part>();
@@ -360,6 +375,7 @@ public class Grid {
 		return out;
 	}
 
+	// a to string method
 	public String toString() {
 		String s = "";
 		for (int i = 0; i < gridCells.length; i++) {
@@ -372,7 +388,7 @@ public class Grid {
 		return s;
 	}
 
-	// remember to initialize it
+	// this recursive method is used to return all the parts in the same bulk of parts
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {
