@@ -20,7 +20,7 @@ public class Grid {
 
 	public Grid(boolean generate) {
 		if (generate) {
-			if (false) {
+			if (true) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);

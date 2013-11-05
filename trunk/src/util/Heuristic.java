@@ -39,7 +39,7 @@ public class Heuristic {
 		}
 		
 		System.out.println("result :" + result + " Partsize: " + PartSize);
-		return result / PartSize;
+		return result / Math.pow(PartSize,2);
 		/*
 		if (((WampState)node.getState()).getGrid().getParts().size() == 2) {
 			PrecisionModel f1 = new PrecisionModel();
