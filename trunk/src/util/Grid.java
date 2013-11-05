@@ -20,7 +20,7 @@ public class Grid {
 
 	public Grid(boolean generate) {
 		if (generate) {
-			if (true) {
+			if (false) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
@@ -89,20 +89,22 @@ public class Grid {
 				length = 6;
 				width = 5;
 				Parts = new ArrayList<Part>();
-				Parts.add(new Part(new Point(0, 0)));
-				gridCells[0][0] = GridType.RobotPart;
-				Parts.add(new Part(new Point(2, 1)));
-				gridCells[2][1] = GridType.RobotPart;
-				Parts.add(new Part(new Point(2, 3)));
-				gridCells[2][3] = GridType.RobotPart;
-
+				Parts.add(new Part(new Point(1, 0)));
+				gridCells[1][0] = GridType.RobotPart;
+				Parts.add(new Part(new Point(1, 4)));
+				gridCells[1][4] = GridType.RobotPart;
+				Parts.add(new Part(new Point(3, 1)));
+				gridCells[3][1] = GridType.RobotPart;
+				Parts.add(new Part(new Point(5, 1)));
+				gridCells[5][1] = GridType.RobotPart;
+				Parts.add(new Part(new Point(0, 2)));
+				gridCells[0][2] = GridType.RobotPart;
+				
 				Obstacles = new ArrayList<Point>();
-				Obstacles.add(new Point(0, 2));
-				gridCells[0][2] = GridType.Obstacle;
-
-				Obstacles.add(new Point(4, 1));
-				gridCells[4][1] = GridType.Obstacle;
-				;
+				Obstacles.add(new Point(0, 1));
+				gridCells[0][1] = GridType.Obstacle;
+				Obstacles.add(new Point(3, 2));
+				gridCells[3][2] = GridType.Obstacle;
 			}
 		}
 	}
