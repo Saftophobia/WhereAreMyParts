@@ -149,7 +149,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// //System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "IDS", true);
+		wamp.search(grid, "BF", true);
 
 	}
 
