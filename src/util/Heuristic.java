@@ -15,12 +15,32 @@ public class Heuristic {
 
 	public static double returnHeuristic(SearchTreeNode node) {
 		
+		//centering property
 		if(((WampState)node.getState()).getNumberOfConnectedParts() == ((WampState)node.getState()).getGrid().getParts().size() - 1)
 		{
 			return 0.0;
 		}
 		
+		double result = 0.0;
+		int PartSize = ((WampState)node.getState()).getGrid().getParts().size();
 		
+		for(Part p1 : ((WampState)node.getState()).getGrid().getParts())
+		{
+			for(Part p2 : ((WampState)node.getState()).getGrid().getParts())
+			{
+				if( p1 != p2)
+				{
+					PrecisionModel f1 = new PrecisionModel();
+					result += DistanceOp.distance(new Point(new Coordinate(p1.getLocation().getX(),p1.getLocation().getY()),f1,0),
+							new Point(new Coordinate(p2.getLocation().getX(),p2.getLocation().getY()), f1,0));
+					
+				}
+			}
+		}
+		
+		System.out.println("result :" + result + " Partsize: " + PartSize);
+		return result / PartSize;
+		/*
 		if (((WampState)node.getState()).getGrid().getParts().size() == 2) {
 			PrecisionModel f1 = new PrecisionModel();
 			return DistanceOp.distance(new Point(
@@ -44,15 +64,24 @@ public class Heuristic {
 			LinearRing lr = new LinearRing(temp, f1, 0);
 			Polygon poly = new Polygon(lr, f1, 0);
 			Point result = poly.getCentroid();
+			
+			System.out.println("Centroid X = " + result.getX() + " Centroid Y = " + result.getY());
+			
+			
 			Double resultSoFar = 0.0;
 			for (int i = 0; i < Coordinates.size(); i++) {
 				resultSoFar += DistanceOp.distance(result, new Point(
 						Coordinates.get(i), f1, 0));
 			}
 
-			return resultSoFar / (Coordinates.size());
-
-		}
+			if(Coordinates.size() == 0){
+				System.out.println("MINA!!!!!!");
+				System.exit(0);
+			}
+			return resultSoFar; /// (Coordinates.size());
+*/
+		
+		
 	}
 
 	public static double returnHeuristic2(SearchTreeNode node){
