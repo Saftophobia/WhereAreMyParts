@@ -149,7 +149,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// //System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "BF", true);
+		wamp.search(grid, "AS1", true);
 
 	}
 
@@ -175,8 +175,7 @@ public class Wamp extends SearchAlgorithm {
 					}
 				}
 				//System.out.println(setOfActions);
-				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
-						.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(newNode);
 			}
 		}
@@ -234,8 +233,7 @@ public class Wamp extends SearchAlgorithm {
 						pointer = pointer.getParentNode();
 					}
 				}
-				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
-						.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(0, newNode);
 			}
 
@@ -320,8 +318,7 @@ public class Wamp extends SearchAlgorithm {
 						pointer = pointer.getParentNode();
 					}
 				}
-				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
-						.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(newNode);
 			}
 		}
@@ -392,8 +389,7 @@ public class Wamp extends SearchAlgorithm {
 					}
 				}
 
-				newNode.setPathCost(problem.pathCost((Object[]) setOfActions
-						.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(newNode);
 			}
 		}
@@ -462,8 +458,7 @@ public class Wamp extends SearchAlgorithm {
 						pointer = pointer.getParentNode();
 					}
 				}
-				newNode.setPathCost(0.1 * problem
-						.pathCost((Object[]) setOfActions.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(newNode);
 			}
 		}
@@ -493,7 +488,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-		//System.out.println(">>>" + children);
+		System.out.println(">>>" + children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
@@ -516,7 +511,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 		}
 
-		//System.out.println(nodes.toString());
+		System.out.println(nodes.toString());
 
 	}
 
@@ -540,8 +535,7 @@ public class Wamp extends SearchAlgorithm {
 						pointer = pointer.getParentNode();
 					}
 				}
-				newNode.setPathCost(0.1 * problem
-						.pathCost((Object[]) setOfActions.toArray()));
+				newNode.setPathCost(newNode.getState().getCost());
 				children.add(newNode);
 			}
 		}
@@ -573,7 +567,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-		//System.out.println(">EEWEW>>" + children);
+		System.out.println(">EEWEW>>" + children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
@@ -595,7 +589,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 		}
 
-		//System.out.println(nodes.toString());
+		System.out.println(nodes.toString());
 
 	}
 

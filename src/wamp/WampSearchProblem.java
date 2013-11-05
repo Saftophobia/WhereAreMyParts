@@ -284,7 +284,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, -i, 0), 0,
 										currentState.getCost()
 												+ AdjacentParts.size()
-												* i);
+												* (i==0?1:i));
 								System.out.println(state.getGrid());
 								System.out.println(state.getCost());
 								// System.out.println(state);
@@ -341,7 +341,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, i, 0), 0,
 										currentState.getCost()
 												+ AdjacentParts.size()
-												* i);
+												* (i==0?1:i));
 								System.out.println(state.getGrid());
 								System.out.println(state.getCost());
 								// System.out.println(state);
@@ -399,7 +399,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, 0, -i), 0,
 										currentState.getCost()
 												+ AdjacentParts.size()
-												* i);
+												* (i==0?1:i));
 								System.out.println(state.getGrid());
 								System.out.println(state.getCost());
 								// System.out.println(state);
@@ -456,7 +456,7 @@ public class WampSearchProblem extends SearchProblem {
 												currentOperator, 0, i), 0,
 										currentState.getCost()
 												+ AdjacentParts.size()
-												* i);
+												* (i==0?1:i));
 								System.out.println(state.getGrid());
 								System.out.println(state.getCost());
 								// System.out.println(state);
