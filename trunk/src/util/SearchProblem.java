@@ -6,7 +6,7 @@ public abstract class SearchProblem {
 	//operators strings for now
 	private Operator[] operators;
 	//state space list
-	private ArrayList<State> stateSpace;
+	private ArrayList<State> stateSpace = new ArrayList<State>();
 	//initial State
 	private State initialState;
 
@@ -18,6 +18,7 @@ public abstract class SearchProblem {
 			State initialState) {
 		super();
 		this.operators = operators;
+		if(stateSpace!=null)
 		this.stateSpace = stateSpace;
 		this.initialState = initialState;
 	}
@@ -65,6 +66,7 @@ public abstract class SearchProblem {
 	// get path cost
 	public abstract double pathCost(Object... operators);
 	
+	// to generate the state space
 	public abstract State transferFunction(State input,Operator operator);
 
 

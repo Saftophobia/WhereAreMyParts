@@ -7,6 +7,8 @@ import util.SearchTreeNode;
 
 public abstract class SearchAlgorithm {
 
+	
+	// Queue used in the implementation
 	protected ArrayList<SearchTreeNode> nodes;
 
 	
