@@ -113,8 +113,44 @@ public class Heuristic {
 				bulks.add(result);
 			}
 		}
+		double result = 0.0;
+		
+		if(bulks.size() == parts.size())
+		{
+			return 0;
+		}
+		else{
+			for(ArrayList<Part> bulk:bulks)
+			{
+				result += bulk.size()*bulk.size();
+			}
+			return (result != 0?1/result: 0.1);
+		}
+	}
+	
+public static double returnHeuristic3(SearchTreeNode node){
+
+		
+		ArrayList<ArrayList<Part>> bulks = new ArrayList<ArrayList<Part>>();
+		ArrayList<Part> parts = ((WampState)node.getState()).getGrid().getParts();
+		boolean found = false;
+		//this loop is getting the number of bulks not collided yet
+		for(Part p : parts){
+			for(int i = 0;i<bulks.size();i++){
+				ArrayList<Part> bulk = bulks.get(i); 
+				if(bulk.contains(p)){
+					found = true;
+				}
+			}
+			if(bulks.size()==0 || !found){
+				ArrayList<Part> result =new ArrayList<Part>();
+				((WampState)node.getState()).getGrid().GetBulksRec(p, result);
+				bulks.add(result);
+			}
+		}
 		
 		
 		return bulks.size() -1;
 	}
+
 }
