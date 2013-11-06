@@ -157,7 +157,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// //System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "AS1", true);
+		wamp.search(grid, "AS2", true);
 
 	}
 
@@ -595,7 +595,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-		//System.out.println(">EEWEW>>" + children);
+		System.out.println(">EEWEW>>" + children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
@@ -618,7 +618,7 @@ public class Wamp extends SearchAlgorithm {
 				}
 		}
 
-	//System.out.println(nodes.toString());
+	System.out.println(nodes.toString());
 
 	}
 
