@@ -22,6 +22,20 @@ public class WampState extends State {
 		this.setCost(cost);
 	}
 
+	public boolean isIdentical(WampState state)
+	{
+		for(int i = 0; i < state.getGrid().getParts().size();i++)
+		{
+			
+				if(!state.getGrid().getParts().get(i).CompareParts(this.getGrid().getParts().get(i)))
+				{
+					return false;
+				}
+			
+		}
+		return true;
+	}
+	
 	public Grid getGrid() {
 		return grid;
 	}
