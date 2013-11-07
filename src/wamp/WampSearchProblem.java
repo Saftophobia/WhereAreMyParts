@@ -306,7 +306,7 @@ public class WampSearchProblem extends SearchProblem {
 								// System.out.println(state);
 								// System.out.println("************************");
 								// add to state space
-								getStateSpace().add(state);
+								addToStateSpace(state);
 								//update the next possible state from this one
 								currentState.addNextPossibleState(currentOperator, state);
 								return state;
@@ -332,7 +332,7 @@ public class WampSearchProblem extends SearchProblem {
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
-									getStateSpace().add(state);
+									addToStateSpace(state);
 									currentState.addNextPossibleState(currentOperator, state);
 									return state;
 								}
@@ -368,7 +368,7 @@ public class WampSearchProblem extends SearchProblem {
 								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
-								getStateSpace().add(state);
+								addToStateSpace(state);
 								currentState.addNextPossibleState(currentOperator, state);
 								return state;
 							}
@@ -393,7 +393,7 @@ public class WampSearchProblem extends SearchProblem {
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
-									getStateSpace().add(state);
+									addToStateSpace(state);
 									currentState.addNextPossibleState(currentOperator, state);
 									return state;
 								}
@@ -430,7 +430,7 @@ public class WampSearchProblem extends SearchProblem {
 								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
-								getStateSpace().add(state);
+								addToStateSpace(state);
 								currentState.addNextPossibleState(currentOperator, state);
 								return state;
 							}
@@ -455,7 +455,7 @@ public class WampSearchProblem extends SearchProblem {
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
-									getStateSpace().add(state);
+									addToStateSpace(state);
 									currentState.addNextPossibleState(currentOperator, state);
 									return state;
 								}
@@ -491,7 +491,7 @@ public class WampSearchProblem extends SearchProblem {
 								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
-								getStateSpace().add(state);
+								
 								currentState.addNextPossibleState(currentOperator, state);
 								return state;
 							}
@@ -516,7 +516,7 @@ public class WampSearchProblem extends SearchProblem {
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
-									getStateSpace().add(state);
+									addToStateSpace(state);
 									currentState.addNextPossibleState(currentOperator, state);
 									return state;
 								}
@@ -535,5 +535,14 @@ public class WampSearchProblem extends SearchProblem {
 		}
 
 		return null;
+	}
+	
+	public void addToStateSpace(WampState state){
+		for (State ws : getStateSpace()){
+			if(((WampState) ws).isIdentical(state)){
+				return;
+			}
+		}
+		getStateSpace().add(state);
 	}
 }
