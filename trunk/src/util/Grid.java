@@ -25,7 +25,7 @@ public class Grid {
 	public Grid(boolean generate) {
 		// to distinguish between cloning and creating a new grid
 		if (generate) {
-			if (true) {
+			if (false) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
