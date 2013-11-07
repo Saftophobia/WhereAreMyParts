@@ -1,21 +1,26 @@
+\chapter{Introduction}
+
+
+
 \chapter{Implementation}
 \section{ADT}
-The SearchTreeNode() can be represented as an ADT with six instance variables. The \textbf{state} of the state space that this node corresponds to, the \textbf{parent node}, implemented by the same ADT, the \textbf{operator} applied to generate this node, the \textbf{depth} of the node in the tree, the \textbf{path cost} from the root and the \textbf{Heuristic} value of the node.\\
+The \textit{SearchTreeNode} object can be represented as an ADT with six instance variables. The \textbf{state} this node corresponds to, the \textbf{parent node}, implemented by the same ADT, the \textbf{operator} applied to generate this node, the \textbf{depth} of the node in the tree, the \textbf{path cost} from the root and the \textbf{Heuristic} value of the node.\\
 
-The SearchProblem() ADT is characterized by the following variables. The \textbf{State Space} containing all states reachable by any sequence of actions, the \textbf{initial state}, and list of \textbf{operators} available for the agent. Moreover, the goal test is computed by the function \textbf{boolean goalTest(State state)}, that takes a state as a parameter and checks if all parts are assembled or not. Also, it calculates the \textbf{pathcost(Objects... actions)} $412312$%!@3.
+The \textit{SearchProblem} ADT is characterized by the following variables. The \textbf{State Space} containing all states reachable by any sequence of actions, the \textbf{initial state}, and list of \textbf{operators} available for the agent. Moreover, the goal test is computed by the function \textbf{boolean goalTest(State state)}, that takes a state as a parameter and checks if all parts are assembled or not. Also, it calculates the \textbf{pathcost(Objects... operators)} which takes a list of operators along with the initial state in the ADT, such that the path cost is returned for every state. Moreover, the class has \textit{transferFunction(State input, Operator operator)} that will generate the next possible state given any state and an operator.\\
 
-Where-are-my-parts ADT is the main class that calls genGrid() to generate a grid, calls the search() method to find the solution by calling a method for every Search Algorithm implemented inside the class. 
+Where-are-my-parts ADT is the main class that calls genGrid() to generate a grid with random width, height, number of robots and obstacles, the maximum size of the random grid is 8x8 for memory reasons, and minimum 3x3. Moreover, Robot parts and obstacles count vacate 0\%-25\% of the area of the grid. After generating the grid, Wamp calls the search() method given the algorithm as an input to visualize a possible solution. Furthermore, the class holds all the algorithm implementation functions to be used whenever needed.
 
 \section{Main Functions}
-\subsubsection{GetBulkRec}
-GetBulkRec(Part p) is a function that returns all the Parts attached to the current part p and all the parts attached to them recursively . For simplicity, it gets all parts attached in a bulk if Part P is a subset of this bulk.
+\subsubsection{GetBulkRec()}
+GetBulkRec(Part p) is a function that returns all the Parts attached to the current part p and all the parts attached to them recursively . For simplicity, it gets all parts attached in a bulk if Part P is a subset of this bulk. 
 
 
 
-\subsubsection{Transfer function}
+\subsubsection{Transfer function()}
+transferFunction(State input, Operator operator) generate the next possible state given any state and an operator. In other words, its the function responsible for moving the parts across the grid, checking the validity of the moves. 
 
-\subsubsection{Fix}
-
+\subsubsection{ApplyAndClone}
+ApplyAndClone(ArrayList<Part> AdjacentParts, WampOperator Operator,int partX, int partY) is used to apply changes to the current state after cloning it. It creates a new grid, clone the obstacles and robot parts, and apply changes on all AdjacentParts using the input Operator and the magnitude of the movement given(PartX,PartY). Furthermore, it gives the robot part some awareness of which part he merged with. Finally, it updates the grid by freeing the initial positions of the robot parts.
 
 \chapter{Algorithms}
 \section{Implementation}
