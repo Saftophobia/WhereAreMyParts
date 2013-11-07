@@ -608,6 +608,7 @@ public class Wamp extends SearchAlgorithm {
 								.get(y).getHeuristic()
 								+ nodes.get(y).getPathCost()) {
 							nodes.add(y, child);
+							//System.out.println(child.getHeuristic());
 							justPutIt = false;
 							break;
 						}
