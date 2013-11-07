@@ -13,8 +13,8 @@
 \contentsline {subsubsection}{Greedy Search}{5}{section*.8}
 \contentsline {subsubsection}{A* Search}{6}{section*.9}
 \contentsline {section}{\numberline {3.2}Comparison}{6}{section.3.2}
-\contentsline {chapter}{\numberline {4}Heuristic}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}Centroid}{7}{section.4.1}
-\contentsline {section}{\numberline {4.2}Average Distances}{8}{section.4.2}
-\contentsline {section}{\numberline {4.3}Number of Bulks remaining}{9}{section.4.3}
-\contentsline {chapter}{\numberline {5}External Libraries}{11}{chapter.5}
+\contentsline {chapter}{\numberline {4}Heuristic}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Centroid}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Average Distances}{10}{section.4.2}
+\contentsline {section}{\numberline {4.3}Number of Bulks remaining}{11}{section.4.3}
+\contentsline {chapter}{\numberline {5}External Libraries}{13}{chapter.5}

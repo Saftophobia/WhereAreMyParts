@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  7 NOV 2013 21:16
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  7 NOV 2013 22:17
 entering extended mode
 **Report.tex
 
@@ -445,91 +445,97 @@ Chapter 1.
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
 [3] [4]
 Chapter 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 45.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 45.
 [5
 
-] <images/Graph.png, id=101, 451.6875pt x 348.55219pt>
+] <images/Graph.png, id=102, 602.25pt x 464.73625pt>
 File: images/Graph.png Graphic file (type png)
+ <use images/Graph.png>
+Package pdftex.def Info: images/Graph.png used on input line 56.
+(pdftex.def)             Requested size: 481.80064pt x 371.78949pt.
 
-<use images/Graph.png>
-Package pdftex.def Info: images/Graph.png used on input line 54.
-(pdftex.def)             Requested size: 271.01459pt x 209.1329pt.
- [6 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
-/Graph.png>]
+Overfull \hbox (28.83275pt too wide) in paragraph at lines 56--57
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+[7 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images/
+Graph.png (PNG copy)>] [8
+
+]
 Chapter 4.
-<images/Centroid.png, id=112, 439.6425pt x 286.06876pt>
+<images/Centroid.png, id=123, 439.6425pt x 286.06876pt>
 File: images/Centroid.png Graphic file (type png)
 
 <use images/Centroid.png>
-Package pdftex.def Info: images/Centroid.png used on input line 69.
+Package pdftex.def Info: images/Centroid.png used on input line 71.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
-<images/twistedcentroid.png, id=114, 439.6425pt x 286.06876pt>
+<images/twistedcentroid.png, id=125, 439.6425pt x 286.06876pt>
 File: images/twistedcentroid.png Graphic file (type png)
 
 <use images/twistedcentroid.png>
-Package pdftex.def Info: images/twistedcentroid.png used on input line 78.
+Package pdftex.def Info: images/twistedcentroid.png used on input line 80.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
 Underfull \vbox (badness 1655) has occurred while \output is active []
 
- [7
-
- <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images/Ce
-ntroid.png>] <images/averagedistance.png, id=122, 439.6425pt x 286.06876pt>
+ [9 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
+/Centroid.png>] <images/averagedistance.png, id=133, 439.6425pt x 286.06876pt>
 File: images/averagedistance.png Graphic file (type png)
 
 <use images/averagedistance.png>
-Package pdftex.def Info: images/averagedistance.png used on input line 90.
+Package pdftex.def Info: images/averagedistance.png used on input line 92.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-[8 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images/
-twistedcentroid.png> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-pa
-rts/Report/images/averagedistance.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+[10 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
+/twistedcentroid.png> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-p
+arts/Report/images/averagedistance.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-[9] [10
+[11] [12
 
 ]
 Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
 
-Overfull \hbox (65.40892pt too wide) in paragraph at lines 113--115
-[]\OT1/cmr/m/n/12 Average Dis-tances was cal-cu-lated sim-ply by us-ing the fol
--low-ing line, \OT1/cmr/bx/n/12 Dis-tanceOp.distance(Point
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--115
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
 
  []
 
-) [11]
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
+
+ []
+
+) [13]
 No file Report.bbl.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
@@ -545,21 +551,24 @@ Package rerunfilecheck Info: File `Report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
  ) 
 Here is how much of TeX's memory you used:
- 8847 strings out of 493921
- 135992 string characters out of 3142055
- 225194 words of memory out of 3000000
- 11985 multiletter control sequences out of 15000+200000
+ 8852 strings out of 493921
+ 136045 string characters out of 3142055
+ 225196 words of memory out of 3000000
+ 11987 multiletter control sequences out of 15000+200000
  8594 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,7n,49p,815b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,8n,49p,815b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/amsfonts/cm/cmbx
 12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/amsfonts/cm
-/cmr12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/amsfont
-s/cm/cmsl12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/am
-sfonts/cm/cmti12.pfb>
-Output written on Report.pdf (12 pages, 128856 bytes).
+/cmr10.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/amsfont
+s/cm/cmr12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/ams
+fonts/cm/cmr7.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/
+amsfonts/cm/cmr8.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/publ
+ic/amsfonts/cm/cmsl12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1
+/public/amsfonts/cm/cmti12.pfb>
+Output written on Report.pdf (14 pages, 155740 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
+ 187 PDF objects out of 1000 (max. 8388607)
+ 41 named destinations out of 1000 (max. 500000)
  117 words of extra memory for PDF output out of 10000 (max. 10000000)
 
