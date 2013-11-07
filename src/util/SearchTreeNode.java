@@ -91,7 +91,7 @@ public class SearchTreeNode {
 	
 	// toStringMethod
 	public String toString() {
-		return (this.getPathCost() + this.getHeuristic()) + "";
+		return (this.getHeuristic()) + "";
 
 	}
 

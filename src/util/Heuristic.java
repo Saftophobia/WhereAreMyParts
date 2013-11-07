@@ -95,7 +95,6 @@ public class Heuristic {
 	// The second heuristic is used to avoid moving large bulks
 	public static double returnHeuristic2(SearchTreeNode node){
 
-		
 		ArrayList<ArrayList<Part>> bulks = new ArrayList<ArrayList<Part>>();
 		ArrayList<Part> parts = ((WampState)node.getState()).getGrid().getParts();
 		boolean found = false;
@@ -115,7 +114,7 @@ public class Heuristic {
 		}
 		double result = 0.0;
 		
-		if(bulks.size() == parts.size())
+		if(bulks.get(0).size() == parts.size())
 		{
 			return 0;
 		}

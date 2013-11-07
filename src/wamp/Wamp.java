@@ -157,7 +157,7 @@ public class Wamp extends SearchAlgorithm {
 		System.out.println(grid);
 
 		// //System.out.println(Heuristic.returnHeuristic(grid.getParts()));
-		wamp.search(grid, "AS2", true);
+		wamp.search(grid, "GR2", true);
 
 	}
 
@@ -378,12 +378,18 @@ public class Wamp extends SearchAlgorithm {
 					nodes.add(child);
 
 				} else {
-					// insertion sort
+					boolean justPutIt = true;
+					//insertion sort on heuristic  H
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() < nodes.get(y).getHeuristic()) {
+						if (child.getHeuristic() <= nodes
+								.get(y).getHeuristic()) {
 							nodes.add(y, child);
+							justPutIt = false;
 							break;
 						}
+					}
+					if (justPutIt) {
+						nodes.add(child);
 					}
 				}
 		}
@@ -445,22 +451,30 @@ public class Wamp extends SearchAlgorithm {
 				}
 			}
 		}
-
+		
+		System.out.println(children);
 		for (SearchTreeNode child : children) {
 			if (!child.isRemovable())
 				if (nodes.size() == 0) {
 					nodes.add(child);
 
 				} else {
+					boolean justPutIt = true;
+					//insertion sort on heuristic H
 					for (int y = 0; y < nodes.size(); y++) {
-						if (child.getHeuristic() < nodes.get(y).getHeuristic()) {
+						if (child.getHeuristic() <= nodes
+								.get(y).getHeuristic()) {
 							nodes.add(y, child);
+							justPutIt = false;
 							break;
 						}
 					}
+					if (justPutIt) {
+						nodes.add(child);
+					}
 				}
 		}
-
+		System.out.println(nodes);
 	}
 	// the same as greedies
 	@Override
