@@ -1,4 +1,11 @@
-\BOOKMARK [0][-]{chapter.1}{Heuristic}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Centroid}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Average Distances}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Number of Bulks remaining}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.1}{Implementation}{}% 1
+\BOOKMARK [1][-]{section.1.1}{ADT}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Main Functions}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Algorithms}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Implementation}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{Comparison}{chapter.2}% 6
+\BOOKMARK [0][-]{chapter.3}{Heuristic}{}% 7
+\BOOKMARK [1][-]{section.3.1}{Centroid}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.2}{Average Distances}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.3}{Number of Bulks remaining}{chapter.3}% 10
+\BOOKMARK [0][-]{chapter.4}{External Libraries}{}% 11
