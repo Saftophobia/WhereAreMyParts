@@ -92,7 +92,7 @@ public class Heuristic {
 	}
 	
 	
-	// The second heuristic is used to avoid the parts collide in an obstacle
+	// The second heuristic is used to avoid moving large bulks
 	public static double returnHeuristic2(SearchTreeNode node){
 
 		
@@ -128,6 +128,7 @@ public class Heuristic {
 		}
 	}
 	
+	// The third heuristic is used to avoid the parts collide in an obstacle
 public static double returnHeuristic3(SearchTreeNode node){
 
 		
