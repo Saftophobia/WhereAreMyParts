@@ -1,8 +1,8 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Implementation}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}ADT}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Main Functions}{3}{section.2.2}
-\contentsline {subsubsection}{GetBulkRec()}{3}{section*.2}
+\contentsline {section}{\numberline {2.2}Main Functions}{4}{section.2.2}
+\contentsline {subsubsection}{GetBulkRec()}{4}{section*.2}
 \contentsline {subsubsection}{Transfer function()}{4}{section*.3}
 \contentsline {subsubsection}{ApplyAndClone()}{4}{section*.4}
 \contentsline {subsubsection}{GenGrid()}{4}{section*.5}
