@@ -1,0 +1,42 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bachelor.aux
+A level-1 auxiliary file: GUC_TitlePage.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: acknowledgments.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: background.aux
+A level-1 auxiliary file: state_of_the_art.aux
+A level-1 auxiliary file: design.aux
+A level-1 auxiliary file: implementation.aux
+A level-1 auxiliary file: conclusion.aux
+A level-1 auxiliary file: appendix.aux
+The style file: plain.bst
+Database file #1: bachelor.bib
+Warning--entry type for "semanticwebonline" isn't style-file defined
+--line 86 of file bachelor.bib
+Warning--entry type for "URI" isn't style-file defined
+--line 104 of file bachelor.bib
+Warning--entry type for "jena" isn't style-file defined
+--line 119 of file bachelor.bib
+Warning--entry type for "sparqlw3c" isn't style-file defined
+--line 135 of file bachelor.bib
+Warning--entry type for "namespaces" isn't style-file defined
+--line 143 of file bachelor.bib
+Warning--entry type for "koas" isn't style-file defined
+--line 150 of file bachelor.bib
+Warning--entry type for "jenavssem" isn't style-file defined
+--line 158 of file bachelor.bib
+Warning--entry type for "osm1" isn't style-file defined
+--line 167 of file bachelor.bib
+Warning--entry type for "osm2" isn't style-file defined
+--line 175 of file bachelor.bib
+Warning--entry type for "vespu" isn't style-file defined
+--line 248 of file bachelor.bib
+Warning--entry type for "sharena" isn't style-file defined
+--line 256 of file bachelor.bib
+Warning--entry type for "WHO" isn't style-file defined
+--line 273 of file bachelor.bib
+Too many commas in name 1 of "Tony Coates, Michael Mealling, Mark Needleman, Norman Walsh" for entry URI
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Tony Coates, Michael Mealling, Mark Needleman, Norman Walsh" for entry URI
+while executing---line 1090 of file plain.bst
+(There were 2 error messages)

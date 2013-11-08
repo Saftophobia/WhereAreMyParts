@@ -1,0 +1,164 @@
+\begin{thebibliography}{10}
+
+\bibitem{auer2009linkedgeodata}
+S{\"o}ren Auer, Jens Lehmann, and Sebastian Hellmann.
+\newblock Linkedgeodata: Adding a spatial dimension to the web of data.
+\newblock In {\em The Semantic Web-ISWC 2009}, pages 731--746. Springer, 2009.
+
+\bibitem{ballatore2012geographic}
+Andrea Ballatore, Michela Bertolotto, and David~C Wilson.
+\newblock Geographic knowledge extraction and semantic similarity in
+  openstreetmap.
+\newblock {\em Knowledge and Information Systems}, pages 1--21, 2012.
+
+\bibitem{j.websem266}
+Christian Becker and Christian Bizer.
+\newblock Exploring the geospatial semantic web with dbpedia mobile.
+\newblock {\em Web Semantics: Science, Services and Agents on the World Wide
+  Web}, 7(4), 2009.
+
+\bibitem{namespaces}
+Tim Bray.
+\newblock Namespaces in xml 1.0 (third edition), dec 2009.
+
+\bibitem{celino2010towards}
+Irene Celino and Francesco Corcoglioniti.
+\newblock Towards the formalization of interaction semantics.
+\newblock In {\em Proceedings of the 6th International Conference on Semantic
+  Systems}, page~10. ACM, 2010.
+
+\bibitem{jenavssem}
+Andreas~Schultz Chris~Bizer.
+\newblock Berlin sparql benchmark results, mar 2009.
+
+\bibitem{osm1}
+Steve Coast.
+\newblock Yahoo! aerial imagery in osm, Dec 2006.
+
+\bibitem{coomans1982alternative}
+D~Coomans and DL~Massart.
+\newblock Alternative< i> k</i>-nearest neighbour rules in supervised pattern
+  recognition: Part 1. k-nearest neighbour classification by using alternative
+  voting rules.
+\newblock {\em Analytica Chimica Acta}, 136:15--27, 1982.
+
+\bibitem{dimitrov2000xml}
+Marin Dimitrov.
+\newblock Xml standards for ontology exchange.
+\newblock In {\em Proceedings of “OntoLex}, pages 8--10. Citeseer, 2000.
+
+\bibitem{estepa2003evaluacion}
+ANTONIO Estepa and FRANCISCO~T Sanchez-Cobo.
+\newblock Evaluation of the comprehension of correlative and regression through
+  problems.
+\newblock {\em Statistics Education Research Journal}, 2(1):54--68, 2003.
+
+\bibitem{gruber}
+Tom Gruber.
+\newblock A translation approach to portable ontologies.
+\newblock {\em Knowledge Acquisition}, 5(2):199--220, 1993.
+
+\bibitem{Harold:2002:PXJ:579324}
+Elliote~Rusty Harold.
+\newblock {\em Processing Xml with Java}.
+\newblock Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA, 2002.
+
+\bibitem{semanticwebonline}
+Ivan Herman.
+\newblock W3c semantic web frequently asked questions {@ONLINE}, November 2009.
+
+\bibitem{huang2011scalable}
+Jiewen Huang, Daniel~J Abadi, and Kun Ren.
+\newblock Scalable sparql querying of large rdf graphs.
+\newblock {\em Proceedings of the VLDB Endowment}, 4(11):1123--1134, 2011.
+
+\bibitem{hunter2011beginning}
+David Hunter, Jon Rafter, Andrew Watt, and Linda McKinnon.
+\newblock {\em beginning XML}.
+\newblock John Wiley \& Sons, 2011.
+
+\bibitem{sharena}
+Jkpj.
+\newblock Sharenav wiki page, nov 2011.
+
+\bibitem{kulkarni2010distributed}
+Prasad Kulkarni.
+\newblock Distributed sparql query engine using mapreduce.
+\newblock {\em Master of Science, Computer Science, School of Informatics,
+  University of Edinburgh}, 2010.
+
+\bibitem{letia2011service}
+Ioan~Alfred Letia and Anca~Nicoleta Marginean.
+\newblock Service monitoring with ontology based expectations.
+\newblock In {\em Intelligent Computer Communication and Processing (ICCP),
+  2011 IEEE International Conference on}, pages 111--114. IEEE, 2011.
+
+\bibitem{lops2011content}
+Pasquale Lops, Marco de~Gemmis, and Giovanni Semeraro.
+\newblock Content-based recommender systems: State of the art and trends.
+\newblock In {\em Recommender Systems Handbook}, pages 73--105. Springer, 2011.
+
+\bibitem{xmlparser}
+M.Rajasekhara~Babu M~V Uttam~Tej, Dhanaraj~Cheelu and P~Venkata Krishna.
+\newblock Analyzing xml parsers performance for android platform.
+\newblock {\em VIT University, Tamil Nadu}, 2011.
+
+\bibitem{vespu}
+Matt~Lacchiato Marcus~Wolschon.
+\newblock Vespucci wiki page, apr 2011.
+
+\bibitem{koas}
+Boris Motik.
+\newblock Reasoning in kaon2, nov 2006.
+
+\bibitem{mobilemusiconto}
+Olaf Noppens, Marko Luther, Thorsten Liebig, Matthias Wagner, and Massimo
+  Paolucci.
+\newblock Ontology-supported preference handling for mobile music selection.
+\newblock In {\em Proceedings of the Multidisciplinary Workshop on Advances in
+  Preference Handling, Riva del Garda, Italy (August 2006)}. Citeseer, 2006.
+
+\bibitem{osm2}
+OSM.
+\newblock Openstreetmap stats, jul 2013.
+
+\bibitem{perez2006semantics}
+Jorge P{\'e}rez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of sparql.
+\newblock In {\em The Semantic Web-ISWC 2006}, pages 30--43. Springer, 2006.
+
+\bibitem{ricci2011introduction}
+Francesco Ricci, Lior Rokach, and Bracha Shapira.
+\newblock Introduction to recommender systems handbook.
+\newblock In {\em Recommender Systems Handbook}, pages 1--35. Springer, 2011.
+
+\bibitem{sparqlw3c}
+Andy Seaborne.
+\newblock Sparql query language for rdf, oct 2006.
+
+\bibitem{jena}
+Andy Seaborne.
+\newblock Jena documentation, 2011.
+
+\bibitem{shaik2010design}
+Akbar~S Shaik, Gahangir Hossain, and Mohammed Yeasin.
+\newblock Design, development and performance evaluation of reconfigured mobile
+  android phone for people who are blind or visually impaired.
+\newblock In {\em Proceedings of the 28th ACM International Conference on
+  Design of Communication}, pages 159--166. ACM, 2010.
+
+\bibitem{URI}
+Mark Needleman Norman~Walsh Tony~Coates, Michael~Mealling.
+\newblock Uris, urls, and urns: Clarifications and recommendations 1.0, jul
+  2009.
+
+\bibitem{wang2007space}
+Fangju Wang, Jing Li, and Hooman Homayounfar.
+\newblock A space efficient xml dom parser.
+\newblock {\em Data \& Knowledge Engineering}, 60(1):185--207, 2007.
+
+\bibitem{WHO}
+WHO.
+\newblock Visual impairment and blindness, jun 2012.
+
+\end{thebibliography}
