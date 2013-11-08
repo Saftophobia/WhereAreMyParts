@@ -44,8 +44,6 @@ public class Heuristic {
 				}
 			}
 		}
-		
-		System.out.println("result :" + result + " Partsize: " + PartSize);
 		return result / Math.pow(PartSize,2);
 		/*
 		if (((WampState)node.getState()).getGrid().getParts().size() == 2) {
