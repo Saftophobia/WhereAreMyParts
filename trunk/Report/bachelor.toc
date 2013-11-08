@@ -20,6 +20,3 @@
 \contentsline {section}{\numberline {4.2}Average Distances}{10}{section.4.2}
 \contentsline {section}{\numberline {4.3}Number of Bulks remaining}{11}{section.4.3}
 \contentsline {chapter}{\numberline {5}External Libraries}{13}{chapter.5}
-\contentsline {chapter}{Appendix}{14}{section*.17}
-\contentsline {section}{List of Figures}{15}{appendix*.18}
-\contentsline {section}{Code Listings}{15}{appendix*.18}
