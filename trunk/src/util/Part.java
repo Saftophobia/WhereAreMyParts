@@ -6,13 +6,13 @@ public class Part {
 
 	//location
 	private Point location;
-	//self-reference up part
+	//self-reference for a connected part from the  up
 	private Part up;
-	//self-reference down part
+	//self-reference for a connected part from the  down
 	private Part down;
-	//self-reference left part
+	//self-reference for a connected part from the  left
 	private Part left;
-	//self-reference right
+	//self-reference for a connected part from the right
 	private Part right;
 
 	// the constructors
