@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  7 NOV 2013 22:55
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  8 NOV 2013 16:34
 entering extended mode
 **Report.tex
 
@@ -357,20 +357,20 @@ G,.JBIG2,.JB2,.eps]
 
 (C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\Heuristic.
 aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 \c@lstlisting=\count131
  (D:\adt-bundle-windows-x86-20130522\LateX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -399,7 +399,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 75.
+Package hyperref Info: Link coloring ON on input line 59.
 
 (D:\adt-bundle-windows-x86-20130522\LateX\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -410,9 +410,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\Report.out
 )
@@ -436,67 +436,75 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\Heuristic.
 tex
 Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
 [1
 
 
 
-] [2
-
-]
+] [2]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-[3] [4]
+[3
+
+] [4]
 Chapter 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 45.
+(Font)              <7> on input line 71.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 45.
+(Font)              <5> on input line 71.
 [5
 
-] [6] <images/Graph.png, id=113, 602.25pt x 464.73625pt>
+] [6] <images/Graph.png, id=111, 602.25pt x 464.73625pt>
 File: images/Graph.png Graphic file (type png)
 
 <use images/Graph.png>
-Package pdftex.def Info: images/Graph.png used on input line 57.
-(pdftex.def)             Requested size: 481.80064pt x 371.78949pt.
-
-Overfull \hbox (28.83275pt too wide) in paragraph at lines 57--58
- [][] 
- []
-
-<images/grid.png, id=114, 343.2825pt x 335.00156pt>
+Package pdftex.def Info: images/Graph.png used on input line 80.
+(pdftex.def)             Requested size: 361.35278pt x 278.84389pt.
+ <images/grid.png, id=112, 343.2825pt x 335.00156pt>
 File: images/grid.png Graphic file (type png)
- <use images/grid.png>
-Package pdftex.def Info: images/grid.png used on input line 64.
-(pdftex.def)             Requested size: 274.62636pt x 268.0016pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+<use images/grid.png>
+Package pdftex.def Info: images/grid.png used on input line 87.
+(pdftex.def)             Requested size: 205.97107pt x 201.00247pt.
  [7 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
-/Graph.png (PNG copy)>] [8 <C:/Users/Blackbeard/workspace/aiproject01-where-are
--my-parts/Report/images/grid.png>]
+/Graph.png (PNG copy)> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-
+parts/Report/images/grid.png>] [8]
 Chapter 4.
-<images/Centroid.png, id=126, 439.6425pt x 286.06876pt>
+<images/Centroid.png, id=125, 439.6425pt x 286.06876pt>
 File: images/Centroid.png Graphic file (type png)
 
 <use images/Centroid.png>
-Package pdftex.def Info: images/Centroid.png used on input line 76.
+Package pdftex.def Info: images/Centroid.png used on input line 103.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
-<images/twistedcentroid.png, id=128, 439.6425pt x 286.06876pt>
+<images/twistedcentroid.png, id=127, 439.6425pt x 286.06876pt>
 File: images/twistedcentroid.png Graphic file (type png)
 
 <use images/twistedcentroid.png>
-Package pdftex.def Info: images/twistedcentroid.png used on input line 85.
+Package pdftex.def Info: images/twistedcentroid.png used on input line 112.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
 Underfull \vbox (badness 1655) has occurred while \output is active []
@@ -504,21 +512,21 @@ Underfull \vbox (badness 1655) has occurred while \output is active []
  [9
 
  <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images/Ce
-ntroid.png>] <images/averagedistance.png, id=136, 439.6425pt x 286.06876pt>
+ntroid.png>] <images/averagedistance.png, id=135, 439.6425pt x 286.06876pt>
 File: images/averagedistance.png Graphic file (type png)
 
 <use images/averagedistance.png>
-Package pdftex.def Info: images/averagedistance.png used on input line 97.
+Package pdftex.def Info: images/averagedistance.png used on input line 124.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 [10 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
 /twistedcentroid.png> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-p
 arts/Report/images/averagedistance.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
@@ -527,40 +535,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
 ]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 ) [13]
 No file Report.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
 
 (C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\Report.aux
 
 (C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\Heuristic.
 aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 29DB2F127D5E725982100EBBBD1D8D35;666.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 8860 strings out of 493921
- 136169 string characters out of 3142055
- 225245 words of memory out of 3000000
- 11993 multiletter control sequences out of 15000+200000
+ 8851 strings out of 493921
+ 136045 string characters out of 3142055
+ 224916 words of memory out of 3000000
+ 11984 multiletter control sequences out of 15000+200000
  8594 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,8n,49p,815b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -572,9 +580,9 @@ fonts/cm/cmr7.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/
 amsfonts/cm/cmr8.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/publ
 ic/amsfonts/cm/cmsl12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on Report.pdf (14 pages, 161199 bytes).
+Output written on Report.pdf (14 pages, 163240 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  42 named destinations out of 1000 (max. 500000)
  122 words of extra memory for PDF output out of 10000 (max. 10000000)
 

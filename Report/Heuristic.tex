@@ -1,6 +1,30 @@
 \chapter{Introduction}
+Where-are-my-parts (WAMP for short) is a simple intuitive game where the goal is to assemble broken robots in an efficient manner. The broken robot parts are scattered around the grid, where they can only move in 2D directions, till they hit an Obstacle, another part, or the border of the grid and die. Thenceforth, search algorithms were used to efficiently assemble the Robot with least possible cost. \\
 
+WAMP has few limitations, for instance, the generated grid may not be solvable, due to the fact that robot parts must travel in a specific direction till it hits something, or die ( hits the grid wall). Furthermore, when two parts merge up, they occupy two grid blocks, thus bulk movements should be carefully managed. Finally, when a bulk of parts ( two or more merged robot parts) move together, the cost increases, which had to be handled in the heuristic part.\\
 
+The project is divided into 9 main classes covering our approach implementation, the program is written for an external agent who controls the robot parts, the agent is aware of all parts' locations, obstacles and limitations, which is the main reason search algorithms are desirable for this kind of problems.
+
+\textbf{Grid.java} : responsible for creating a random grid/problem, carry out cloning jobs and apply changes to the grid.
+
+\textbf{SearchAlgorithm.java} : implements the general search algorithm discussed in the lecture.
+\textbf{Heuristic.java }: calculates the heuristic value of a given node.
+
+\textbf{Part.java} : ADT representing the robot part, including his location and neighbouring robot parts.
+
+\textbf{SearchProblem.java} : an abstract class which represents the search problem discussed in the lecture.
+
+\textbf{SearchTreeNode.java} : an abstract data type which represents the Search Tree node and structure discussed in the lecture. 
+
+\textbf{Wamp.java} : extends Search algorithm class, it holds the algorithm implementation functions, the order of expansion queue and the main method.
+
+\textbf{WampOperator.java} : represents the action/operator.
+
+\textbf{WampSearchProblem.java} : extends SearchProblem, checks for goal test and calculates path cost.
+
+\textbf{WampState.java} : represents a state in the state space.\\
+
+The approach followed, the Abstract data types used and Heuristic implementation are discussed in more details next chapters.
 
 \chapter{Implementation}
 
@@ -10,7 +34,7 @@ The \textit{SearchTreeNode} object can be represented as an ADT with six instanc
 
 The \textit{SearchProblem} ADT is characterized by the following variables. The \textbf{State Space} containing all states reachable by any sequence of actions, the \textbf{initial state}, and list of \textbf{operators} available for the agent. Moreover, the goal test is computed by the function \textbf{boolean goalTest(State state)}, that takes a state as a parameter and checks if all parts are assembled or not. Also, it calculates the \textbf{pathcost(Objects... operators)} which takes a list of operators along with the initial state in the ADT, such that the path cost is returned for every state. Moreover, the class has \textit{transferFunction(State input, Operator operator)} that will generate the next possible state given any state and an operator.\\
 
-Where-are-my-parts ADT is the main class that calls genGrid() to generate a grid with random width, height, number of robots and obstacles, the maximum size of the random grid is 8x8 for memory reasons, and minimum 3x3. Moreover, Robot parts and obstacles count vacate 0\%-25\% of the area of the grid. After generating the grid, Wamp calls the search() method given the algorithm as an input to visualize a possible solution. Furthermore, the class holds all the algorithm implementation functions to be used whenever needed.
+Where-are-my-parts ADT is the main class, it extends search algorithm. It calls genGrid() to generate a grid with random width, height, number of robots and obstacles, the maximum size of the random grid is 8x8 for memory reasons, and minimum 3x3. After generating the grid, WAMP generate the list of operators and initialize the WAMP search problem. Moreover, Robot parts and obstacles count occupy 0\%-25\% of the area of the grid. After generating the grid, Wamp calls the search() method given the algorithm as an input to visualize a possible solution. Furthermore, the class holds all the algorithm implementation functions to be used whenever needed.
 
 \section{Main Functions}
 \subsubsection{GetBulkRec()}
@@ -21,8 +45,12 @@ GetBulkRec(Part p) is a function that returns all the Parts attached to the curr
 \subsubsection{Transfer function()}
 transferFunction(State input, Operator operator) generate the next possible state given any state and an operator. In other words, its the function responsible for moving the parts across the grid, checking the validity of the moves. 
 
-\subsubsection{ApplyAndClone}
+\subsubsection{ApplyAndClone()}
 ApplyAndClone(ArrayList<Part> AdjacentParts, WampOperator Operator,int partX, int partY) is used to apply changes to the current state after cloning it. It creates a new grid, clone the obstacles and robot parts, and apply changes on all AdjacentParts using the input Operator and the magnitude of the movement given(PartX,PartY). Furthermore, it gives the robot part some awareness of which part he merged with. Finally, it updates the grid by freeing the initial positions of the robot parts.
+
+\subsubsection{GenGrid()}
+GenGrid() 
+
 
 \chapter{Algorithms}
 \section{Implementation}
@@ -49,22 +77,23 @@ The A* Search follows the same footsteps of the greedy. However, it takes to acc
 
 \newpage
 \section{Comparison}
-
-As shown in graph \ref{fig:graph}, Breadth-First search and Iterative deepening share same Path cost. However, BF is more memory efficient as it expanded less number of nodes. The Greedy has the lowest number of expanded nodes due its features, with less path cost. However, Greedy algorithms are not complete in an unreliable way, such that, in most cases it tends not to terminate and find an answer. Finally, the A* search algorithm has the lowest optimum path cost from the initial state up to the goal state. However, the number of expanded nodes scales with the heuristic value and path cost, the lower the heuristic, the more nodes gets expanded.  (Test case used is shown below, figure \ref{fig:grid})
-
 \begin{figure}[H] 
    	\centering
-	\includegraphics[scale=0.8]{images/Graph} 
+	\includegraphics[scale=0.6]{images/Graph} 
     \caption{Implemented Algorithms vs Number of expanded nodes. (1000 represent infinity}
     \label{fig:graph} 
 \end{figure}
 
 \begin{figure}[H] 
    	\centering
-	\includegraphics[scale=0.8]{images/grid} 
+	\includegraphics[scale=0.6]{images/grid} 
     \caption{Test case used.}
     \label{fig:grid} 
 \end{figure}
+
+As shown in graph \ref{fig:graph}, Breadth-First search and Iterative deepening share same Path cost. However, BF is more memory efficient as it expanded less number of nodes. The Greedy has the lowest number of expanded nodes due its features, with less path cost. However, Greedy algorithms are not complete in an unreliable way, such that, in most cases it tends not to terminate and find an answer. Finally, the A* search algorithm has the lowest optimum path cost from the initial state up to the goal state. However, the number of expanded nodes scales with the heuristic value and path cost, the lower the heuristic, the more nodes gets expanded.
+
+
 
 \chapter{Heuristic}
 \section{Centroid}

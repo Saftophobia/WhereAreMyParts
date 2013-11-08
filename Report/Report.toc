@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {2.2}Main Functions}{3}{section.2.2}
 \contentsline {subsubsection}{GetBulkRec()}{3}{section*.2}
 \contentsline {subsubsection}{Transfer function()}{4}{section*.3}
-\contentsline {subsubsection}{ApplyAndClone}{4}{section*.4}
+\contentsline {subsubsection}{ApplyAndClone()}{4}{section*.4}
 \contentsline {chapter}{\numberline {3}Algorithms}{5}{chapter.3}
 \contentsline {section}{\numberline {3.1}Implementation}{5}{section.3.1}
 \contentsline {subsubsection}{Breadth First Search}{5}{section*.5}
