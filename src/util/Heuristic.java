@@ -29,13 +29,14 @@ public class Heuristic {
 		
 		double result = 0.0;
 		int PartSize = ((WampState)node.getState()).getGrid().getParts().size();
-		
+		// iterating over all the parts
 		for(Part p1 : ((WampState)node.getState()).getGrid().getParts())
 		{
 			for(Part p2 : ((WampState)node.getState()).getGrid().getParts())
 			{
 				if( p1 != p2)
 				{
+					// 
 					PrecisionModel f1 = new PrecisionModel();
 					// this method is in the getting the distance between to parts
 					result += DistanceOp.distance(new Point(new Coordinate(p1.getLocation().getX(),p1.getLocation().getY()),f1,0),

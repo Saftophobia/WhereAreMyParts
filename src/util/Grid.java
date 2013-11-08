@@ -25,7 +25,9 @@ public class Grid {
 	public Grid(boolean generate) {
 		// to distinguish between cloning and creating a new grid
 		if (generate) {
+			//for test purposes
 			if (true) {
+				// get a value for length and width (less than 8 and greater than 3)
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
@@ -36,7 +38,7 @@ public class Grid {
 					Arrays.fill(row, GridType.Free);
 				}
 
-				// Obstacles randomization
+				// Obstacles randomization less than 25% of the area
 				Obstacles = new ArrayList<Point>();
 				int bound2;
 				do {
@@ -56,7 +58,7 @@ public class Grid {
 					// }
 				}
 
-				// Parts randomization
+				// Parts randomization less than 25% of the area
 				Parts = new ArrayList<Part>();
 				int bound1;
 				do {
@@ -66,12 +68,11 @@ public class Grid {
 					int partsX;
 					int partsY;
 					int counter = 0;
-
+					
 					do {
 						partsX = (int) (Math.random() * length);
 						partsY = (int) (Math.random() * width);
 						counter++;
-
 						if (counter > width*length - 1) {
 
 							break;
@@ -112,6 +113,7 @@ public class Grid {
 //				Obstacles.add(new Point(3, 2));
 //				gridCells[3][2] = GridType.Obstacle;
 				
+				//  A static Grid
 			String grid = 
 					"Robo\tFree\tObst\tObst\tFree\tObst\tFree\n" +
 					"Free\tRobo\tFree\tRobo\tFree\tFree\tRobo\n" +
@@ -125,7 +127,7 @@ public class Grid {
 		}
 	}
 
-	
+	// a method for generating a Grid from a String
 	public void generateGridFromString(String Grid){
 		String [] rows = Grid.split("\n");
 		length = rows.length;
@@ -426,7 +428,7 @@ public class Grid {
 		return s;
 	}
 
-	// this recursive method is used to return all the parts in the same bulk of parts
+	// this recursive method is used to return all the parts in the same bulk of parts in all the directions
 	public ArrayList<Part> GetBulksRec(Part p, ArrayList<Part> result) {
 		result.add(p);
 		if (p.getUp() != null) {

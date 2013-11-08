@@ -8,11 +8,11 @@ import util.SearchTreeNode;
 public abstract class SearchAlgorithm {
 
 	
-	// Queue used in the implementation
+	// The global queue used in the implementation
 	protected ArrayList<SearchTreeNode> nodes;
 
 	
-	// Generic search method that uses all the staregies.
+	// Generic search method that uses all the strategies.
 	public SearchTreeNode search(SearchProblem problem, int strategy, boolean visualize) {
 		nodes = new ArrayList<SearchTreeNode>();
 		nodes.add(new SearchTreeNode(problem.getInitialState(), null, null, 0,
@@ -22,6 +22,7 @@ public abstract class SearchAlgorithm {
 			if (problem.goalTest(node.getState())) {
 				return node;
 			} else {
+				// a switch to choose the right strategy 
 				switch (strategy) {
 				case 0:
 					BFS(node, problem);
