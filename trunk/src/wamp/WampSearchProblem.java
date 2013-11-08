@@ -301,8 +301,8 @@ public class WampSearchProblem extends SearchProblem {
 										currentState.getCost()
 												+ AdjacentParts.size()
 												* (i==0?1:i));
-								System.out.println(state.getGrid());
-								System.out.println(state.getCost());
+//								System.out.println(state.getGrid());
+//								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
 								// add to state space
@@ -327,8 +327,8 @@ public class WampSearchProblem extends SearchProblem {
 											currentState.getCost()
 													+ AdjacentParts.size()
 													* i);
-									System.out.println(state.getGrid());
-									System.out.println(state.getCost());
+//									System.out.println(state.getGrid());
+//									System.out.println(state.getCost());
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
@@ -364,8 +364,8 @@ public class WampSearchProblem extends SearchProblem {
 										currentState.getCost()
 												+ AdjacentParts.size()
 												* (i==0?1:i));
-								System.out.println(state.getGrid());
-								System.out.println(state.getCost());
+//								System.out.println(state.getGrid());
+//								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
 								addToStateSpace(state);
@@ -388,8 +388,8 @@ public class WampSearchProblem extends SearchProblem {
 											currentState.getCost()
 													+ AdjacentParts.size()
 													* i);
-									System.out.println(state.getGrid());
-									System.out.println(state.getCost());
+//									System.out.println(state.getGrid());
+//									System.out.println(state.getCost());
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
@@ -426,8 +426,8 @@ public class WampSearchProblem extends SearchProblem {
 										currentState.getCost()
 												+ AdjacentParts.size()
 												* (i==0?1:i));
-								System.out.println(state.getGrid());
-								System.out.println(state.getCost());
+//								System.out.println(state.getGrid());
+//								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
 								addToStateSpace(state);
@@ -450,8 +450,8 @@ public class WampSearchProblem extends SearchProblem {
 											currentState.getCost()
 													+ AdjacentParts.size()
 													* i);
-									System.out.println(state.getGrid());
-									System.out.println(state.getCost());
+//									System.out.println(state.getGrid());
+//									System.out.println(state.getCost());
 									// System.out.println(state);
 									// System.out
 									// .println("************************");
@@ -487,8 +487,8 @@ public class WampSearchProblem extends SearchProblem {
 										currentState.getCost()
 												+ AdjacentParts.size()
 												* (i==0?1:i));
-								System.out.println(state.getGrid());
-								System.out.println(state.getCost());
+//								System.out.println(state.getGrid());
+//								System.out.println(state.getCost());
 								// System.out.println(state);
 								// System.out.println("************************");
 								
@@ -511,8 +511,8 @@ public class WampSearchProblem extends SearchProblem {
 											currentState.getCost()
 													+ AdjacentParts.size()
 													* i);
-									System.out.println(state.getGrid());
-									System.out.println(state.getCost());
+//									System.out.println(state.getGrid());
+//									System.out.println(state.getCost());
 									// System.out.println(state);
 									// System.out
 									// .println("************************");

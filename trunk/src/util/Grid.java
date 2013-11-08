@@ -88,33 +88,71 @@ public class Grid {
 
 			} else {
 				//this is a static Grid for testing
-				gridCells = new GridType[6][5];
-				for (GridType[] row : gridCells) {
-					Arrays.fill(row, GridType.Free);
-				}
-				length = 6;
-				width = 5;
-				Parts = new ArrayList<Part>();
-				Parts.add(new Part(new Point(1, 0)));
-				gridCells[1][0] = GridType.RobotPart;
-				Parts.add(new Part(new Point(1, 4)));
-				gridCells[1][4] = GridType.RobotPart;
-				Parts.add(new Part(new Point(3, 1)));
-				gridCells[3][1] = GridType.RobotPart;
-				Parts.add(new Part(new Point(5, 1)));
-				gridCells[5][1] = GridType.RobotPart;
-				Parts.add(new Part(new Point(0, 2)));
-				gridCells[0][2] = GridType.RobotPart;
+//				gridCells = new GridType[6][5];
+//				for (GridType[] row : gridCells) {
+//					Arrays.fill(row, GridType.Free);
+//				}
+//				length = 6;
+//				width = 5;
+//				Parts = new ArrayList<Part>();
+//				Parts.add(new Part(new Point(1, 0)));
+//				gridCells[1][0] = GridType.RobotPart;
+//				Parts.add(new Part(new Point(1, 4)));
+//				gridCells[1][4] = GridType.RobotPart;
+//				Parts.add(new Part(new Point(3, 1)));
+//				gridCells[3][1] = GridType.RobotPart;
+//				Parts.add(new Part(new Point(5, 1)));
+//				gridCells[5][1] = GridType.RobotPart;
+//				Parts.add(new Part(new Point(0, 2)));
+//				gridCells[0][2] = GridType.RobotPart;
+//				
+//				Obstacles = new ArrayList<Point>();
+//				Obstacles.add(new Point(0, 1));
+//				gridCells[0][1] = GridType.Obstacle;
+//				Obstacles.add(new Point(3, 2));
+//				gridCells[3][2] = GridType.Obstacle;
 				
-				Obstacles = new ArrayList<Point>();
-				Obstacles.add(new Point(0, 1));
-				gridCells[0][1] = GridType.Obstacle;
-				Obstacles.add(new Point(3, 2));
-				gridCells[3][2] = GridType.Obstacle;
+			String grid = 
+					"Robo\tFree\tObst\tObst\tFree\tObst\tFree\n" +
+					"Free\tRobo\tFree\tRobo\tFree\tFree\tFree\n" +
+					"Obst\tFree\tRobo\tFree\tFree\tObst\tFree\n"+
+					"Free\tFree\tFree\tRobo\tFree\tFree\tFree\n"+
+					"Free\tFree\tObst\tFree\tFree\tFree\tFree\n"+
+					"Free\tFree\tObst\tFree\tObst\tObst\tFree\n"+
+					"Free\tRobo\tFree\tFree\tObst\tFree\tFree";
+			generateGridFromString(grid);
 			}
 		}
 	}
 
+	
+	public void generateGridFromString(String Grid){
+		String [] rows = Grid.split("\n");
+		length = rows.length;
+		width = rows[0].split("\t").length;
+		gridCells = new GridType[length][width];
+		for (GridType[] row : gridCells) {
+			Arrays.fill(row, GridType.Free);
+		}
+		Parts = new ArrayList<Part>();
+		Obstacles = new ArrayList<Point>();
+
+		for(int i = 0;i<rows.length;i++){
+			String [] cells = rows[i].split("\t");
+			for(int j = 0;j<cells.length;j++){
+				if(cells[j].equalsIgnoreCase("Robo")){
+					Parts.add(new Part(new Point(i, j)));
+					gridCells[i][j] = GridType.RobotPart;
+				}else{
+					if(cells[j].equalsIgnoreCase("Obst")){
+						Obstacles.add(new Point(i, j));
+						gridCells[i][j] = GridType.Obstacle;
+					}
+				}
+			}
+		}
+	}
+	
 	
 	// this method is used to verify the existence of a certain GridType around a given location
 	public boolean checkAroundFor(int i, int j, GridType type) {
