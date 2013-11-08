@@ -25,7 +25,17 @@
 
 \usepackage[square,sort,comma,numbers]{natbib} 
 \usepackage{epstopdf}
+\newcommand{\submissionDay}{31}
+\newcommand{\submissionMonth}{August}
+\newcommand{\submissionYear}{2013}
+\newcommand{\submissionDate}{\submissionDay~\submissionMonth,~\submissionYear}
+\newcommand{\typeOfThesis}{Bachelor Thesis}
 
+\newcommand{\titleOfThesisOne}{An expectation-based editing interface for OpenStreetMap}
+
+\newcommand{\authorOfThesis}{Ahmed ElSafty}
+\newcommand{\supervisorTwo}{Dipl.-Inf. Bernhard Schmitz}
+\newcommand{\supervisorOne}{Prof. Thomas Ertl}
 
 \newcommand{\includefig}[4]{
     \begin{figure}[ht]
@@ -53,7 +63,13 @@
 \includefigWSC{#1}{#2.eps}{#3}{#4}{#5}
 }
 \ifpdf
-
+\pdfinfo {
+	/Author (\authorOfThesis)
+	/Title (\titleOfThesisOne)
+	/Subject (\typeOfThesis)
+	/Keywords ()
+	/CreationDate (D:20090707085533)
+}
 \fi
 
 \begin{document}
