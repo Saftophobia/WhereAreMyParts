@@ -25,7 +25,7 @@ public class Grid {
 	public Grid(boolean generate) {
 		// to distinguish between cloning and creating a new grid
 		if (generate) {
-			if (false) {
+			if (true) {
 				do {
 					length = (int) (Math.random() * 8);
 					width = (int) (Math.random() * 8);
@@ -114,12 +114,12 @@ public class Grid {
 				
 			String grid = 
 					"Robo\tFree\tObst\tObst\tFree\tObst\tFree\n" +
-					"Free\tRobo\tFree\tRobo\tFree\tFree\tFree\n" +
+					"Free\tRobo\tFree\tRobo\tFree\tFree\tRobo\n" +
 					"Obst\tFree\tRobo\tFree\tFree\tObst\tFree\n"+
-					"Free\tFree\tFree\tRobo\tFree\tFree\tFree\n"+
+					"Free\tFree\tFree\tRobo\tFree\tFree\tRobo\n"+
 					"Free\tFree\tObst\tFree\tFree\tFree\tFree\n"+
 					"Free\tFree\tObst\tFree\tObst\tObst\tFree\n"+
-					"Free\tRobo\tFree\tFree\tObst\tFree\tFree";
+					"Free\tRobo\tFree\tFree\tObst\tFree\tRobo";
 			generateGridFromString(grid);
 			}
 		}
