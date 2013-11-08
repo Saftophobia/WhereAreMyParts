@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  8 NOV 2013 17:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.8.6)  8 NOV 2013 18:15
 entering extended mode
 **bachelor.tex
 
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.tex"
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.t
+ex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -354,14 +354,14 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 ))
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.aux"
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\GUC_
-TitlePage.aux")
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\heur
-istic.aux")
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\appe
-ndix.aux"))
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.a
+ux
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\GUC_TitleP
+age.aux)
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\heuristic.
+aux)
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\appendix.a
+ux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
@@ -377,8 +377,7 @@ LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 \c@lstlisting=\count131
-
-(D:\adt-bundle-windows-x86-20130522\LateX\tex\context\base\supp-pdf.mkii
+ (D:\adt-bundle-windows-x86-20130522\LateX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count132
 \scratchdimen=\dimen137
@@ -420,14 +419,14 @@ LaTeX Info: Redefining \ref on input line 76.
 LaTeX Info: Redefining \pageref on input line 76.
 LaTeX Info: Redefining \nameref on input line 76.
 
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.out")
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.out")
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.o
+ut)
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.o
+ut)
 \@outlinefile=\write4
 
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\GUC_
-TitlePage.tex"
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\GUC_TitleP
+age.tex
 Package epstopdf Info: Source file: <GUC-logo-ss.eps>
 (epstopdf)                    date: 2009-08-12 14:10:58
 (epstopdf)                    size: 23913 bytes
@@ -438,8 +437,7 @@ Package epstopdf Info: Source file: <GUC-logo-ss.eps>
 o.pdf GUC-logo-ss.eps>
 (epstopdf)             \includegraphics on input line 35.
 Package epstopdf Info: Output file is already uptodate.
-
-<GUC-logo-ss-eps-converted-to.pdf, id=62, 271.0125pt x 259.97125pt>
+ <GUC-logo-ss-eps-converted-to.pdf, id=62, 271.0125pt x 259.97125pt>
 File: GUC-logo-ss-eps-converted-to.pdf Graphic file (type pdf)
 
 <use GUC-logo-ss-eps-converted-to.pdf>
@@ -455,19 +453,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 
-{C:/Users/Blackbeard/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/8th
- semester/bachelor_thesis_template/bachelor_thesis_template - Copy/GUC-logo-ss-
-eps-converted-to.pdf>]) [2
+{C:/Users/Blackbeard/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Use
+rs/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/GUC-logo-ss-eps-c
+onverted-to.pdf>]) [2
 
 
 
 ]
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.toc")
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.t
+oc)
 \tf@toc=\write5
  [3]
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\heur
-istic.tex"
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\heuristic.
+tex
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -509,60 +507,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
 ] [4]
 Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 77.
+(Font)              <7> on input line 84.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 77.
+(Font)              <5> on input line 84.
 [5
 
 ] [6] <images/Graph.png, id=139, 602.25pt x 464.73625pt>
 File: images/Graph.png Graphic file (type png)
 
 <use images/Graph.png>
-Package pdftex.def Info: images/Graph.png used on input line 86.
+Package pdftex.def Info: images/Graph.png used on input line 93.
 (pdftex.def)             Requested size: 361.35278pt x 278.84389pt.
  <images/grid.png, id=140, 343.2825pt x 335.00156pt>
 File: images/grid.png Graphic file (type png)
 
 <use images/grid.png>
-Package pdftex.def Info: images/grid.png used on input line 93.
+Package pdftex.def Info: images/grid.png used on input line 100.
 (pdftex.def)             Requested size: 205.97107pt x 201.00247pt.
- [7 <D:/8th semester/bachelor_thesis_template/bachelor_thesis_template - Copy/i
-mages/Graph.png (PNG copy)> <D:/8th semester/bachelor_thesis_template/bachelor_
-thesis_template - Copy/images/grid.png>] [8]
+ [7 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
+/Graph.png (PNG copy)> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-
+parts/Report/images/grid.png>] [8]
 Chapter 4.
 <images/Centroid.png, id=153, 439.6425pt x 286.06876pt>
 File: images/Centroid.png Graphic file (type png)
 
 <use images/Centroid.png>
-Package pdftex.def Info: images/Centroid.png used on input line 109.
+Package pdftex.def Info: images/Centroid.png used on input line 116.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
 <images/twistedcentroid.png, id=155, 439.6425pt x 286.06876pt>
 File: images/twistedcentroid.png Graphic file (type png)
 
 <use images/twistedcentroid.png>
-Package pdftex.def Info: images/twistedcentroid.png used on input line 118.
+Package pdftex.def Info: images/twistedcentroid.png used on input line 125.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
  [9
 
- <D:/8th semester/bachelor_thesis_template/bachelor_thesis_template - Copy/imag
-es/Centroid.png>]
+ <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images/Ce
+ntroid.png>]
 <images/averagedistance.png, id=163, 439.6425pt x 286.06876pt>
 File: images/averagedistance.png Graphic file (type png)
 
 <use images/averagedistance.png>
-Package pdftex.def Info: images/averagedistance.png used on input line 130.
+Package pdftex.def Info: images/averagedistance.png used on input line 137.
 (pdftex.def)             Requested size: 263.78752pt x 171.64258pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
-[10 <D:/8th semester/bachelor_thesis_template/bachelor_thesis_template - Copy/i
-mages/twistedcentroid.png> <D:/8th semester/bachelor_thesis_template/bachelor_t
-hesis_template - Copy/images/averagedistance.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+[10 <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-parts/Report/images
+/twistedcentroid.png> <C:/Users/Blackbeard/workspace/aiproject01-where-are-my-p
+arts/Report/images/averagedistance.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
  []
 
@@ -571,29 +574,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--143
 ]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--155
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 
  []
 
 ) [13]
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\appe
-ndix.tex" [14
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\appendix.t
+ex [14
 
 
 
 ]
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.lof")
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.l
+of)
 \tf@lof=\write6
 ) [15
 
@@ -601,14 +604,14 @@ elor.lof")
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
 
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\bach
-elor.aux"
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\GUC_
-TitlePage.aux")
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\heur
-istic.aux")
-("D:\8th semester\bachelor_thesis_template\bachelor_thesis_template - Copy\appe
-ndix.aux"))
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\bachelor.a
+ux
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\GUC_TitleP
+age.aux)
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\heuristic.
+aux)
+(C:\Users\Blackbeard\workspace\aiproject01-where-are-my-parts\Report\appendix.a
+ux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `bachelor.out' has not changed.
@@ -617,7 +620,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
  8897 strings out of 493921
- 137873 string characters out of 3142055
+ 137708 string characters out of 3142055
  226473 words of memory out of 3000000
  12005 multiletter control sequences out of 15000+200000
  9199 words of font info for 32 fonts, out of 3000000 for 9000
@@ -631,7 +634,7 @@ fonts/cm/cmr7.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/public/
 amsfonts/cm/cmr8.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1/publ
 ic/amsfonts/cm/cmsl12.pfb><D:/adt-bundle-windows-x86-20130522/LateX/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on bachelor.pdf (18 pages, 176440 bytes).
+Output written on bachelor.pdf (18 pages, 177160 bytes).
 PDF statistics:
  234 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 500000)

@@ -35,6 +35,8 @@ The \textit{SearchTreeNode} object can be represented as an ADT with six instanc
 The \textit{SearchProblem} ADT is characterized by the following variables. The \textbf{State Space} containing all states reachable by any sequence of actions, the \textbf{initial state}, and list of \textbf{operators} available for the agent. Moreover, the goal test is computed by the function \textbf{boolean goalTest(State state)}, that takes a state as a parameter and checks if all parts are assembled or not. Also, it calculates the \textbf{pathcost(Objects... operators)} which takes a list of operators along with the initial state in the ADT, such that the path cost is returned for every state. Moreover, the class has \textit{transferFunction(State input, Operator operator)} that will generate the next possible state given any state and an operator.\\
 
 Where-are-my-parts ADT is the main class, it extends search algorithm. It calls genGrid() to generate a grid with random width, height, number of robots and obstacles, the maximum size of the random grid is 8x8 for memory reasons, and minimum 3x3. After generating the grid, WAMP generate the list of operators and initialize the WAMP search problem. Moreover, Robot parts and obstacles count occupy 0\%-25\% of the area of the grid. After generating the grid, Wamp calls the search() method given the algorithm as an input to visualize a possible solution. Furthermore, the class holds all the algorithm implementation functions to be used whenever needed.
+
+WAMP state ADT extends state class, which represents the state of our grid, the location of robot parts and obstacles, the number of connected parts and a hashmap of all next possible states, which can be used to calculate the path cost. 
 \newpage
 
 \section{Main Functions}
@@ -58,11 +60,16 @@ Search(grid,strategy,visualise) manages the order of the expansion queue, checks
 
 \chapter{Algorithms}
 \section{Implementation}
+
+The general idea is to have a nodes-to-get-expanded queue initialized at the beginning of every search approach. The technique of enqueuing the global queue differs from one search algorithm to another. while expanding, operators are applied to each and every part in the grid, which output a set of states to be enqueued. \\
+
+A simple adjustment to the algorithm has been implemented, as the repeated identical nodes are removed from the queue, due to the fact that the children would be identical as well because every part moves with his adjacent parts, and that will create redundant sub-problems when other parts try the same operator.
+
 \subsubsection{Breadth First Search}
 
-A to-be-expanded queue is initialized at the beginning of the search approach, and the BFS function is called whenever this queue is nonempty. The function dequeues the first node from the beginning of the queue, expand it, and adds the expanded nodes to the end of the queue, till the goal test is satisfied or there is no solution (empty queue).
+BFS function is called whenever this queue is nonempty. The function dequeues the first node from the beginning of the queue, expand it, and adds the expanded nodes to the end of the queue, till the goal test is satisfied or there is no solution (empty queue).
 
-A simple adjustment to the algorithm has been implemented, as the repeated identical nodes are removed from the queue, due to the fact that the children would be identical as well because every part moves with his adjacent parts, and that will create redundant sub-problems when other parts try the same operator. 
+ 
 
 \subsubsection{Depth First Search}
 
