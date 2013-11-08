@@ -11,7 +11,7 @@
 \contentsline {section}{\numberline {3.1}Implementation}{5}{section.3.1}
 \contentsline {subsubsection}{Breadth First Search}{5}{section*.7}
 \contentsline {subsubsection}{Depth First Search}{5}{section*.8}
-\contentsline {subsubsection}{Iterative Deepening Search}{5}{section*.9}
+\contentsline {subsubsection}{Iterative Deepening Search}{6}{section*.9}
 \contentsline {subsubsection}{Greedy Search}{6}{section*.10}
 \contentsline {subsubsection}{A* Search}{6}{section*.11}
 \contentsline {section}{\numberline {3.2}Comparison}{7}{section.3.2}

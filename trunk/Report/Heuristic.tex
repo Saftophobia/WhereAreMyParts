@@ -46,7 +46,7 @@ GetBulkRec(Part p) is a function that returns all the parts attached to the curr
 
 
 \subsubsection{Transfer function()}
-transferFunction(State input, Operator operator) generate the next possible state given any state and an operator. In other words, its the function responsible for moving the parts across the grid, checking the validity of the moves. 
+transferFunction(State input, Operator operator) generate the next possible state given any state and an operator. In other words, its the function responsible for moving the parts across the grid, checking the validity of the moves. First, it checks the membership of a part in a specific bulk, It's responsible for moving the part and all adjacent ones one step at a time while checking for collisions ( parts or obstacles).
 
 \subsubsection{ApplyAndClone()}
 ApplyAndClone(ArrayList<Part> AdjacentParts, WampOperator Operator,int partX, int partY) is used to apply changes to the current state after cloning it. It creates a new grid, clone the obstacles and robot parts, and apply changes on all Adjacent Parts using the input Operator and the magnitude of the movement given(PartX,PartY). Furthermore, it gives the robot part some awareness of which part he merged with. Finally, it updates the grid by freeing the initial positions of the robot parts.
@@ -63,7 +63,7 @@ Search(grid,strategy,visualise) manages the order of the expansion queue, checks
 
 The general idea is to have a nodes-to-get-expanded queue initialized at the beginning of every search approach. The technique of enqueuing the global queue differs from one search algorithm to another. while expanding, operators are applied to each and every part in the grid, which output a set of states to be enqueued. \\
 
-A simple adjustment to the algorithm has been implemented, as the repeated identical nodes are removed from the queue, due to the fact that the children would be identical as well because every part moves with his adjacent parts, and that will create redundant sub-problems when other parts try the same operator.
+A simple adjustment to the algorithm has been implemented, as the repeated identical nodes are removed from the queue, due to the fact that the children would be identical as well because every part moves with his adjacent parts, and that will create redundant sub-problems when other parts try the same operator.\footnote{Due to the nature of the problem, All search algorithms have non-terminating property, because when an object hits an obstacle using a specific operator, a new state is created with the same operator instead of ignoring it}
 
 \subsubsection{Breadth First Search}
 
@@ -81,7 +81,7 @@ A to-be-expanded queue is initialized at the beginning of the search approach, a
 Iterative deepening simply sets a limit for the DFS function, thus, a limit is set at the beginning of the search, and the DFS function is called till the limit is reached, the goal test is satisfied or the queue get emptied.
 
 \subsubsection{Greedy Search}
-Greedy Search is set to expand the least heuristic valued node in the global queue of expanded nodes. Thus, the search dequeues the first value in the queue, expand it, and sort the children according to the heuristic value using insertion sort. It terminates if the goal test is achieved or the queue get emptied. However, due to the nature of the Where-are-my-parts problem, robots can keep hitting an obstacle forever. This incompleteness gives the Greedy search an non-terminating manner in most cases.\footnote{Due to the nature of the problem, All search algorithms have non-terminating property, because when an object hits an obstacle using a specific operator, a new state is created with the same operator instead of ignoring it}
+Greedy Search is set to expand the least heuristic valued node in the global queue of expanded nodes. Thus, the search dequeues the first value in the queue, expand it, and sort the children according to the heuristic value using insertion sort. It terminates if the goal test is achieved or the queue get emptied. However, due to the nature of the Where-are-my-parts problem, robots can keep hitting an obstacle forever. This incompleteness gives the Greedy search an non-terminating manner in most cases.
 
 \subsubsection{A* Search}
 The A* Search follows the same footsteps of the greedy. However, it takes to account the number of steps moved so far from the root node up to the current node as a part of the priority value in the queue. Thus, giving greedy search a completeness feature. i.e, a node with a robot hitting the wall will increase his priority queue value, putting it a step back for another node to try its luck.
