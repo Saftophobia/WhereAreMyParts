@@ -1,4 +1,4 @@
-# aiproject01-where-are-my-parts
+# Where are my parts - A.I Project - 1
 Where are my parts is a game where the goal is to assemble broken robot.
 
 The broken robot parts are scattered around the grid. They can only move in 2D directions, till they hit an obstacle, another part, or the border of the grid and die. 
